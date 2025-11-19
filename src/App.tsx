@@ -134,7 +134,7 @@ const Hero = () => {
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 leading-tight">
           <GoldText>
-            Meet CipherPolice — Your Intelligent Digital Defence
+            Cipher
           </GoldText>
         </h1>
         <p className="text-xl md:text-3xl text-gray-300 font-light mb-10">
