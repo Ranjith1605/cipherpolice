@@ -1,4 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
+import { ChatSidebar } from './components/ChatSidebar';
+import ComplianceGuide from './components/ComplianceGuide';
 
 const GoldButton = ({ children, onClick, disabled }: { children: React.ReactNode; onClick?: () => void; disabled?: boolean }) => (
   <button
@@ -41,6 +43,7 @@ const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Scanner', href: '#scanner' },
+    { name: 'Compliance', href: '#compliance' },
     { name: 'Features', href: '#features' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -52,11 +55,11 @@ const Navbar = () => {
           <a href="#home" className="flex items-center space-x-3 transition duration-300 hover:opacity-80">
             <img
               src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
-              alt="CipherPolice Logo"
+              alt="Cipher Logo"
               className="h-12 w-auto"
             />
             <span className="text-xl md:text-2xl font-black tracking-wider">
-              <GoldText>CipherPolice</GoldText>
+              <GoldText>Cipher</GoldText>
             </span>
           </a>
 
@@ -132,11 +135,14 @@ const Hero = () => {
           className="h-32 w-auto mx-auto mb-6"
         />
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 leading-tight">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-2 leading-tight">
           <GoldText>
             Cipher
           </GoldText>
         </h1>
+        <p className="text-lg md:text-2xl text-gray-400 font-light mb-6 tracking-wide">
+          Your Personal Super AI Police
+        </p>
         <p className="text-xl md:text-3xl text-gray-300 font-light mb-10">
           Proactive. Simple. Secure.
         </p>
@@ -435,6 +441,8 @@ const Footer = () => (
 );
 
 export default function App() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
   useEffect(() => {
     document.title = "CipherPolice - Intelligent Digital Defence";
     const link = document.createElement('link');
@@ -450,10 +458,12 @@ export default function App() {
         <Hero />
         <About />
         <Scanner />
+        <ComplianceGuide />
         <Features />
         <Contact />
       </main>
       <Footer />
+      <ChatSidebar isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
     </div>
   );
 }
