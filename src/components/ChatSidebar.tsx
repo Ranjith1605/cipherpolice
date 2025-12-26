@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { sendMessage, Message, initializeChatHistory } from '../services/geminiService';
+import { GoldText } from './ui/GoldText';
 
 interface ChatSidebarProps {
   isOpen: boolean;
@@ -72,13 +73,11 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
       {/* Sidebar Toggle Button */}
       <button
         onClick={onToggle}
-        className={`fixed ${
-          isOpen ? 'right-96' : 'right-8'
-        } bottom-8 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-110
-          ${
-            isOpen
-              ? 'bg-red-500 hover:bg-red-600'
-              : 'bg-gradient-to-r from-[#FFD26F] to-[#C99700] hover:brightness-110'
+        className={`fixed ${isOpen ? 'right-96' : 'right-8'
+          } bottom-8 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-110
+          ${isOpen
+            ? 'bg-red-500 hover:bg-red-600'
+            : 'bg-gradient-to-r from-[#FFD26F] to-[#C99700] hover:brightness-110'
           }`}
         title={isOpen ? 'Close Chat' : 'Open Cipher Police Chat'}
       >
@@ -100,16 +99,15 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
 
       {/* Sidebar Panel */}
       <div
-        className={`fixed bottom-0 right-0 h-screen w-96 bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl shadow-black/50 z-40 transform transition-transform duration-300 flex flex-col border-l border-gold-500/30 ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed bottom-0 right-0 h-screen w-96 bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl shadow-black/50 z-40 transform transition-transform duration-300 flex flex-col border-l border-gold-500/30 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         {/* Header */}
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-4 border-b border-gold-500/20">
           <h2 className="text-lg font-bold text-center">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFD26F] to-[#C99700]">
+            <GoldText>
               Cipher Police
-            </span>
+            </GoldText>
           </h2>
           <p className="text-xs text-gray-400 text-center mt-1">AI Legal Compliance Guide</p>
         </div>
@@ -137,11 +135,10 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
-                    msg.role === 'user'
-                      ? 'bg-gradient-to-r from-[#FFD26F] to-[#C99700] text-slate-900 font-medium'
-                      : 'bg-slate-800 text-gray-200 border border-gold-500/20'
-                  }`}
+                  className={`max-w-xs px-4 py-2 rounded-lg text-sm ${msg.role === 'user'
+                    ? 'bg-gradient-to-r from-[#FFD26F] to-[#C99700] text-slate-900 font-medium'
+                    : 'bg-slate-800 text-gray-200 border border-gold-500/20'
+                    }`}
                 >
                   {msg.content}
                 </div>

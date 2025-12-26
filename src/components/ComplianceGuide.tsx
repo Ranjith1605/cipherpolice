@@ -1,3 +1,5 @@
+import { GoldText } from './ui/GoldText';
+
 const ComplianceGuide = () => {
   const regulations = [
     {
@@ -74,9 +76,9 @@ const ComplianceGuide = () => {
     <section id="compliance" className="py-24 bg-slate-900">
       <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="text-4xl font-extrabold text-center mb-4">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFD26F] to-[#C99700]">
+          <GoldText>
             Global AI & Data Protection Laws
-          </span>
+          </GoldText>
         </h2>
         <p className="text-center text-gray-400 mb-16 max-w-3xl mx-auto">
           Navigate the complex landscape of data protection and AI regulations across the globe. Stay compliant with international standards and best practices.
@@ -105,9 +107,9 @@ const ComplianceGuide = () => {
 
         <div className="bg-slate-800 p-8 rounded-xl border border-gold-500/30 mb-16">
           <h3 className="text-2xl font-bold mb-8 text-center">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFD26F] to-[#C99700]">
+            <GoldText>
               AI Ethics & Responsible Development
-            </span>
+            </GoldText>
           </h3>
           <div className="grid md:grid-cols-4 gap-6">
             {aiEthics.map((item, idx) => (
@@ -122,9 +124,9 @@ const ComplianceGuide = () => {
 
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-xl border border-gold-500/30">
           <h3 className="text-2xl font-bold mb-6 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFD26F] to-[#C99700]">
+            <GoldText>
               Digital Rights & Best Practices
-            </span>
+            </GoldText>
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
