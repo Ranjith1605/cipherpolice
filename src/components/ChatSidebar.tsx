@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { sendMessage, Message, initializeChatHistory } from '../services/geminiService';
-import { Shield, Send, RefreshCcw, X, MessageSquare, ShieldAlert } from 'lucide-react';
+import { Shield, Send, RefreshCcw, X, MessageSquare } from 'lucide-react';
 
 interface ChatSidebarProps {
   isOpen: boolean;
@@ -75,83 +75,64 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
       {/* Tactical Toggle */}
       <button
         onClick={onToggle}
-        className={`fixed ${isOpen ? 'right-[27rem]' : 'right-8'} bottom-8 z-50 w-16 h-16 rounded-2xl transition-all duration-500 hover:scale-110 flex items-center justify-center group overflow-hidden`}
+        className={`fixed ${isOpen ? 'right-[27rem]' : 'right-8'} bottom-8 z-50 w-14 h-14 rounded-full transition-all duration-500 hover:scale-105 flex items-center justify-center group overflow-hidden`}
         style={{
-          background: 'rgba(5, 10, 20, 0.8)',
-          border: isOpen ? '1px solid rgba(239, 68, 68, 0.5)' : '1px solid rgba(0, 243, 255, 0.3)',
-          boxShadow: isOpen
-            ? '0 0 30px rgba(239, 68, 68, 0.3)'
-            : '0 0 30px rgba(0, 243, 255, 0.2)',
+          background: 'rgba(5, 10, 20, 0.9)',
+          border: '1px solid rgba(255, 255, 255, 0.05)',
+          boxShadow: isOpen ? '0 0 30px rgba(239, 68, 68, 0.1)' : '0 10px 30px rgba(0,0,0,0.5)',
           backdropFilter: 'blur(10px)'
         }}
-        title={isOpen ? 'Secure Uplink' : 'Summon Liaison'}
       >
         <div className="absolute inset-0 bg-asi-neon/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         {isOpen ? (
-          <X className="w-6 h-6 text-red-500 animate-pulse" />
+          <X className="w-5 h-5 text-gray-500 hover:text-red-500 transition-colors" />
         ) : (
-          <div className="relative">
-            <MessageSquare className="w-6 h-6 text-asi-neon" />
-            <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-asi-purple border-2 border-asi-dark animate-pulse"></div>
-          </div>
+          <MessageSquare className="w-5 h-5 text-gray-400 group-hover:text-asi-neon transition-colors" />
         )}
       </button>
 
       {/* Liaison Sidebar */}
       <div
-        className={`fixed bottom-0 right-0 h-screen w-[26rem] z-40 flex flex-col transform transition-all duration-500 ease-in-out glass-premium border-l border-white/5 ${isOpen ? 'translate-x-0' : 'translate-x-full shadow-none'}`}
+        className={`fixed bottom-0 right-0 h-screen w-[26rem] z-40 flex flex-col transform transition-all duration-500 ease-in-out border-l border-white/5 ${isOpen ? 'translate-x-0' : 'translate-x-full shadow-none'}`}
         style={{
-          background: 'rgba(5, 10, 20, 0.95)',
-          boxShadow: isOpen ? '-20px 0 50px rgba(0,0,0,0.8)' : 'none',
+          background: 'rgba(5, 10, 20, 0.98)',
+          backdropFilter: 'blur(20px)',
+          boxShadow: isOpen ? '-30px 0 60px rgba(0,0,0,0.9)' : 'none',
         }}
       >
         {/* HUD Header */}
-        <div className="p-6 border-b border-white/5 bg-white/5">
-          <div className="flex items-center gap-4">
-            <div className="relative w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-asi-dark border border-asi-neon/30 overflow-hidden">
-              <div className="absolute inset-0 bg-cyber-grid opacity-20"></div>
-              <Shield className="w-6 h-6 text-asi-neon relative z-10 animate-float" />
-              <div className="absolute top-0 right-0 p-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping shadow-[0_0_5px_#22c55e]" />
-              </div>
+        <div className="p-8 border-b border-white/5">
+          <div className="flex items-center gap-5">
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/[0.02] border border-white/5">
+              <Shield className="w-5 h-5 text-gray-500" />
             </div>
             <div className="flex-1">
-              <h2 className="text-sm font-black text-white uppercase tracking-[0.2em]">Security Liaison</h2>
+              <h2 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">Liaison 02</h2>
               <div className="flex items-center gap-2 mt-1">
-                <span className="text-[9px] font-mono text-asi-neon uppercase tracking-widest">Active Link</span>
-                <div className="h-px flex-1 bg-asi-neon/20"></div>
+                <span className="text-[8px] font-mono text-asi-neon/50 uppercase tracking-widest">Link Protocol Active</span>
               </div>
             </div>
             <button
               onClick={handleClearChat}
-              className="p-2 rounded-lg hover:bg-white/5 text-gray-600 hover:text-asi-purple transition-all"
-              title="Purge Logs"
+              className="p-2 text-gray-800 hover:text-gray-400 transition-all"
             >
-              <RefreshCcw className="w-4 h-4" />
+              <RefreshCcw className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
         {/* Tactical Feed (Messages) */}
-        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 scrollbar-hide">
+        <div className="flex-1 overflow-y-auto px-8 py-8 space-y-8 scrollbar-hide">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center py-10">
-              <div className="w-24 h-24 rounded-3xl flex items-center justify-center mb-8 bg-asi-neon/5 border border-asi-neon/20 relative group">
-                <div className="absolute inset-0 bg-asi-neon/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <ShieldAlert className="w-10 h-10 text-asi-neon" />
-              </div>
-              <p className="text-lg font-black text-white mb-2 uppercase tracking-tighter italic">Liaison <span className="text-asi-neon">Idle</span></p>
-              <p className="text-xs text-gray-500 max-w-[220px] leading-relaxed mb-10 font-medium">
-                Neural connection standby. Awaiting mission parameters or security inquiries.
-              </p>
+            <div className="flex flex-col items-center justify-center h-full text-center">
+              <p className="text-[10px] font-bold text-gray-700 uppercase tracking-[0.5em] mb-12 italic">Neural Link Standby</p>
 
-              <div className="w-full space-y-3">
-                <p className="text-[10px] font-black text-gray-700 uppercase tracking-[0.3em] mb-4">Suggested Protocols</p>
+              <div className="w-full space-y-4">
                 {quickChips.map(chip => (
                   <button
                     key={chip.label}
                     onClick={() => handleSend(chip.prompt)}
-                    className="w-full text-left px-4 py-3 rounded-sm text-[10px] font-black uppercase tracking-[0.1em] transition-all duration-300 border border-white/5 bg-white/5 hover:border-asi-neon/40 hover:bg-asi-neon/5 text-gray-500 hover:text-white"
+                    className="w-full text-left px-5 py-4 rounded-sm text-[9px] font-bold uppercase tracking-[0.15em] transition-all duration-300 border border-white/[0.03] bg-white/[0.01] hover:border-asi-neon/20 hover:bg-white/[0.03] text-gray-600 hover:text-gray-300"
                   >
                     {chip.label}
                   </button>
@@ -160,20 +141,19 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
             </div>
           ) : (
             messages.map((msg, idx) => (
-              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`} style={{ animationDelay: `${idx * 50}ms` }}>
-                <div className={`max-w-[85%] group`}>
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`}>
+                <div className="max-w-[85%]">
                   <div
-                    className={`px-4 py-3 rounded-xl text-xs leading-relaxed transition-all duration-300 ${msg.role === 'user'
-                        ? 'bg-asi-neon text-asi-dark font-bold shadow-[0_0_20px_rgba(0,243,255,0.2)] rounded-tr-none'
-                        : 'holographic-card text-white/90 border-white/10 rounded-tl-none'
+                    className={`px-5 py-4 rounded-lg text-[13px] leading-relaxed transition-all duration-300 font-medium ${msg.role === 'user'
+                      ? 'bg-white/[0.03] text-gray-300 border border-white/10'
+                      : 'bg-asi-neon/5 text-gray-300 border border-asi-neon/10'
                       }`}
                   >
                     {msg.content}
                   </div>
-                  <div className={`mt-2 flex items-center gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <span className="text-[9px] font-mono text-gray-700 uppercase tracking-widest">{msg.role === 'assistant' ? 'LIAISON' : 'OPERATOR'}</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-800"></span>
-                    <span className="text-[9px] font-mono text-gray-700">{formatTime(msg.timestamp)}</span>
+                  <div className={`mt-3 flex items-center gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <span className="text-[8px] font-bold text-gray-700 uppercase tracking-widest">{msg.role === 'assistant' ? 'Liaison' : 'Operator'}</span>
+                    <span className="text-[8px] font-mono text-gray-800">{formatTime(msg.timestamp)}</span>
                   </div>
                 </div>
               </div>
