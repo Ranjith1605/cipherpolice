@@ -34,12 +34,12 @@ export const Hero = () => {
                 </h1>
 
                 <div className="inline-block px-4 py-1 mb-6 border border-asi-neon/30 rounded-full bg-asi-glass backdrop-blur-md">
-                    <span className="text-asi-neon font-mono text-xs md:text-sm tracking-[0.2em]">NEURAL PERIMETER & COGNITIVE DEFENCE</span>
+                    <span className="text-asi-neon font-mono text-xs md:text-sm tracking-[0.2em]">ELITE SECURITY FORCE OF THE AI BROWSER</span>
                 </div>
 
                 <p className="text-lg md:text-2xl text-gray-400 font-light mb-8 tracking-wide max-w-3xl mx-auto">
-                    The world's first AI-powered cognitive firewall for your digital existence.
-                    <span className="text-asi-silver block mt-2">Predictive. Adaptive. Human-Centric.</span>
+                    The next evolution of digital defense. Protecting digital citizens and users across the meta-quantum frontier.
+                    <span className="text-asi-silver block mt-2 underline decoration-asi-neon/30">The Guardian of your Global AI Existence.</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
