@@ -1,16 +1,23 @@
 import { useState, useRef, useEffect } from 'react';
 import { sendMessage, Message, initializeChatHistory } from '../services/geminiService';
-import { GoldText } from './ui/GoldText';
 
 interface ChatSidebarProps {
   isOpen: boolean;
   onToggle: () => void;
 }
 
+const quickChips = [
+  { label: '🧠 My Cognitive Risk', prompt: 'What is my current cognitive risk level and how can I reduce it?' },
+  { label: '🛡️ Enable Deep Focus', prompt: 'How does CipherPolice Deep Focus / Mental Shield work?' },
+  { label: '🤖 AI Browser Threats', prompt: 'What AI browser threats is CipherPolice currently monitoring for?' },
+  { label: '⚖️ GDPR & AI Laws', prompt: 'Explain GDPR compliance requirements for AI systems.' },
+];
+
 export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -18,49 +25,41 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
+  useEffect(() => { scrollToBottom(); }, [messages]);
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
   }, [isOpen]);
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputValue.trim() || isLoading) return;
+  const handleSend = async (text: string) => {
+    if (!text.trim() || isLoading) return;
 
-    const userMsg: Message = {
-      role: 'user',
-      content: inputValue,
-      timestamp: new Date(),
-    };
-
-    setMessages((prev) => [...prev, userMsg]);
+    const userMsg: Message = { role: 'user', content: text, timestamp: new Date() };
+    setMessages(prev => [...prev, userMsg]);
     setInputValue('');
     setIsLoading(true);
+    setIsTyping(true);
 
-    const response = await sendMessage(inputValue);
+    // Simulate typing delay for realism
+    await new Promise(r => setTimeout(r, 600));
+    const response = await sendMessage(text);
+    setIsTyping(false);
 
-    if (response.success) {
-      const assistantMsg: Message = {
-        role: 'assistant',
-        content: response.message,
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, assistantMsg]);
-    } else {
-      const errorMsg: Message = {
-        role: 'assistant',
-        content: `Error: ${response.error || response.message}`,
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMsg]);
-    }
-
+    const assistantMsg: Message = {
+      role: 'assistant',
+      content: response.success
+        ? response.message
+        : `⚠️ ${response.error || 'Connection to AI failed. Please try again.'}`,
+      timestamp: new Date(),
+    };
+    setMessages(prev => [...prev, assistantMsg]);
     setIsLoading(false);
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSend(inputValue);
   };
 
   const handleClearChat = () => {
@@ -68,90 +67,145 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
     setMessages([]);
   };
 
+  const formatTime = (d: Date) =>
+    `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+
   return (
     <>
-      {/* Sidebar Toggle Button */}
+      {/* Toggle Button */}
       <button
         onClick={onToggle}
-        className={`fixed ${isOpen ? 'right-96' : 'right-8'
-          } bottom-8 z-50 p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-110
-          ${isOpen
-            ? 'bg-red-500 hover:bg-red-600'
-            : 'bg-gradient-to-r from-[#FFD26F] to-[#C99700] hover:brightness-110'
-          }`}
-        title={isOpen ? 'Close Chat' : 'Open Cipher Police Chat'}
+        className={`fixed ${isOpen ? 'right-[26rem]' : 'right-6'} bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center`}
+        style={{
+          background: isOpen
+            ? 'linear-gradient(135deg, #ef4444, #dc2626)'
+            : 'linear-gradient(135deg, #00f3ff22, #050a14)',
+          border: isOpen ? '2px solid rgba(239,68,68,0.5)' : '2px solid rgba(0,243,255,0.4)',
+          boxShadow: isOpen
+            ? '0 0 20px rgba(239,68,68,0.3)'
+            : '0 0 20px rgba(0,243,255,0.25)',
+        }}
+        title={isOpen ? 'Close Agent' : 'Open CipherPolice Agent'}
       >
         {isOpen ? (
-          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
-          <svg className="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V4a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-5l-5 5v-5z"
-            />
-          </svg>
+          <span className="text-xl">🤖</span>
         )}
       </button>
 
-      {/* Sidebar Panel */}
+      {/* Sidebar */}
       <div
-        className={`fixed bottom-0 right-0 h-screen w-96 bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl shadow-black/50 z-40 transform transition-transform duration-300 flex flex-col border-l border-gold-500/30 ${isOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+        className={`fixed bottom-0 right-0 h-screen w-[26rem] z-40 flex flex-col transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        style={{
+          background: 'linear-gradient(180deg, #0a1628 0%, #050a14 100%)',
+          borderLeft: '1px solid rgba(0,243,255,0.15)',
+          boxShadow: '-10px 0 40px rgba(0,0,0,0.6)',
+        }}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-4 border-b border-gold-500/20">
-          <h2 className="text-lg font-bold text-center">
-            <GoldText>
-              Cipher Police
-            </GoldText>
-          </h2>
-          <p className="text-xs text-gray-400 text-center mt-1">AI Legal Compliance Guide</p>
+        <div className="p-4 border-b" style={{ borderColor: 'rgba(0,243,255,0.1)', background: 'rgba(0,243,255,0.03)' }}>
+          <div className="flex items-center gap-3">
+            <div className="relative w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ background: 'linear-gradient(135deg, rgba(0,243,255,0.2), rgba(188,19,254,0.2))', border: '1px solid rgba(0,243,255,0.3)' }}>
+              <span className="text-lg">🛡️</span>
+              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-[#050a14]" style={{ boxShadow: '0 0 6px #22c55e' }} />
+            </div>
+            <div>
+              <h2 className="text-sm font-bold text-white">CipherPolice Agent</h2>
+              <p className="text-xs text-cyan-400/70 font-mono">AI Security · Legal · Cognitive Intelligence</p>
+            </div>
+            <button
+              onClick={handleClearChat}
+              className="ml-auto text-xs text-gray-600 hover:text-gray-400 transition-colors p-1"
+              title="Clear chat"
+            >
+              🔄
+            </button>
+          </div>
         </div>
 
-        {/* Messages Container */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gold-500/30 scrollbar-track-slate-900">
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3" style={{ scrollbarWidth: 'none' }}>
           {messages.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-center">
-              <div className="text-4xl mb-3">⚖️</div>
-              <p className="text-gray-400 text-sm">
-                Hi! I'm Cipher Police, your AI guide to AI era laws and digital rights.
+            <div className="flex flex-col items-center justify-center h-full text-center pb-8">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                style={{ background: 'linear-gradient(135deg, rgba(0,243,255,0.15), rgba(188,19,254,0.15))', border: '1px solid rgba(0,243,255,0.2)' }}>
+                <span className="text-3xl">🛡️</span>
+              </div>
+              <p className="text-sm text-gray-300 font-medium mb-1">CipherPolice Agent</p>
+              <p className="text-xs text-gray-500 max-w-56 leading-relaxed mb-5">
+                Your AI expert on security, cognitive load monitoring, and digital rights law.
               </p>
-              <p className="text-gray-500 text-xs mt-3">Ask me about:</p>
-              <ul className="text-gray-500 text-xs mt-2 space-y-1">
-                <li>• GDPR, CCPA compliance</li>
-                <li>• AI ethics & regulations</li>
-                <li>• Digital rights & privacy</li>
-                <li>• Internet laws worldwide</li>
-              </ul>
+              {/* Quick Chips */}
+              <div className="w-full space-y-2">
+                {quickChips.map(chip => (
+                  <button
+                    key={chip.label}
+                    onClick={() => handleSend(chip.prompt)}
+                    className="w-full text-left px-3 py-2.5 rounded-xl text-xs transition-all duration-200 hover:border-cyan-500/30"
+                    style={{
+                      background: 'rgba(0,243,255,0.04)',
+                      border: '1px solid rgba(0,243,255,0.1)',
+                      color: '#9ca3af',
+                    }}
+                  >
+                    {chip.label}
+                  </button>
+                ))}
+              </div>
             </div>
           ) : (
             messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div
-                  className={`max-w-xs px-4 py-2 rounded-lg text-sm ${msg.role === 'user'
-                    ? 'bg-gradient-to-r from-[#FFD26F] to-[#C99700] text-slate-900 font-medium'
-                    : 'bg-slate-800 text-gray-200 border border-gold-500/20'
-                    }`}
-                >
-                  {msg.content}
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
+                {msg.role === 'assistant' && (
+                  <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                    style={{ background: 'rgba(0,243,255,0.1)', border: '1px solid rgba(0,243,255,0.2)' }}>
+                    <span className="text-xs">🛡️</span>
+                  </div>
+                )}
+                <div className="max-w-[76%]">
+                  <div
+                    className="px-3 py-2.5 rounded-2xl text-xs leading-relaxed"
+                    style={msg.role === 'user' ? {
+                      background: 'linear-gradient(135deg, rgba(0,243,255,0.15), rgba(188,19,254,0.1))',
+                      border: '1px solid rgba(0,243,255,0.25)',
+                      color: '#e2e8f0',
+                      borderBottomRightRadius: 4,
+                    } : {
+                      background: 'rgba(255,255,255,0.04)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      color: '#cbd5e1',
+                      borderBottomLeftRadius: 4,
+                    }}
+                  >
+                    {msg.content}
+                  </div>
+                  <p className="text-[10px] text-gray-700 mt-1 px-1">{formatTime(msg.timestamp)}</p>
                 </div>
               </div>
             ))
           )}
-          {isLoading && (
-            <div className="flex justify-start">
-              <div className="bg-slate-800 px-4 py-2 rounded-lg border border-gold-500/20">
-                <div className="flex space-x-2">
-                  <div className="w-2 h-2 rounded-full bg-gold-500 animate-bounce"></div>
-                  <div className="w-2 h-2 rounded-full bg-gold-500 animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 rounded-full bg-gold-500 animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+
+          {/* Typing indicator */}
+          {isTyping && (
+            <div className="flex justify-start gap-2">
+              <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center"
+                style={{ background: 'rgba(0,243,255,0.1)', border: '1px solid rgba(0,243,255,0.2)' }}>
+                <span className="text-xs">🛡️</span>
+              </div>
+              <div className="px-4 py-3 rounded-2xl rounded-bl-sm"
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div className="flex gap-1">
+                  {[0, 0.2, 0.4].map((delay) => (
+                    <span
+                      key={delay}
+                      className="w-1.5 h-1.5 rounded-full animate-bounce"
+                      style={{ background: '#00f3ff', animationDelay: `${delay}s`, boxShadow: '0 0 4px #00f3ff' }}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -159,45 +213,47 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input Area */}
-        <div className="border-t border-gold-500/20 p-4 bg-slate-950">
-          <form onSubmit={handleSendMessage} className="space-y-3">
+        {/* Input */}
+        <div className="p-4 border-t" style={{ borderColor: 'rgba(0,243,255,0.1)', background: 'rgba(0,0,0,0.3)' }}>
+          <form onSubmit={handleFormSubmit} className="flex gap-2">
             <input
               ref={inputRef}
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask Cipher Police..."
+              placeholder="Ask CipherPolice anything…"
               disabled={isLoading}
-              className="w-full px-3 py-2 bg-slate-800 border border-gold-500/30 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 disabled:opacity-50"
+              className="flex-1 px-3 py-2.5 rounded-xl text-sm focus:outline-none disabled:opacity-50 transition-all"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(0,243,255,0.2)',
+                color: '#e2e8f0',
+              }}
             />
-            <div className="flex gap-2">
-              <button
-                type="submit"
-                disabled={isLoading || !inputValue.trim()}
-                className="flex-1 px-3 py-2 bg-gradient-to-r from-[#FFD26F] to-[#C99700] text-slate-900 font-bold rounded-lg hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition"
-              >
-                Send
-              </button>
-              <button
-                type="button"
-                onClick={handleClearChat}
-                className="px-3 py-2 bg-slate-800 border border-gold-500/30 text-gray-300 rounded-lg hover:bg-slate-700 transition"
-                title="Clear chat history"
-              >
-                🔄
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={isLoading || !inputValue.trim()}
+              className="w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40"
+              style={{
+                background: 'linear-gradient(135deg, rgba(0,243,255,0.2), rgba(188,19,254,0.2))',
+                border: '1px solid rgba(0,243,255,0.4)',
+              }}
+            >
+              <svg className="w-4 h-4" style={{ color: '#00f3ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </button>
           </form>
         </div>
       </div>
 
-      {/* Overlay */}
+      {/* Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/20 z-30"
+          className="fixed inset-0 z-30"
+          style={{ background: 'rgba(0,0,0,0.3)', backdropFilter: 'blur(2px)' }}
           onClick={onToggle}
-        ></div>
+        />
       )}
     </>
   );

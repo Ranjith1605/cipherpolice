@@ -1,20 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const navItems = [
         { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Methodology', href: '#methodology' },
-        { name: 'Scanner', href: '#scanner' },
-        { name: 'Compliance', href: '#compliance' },
         { name: 'Features', href: '#features' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'AI Monitor', href: '#browser-monitor' },
+        { name: 'Dashboard', href: '#dashboard' },
+        { name: 'Data & Ethics', href: '#data-ethics' },
+        { name: 'Team', href: '#team' },
     ];
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-asi-dark/80 border-b border-white/5">
+        <nav className={`fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-all duration-300 border-b ${scrolled ? 'bg-asi-dark/95 border-cyan-500/20 shadow-lg shadow-black/30' : 'bg-asi-dark/80 border-white/5'}`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     <a href="#home" className="flex items-center space-x-3 transition duration-300 hover:opacity-80 group">

@@ -81,36 +81,32 @@ git push origin main
 - Click "Redeploy"
 - ✅ Done (1 minute)
 
-#### STEP 4: Connect Domain
-- Click "Settings" → "Domains"
-- Click "Add Domain"
-- Enter: `cipherpolice.com`
-- Click "Add"
-- **Copy the Vercel nameservers** (you'll need these next)
-- ✅ Done (1 minute)
+#### STEP 4: Get Your .com Domain
+You have two options:
 
-#### STEP 5: Update DNS
-Go to your domain registrar (GoDaddy, Namecheap, etc.):
+**Option A: Buy directly from Vercel (Easiest)**
+1. In your Vercel project, go to **Settings** → **Domains**.
+2. Type `cipherpolice.com` (or your desired name).
+3. If available, click **Buy**.
+4. Follow the checkout process.
+5. Vercel automatically configures everything! 
+6. ✅ Done.
 
-**GoDaddy:**
-- My Products → Domains → cipherpolice.com
-- Nameservers → Change
-- Replace with Vercel's nameservers
-- Save
+**Option B: Buy from Namecheap/GoDaddy (Cheaper)**
+1. Buy your domain on Namecheap or GoDaddy.
+2. In Vercel, go to **Settings** → **Domains**.
+3. Add your domain (e.g., `cipherpolice.com`).
+4. Vercel will show you **Nameservers** (e.g., `ns1.vercel-dns.com`, `ns2.vercel-dns.com`).
+5. Go to your domain registrar (Namecheap/GoDaddy).
+6. Find **Nameservers** settings.
+7. Change from "Default" to "Custom DNS".
+8. Paste the Vercel nameservers.
+9. Save.
+10. ✅ Done (takes minutes to update).
 
-**Namecheap:**
-- Domain List → cipherpolice.com
-- Manage → Nameservers
-- Custom DNS
-- Add Vercel's nameservers
-- Save
-
-**Other registrars:**
-- Look for "DNS" or "Nameservers"
-- Replace with Vercel's
-- Save
-
-✅ Done (5 minutes)
+#### STEP 5: Verify
+- Visit your new .com domain.
+- It should show your CipherPolice site!
 
 ---
 
