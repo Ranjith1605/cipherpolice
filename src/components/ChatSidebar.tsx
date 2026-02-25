@@ -108,9 +108,9 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
         {/* Header */}
         <div className="p-4 border-b" style={{ borderColor: 'rgba(0,243,255,0.1)', background: 'rgba(0,243,255,0.03)' }}>
           <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden"
+            <div className="relative w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: 'linear-gradient(135deg, rgba(0,243,255,0.2), rgba(188,19,254,0.2))', border: '1px solid rgba(0,243,255,0.3)' }}>
-              <img src="/logo.png" alt="AI Agent" className="w-8 h-8 object-contain" />
+              <span className="text-lg">🛡️</span>
               <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-[#050a14]" style={{ boxShadow: '0 0 6px #22c55e' }} />
             </div>
             <div>
@@ -131,9 +131,9 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
         <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3" style={{ scrollbarWidth: 'none' }}>
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center pb-8">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 overflow-hidden"
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
                 style={{ background: 'linear-gradient(135deg, rgba(0,243,255,0.15), rgba(188,19,254,0.15))', border: '1px solid rgba(0,243,255,0.2)' }}>
-                <img src="/logo.png" alt="AI Agent" className="w-12 h-12 object-contain" />
+                <span className="text-3xl">🛡️</span>
               </div>
               <p className="text-sm text-gray-300 font-medium mb-1">CipherPolice Agent</p>
               <p className="text-xs text-gray-500 max-w-56 leading-relaxed mb-5">
@@ -161,9 +161,9 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
             messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
                 {msg.role === 'assistant' && (
-                  <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 overflow-hidden"
+                  <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
                     style={{ background: 'rgba(0,243,255,0.1)', border: '1px solid rgba(0,243,255,0.2)' }}>
-                    <img src="/logo.png" alt="AI Agent" className="w-5 h-5 object-contain" />
+                    <span className="text-xs">🛡️</span>
                   </div>
                 )}
                 <div className="max-w-[76%]">
@@ -192,9 +192,9 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
           {/* Typing indicator */}
           {isTyping && (
             <div className="flex justify-start gap-2">
-              <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center overflow-hidden"
+              <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center"
                 style={{ background: 'rgba(0,243,255,0.1)', border: '1px solid rgba(0,243,255,0.2)' }}>
-                <img src="/logo.png" alt="AI Agent" className="w-5 h-5 object-contain" />
+                <span className="text-xs">🛡️</span>
               </div>
               <div className="px-4 py-3 rounded-2xl rounded-bl-sm"
                 style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>

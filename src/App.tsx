@@ -20,7 +20,7 @@ export default function App() {
     document.head.appendChild(link);
     const meta = document.createElement('meta');
     meta.name = 'description';
-    meta.content = "CipherPolice – The world's first AI-powered Cognitive Firewall. Real-time neural perimeter security, cognitive load monitoring, and AI threat detection.";
+    meta.content = "CipherPolice – The world's first AI-powered Cognitive Firewall. Real-time browser security, cognitive load monitoring, and AI threat detection.";
     document.head.appendChild(meta);
   }, []);
 

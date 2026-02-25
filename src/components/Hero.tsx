@@ -19,11 +19,11 @@ export const Hero = () => {
 
             <div className="relative z-10 text-center px-4 max-w-5xl">
                 <div className="relative inline-block mb-8 animate-float">
-                    <div className="absolute inset-0 bg-asi-neon/30 blur-[100px] rounded-full"></div>
+                    <div className="absolute inset-0 bg-asi-neon/20 blur-3xl rounded-full"></div>
                     <img
-                        src="/logo.png"
-                        alt="CipherPolice Neural Emblem"
-                        className="relative h-48 md:h-64 w-auto mx-auto drop-shadow-[0_0_30px_rgba(0,243,255,0.4)]"
+                        src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
+                        alt="CipherPolice Logo"
+                        className="relative h-40 w-auto mx-auto"
                     />
                 </div>
 
@@ -34,12 +34,12 @@ export const Hero = () => {
                 </h1>
 
                 <div className="inline-block px-4 py-1 mb-6 border border-asi-neon/30 rounded-full bg-asi-glass backdrop-blur-md">
-                    <span className="text-asi-neon font-mono text-xs md:text-sm tracking-[0.2em]">NEURAL PERIMETER & COGNITIVE DEFENCE</span>
+                    <span className="text-asi-neon font-mono text-sm tracking-widest">ARTIFICIAL SUPER INTELLIGENCE OS</span>
                 </div>
 
                 <p className="text-lg md:text-2xl text-gray-400 font-light mb-8 tracking-wide max-w-3xl mx-auto">
-                    The world's first AI-powered cognitive firewall for your digital existence.
-                    <span className="text-asi-silver block mt-2">Predictive. Adaptive. Deeply Human.</span>
+                    The world's first autonomous security operating system.
+                    <span className="text-asi-silver block mt-2">Predictive. Adaptive. Unstoppable.</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
