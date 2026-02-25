@@ -25,15 +25,15 @@ export const Navbar = () => {
                 <div className="flex items-center justify-between h-20">
                     <a href="#home" className="flex items-center space-x-3 transition duration-300 hover:opacity-80 group">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-asi-neon/50 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute inset-0 bg-asi-neon/40 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             <img
-                                src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
-                                alt="Cipher Logo"
-                                className="relative h-12 w-auto"
+                                src="/logo.png"
+                                alt="CipherPolice Logo"
+                                className="relative h-12 w-auto drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"
                             />
                         </div>
-                        <span className="text-xl md:text-2xl font-black tracking-wider">
-                            <span className="bg-gradient-to-r from-asi-neon via-white to-asi-purple bg-clip-text text-transparent">Cipher</span>
+                        <span className="text-xl md:text-2xl font-black tracking-tighter">
+                            <span className="bg-gradient-to-r from-asi-neon via-white to-asi-purple bg-clip-text text-transparent">CipherPolice</span>
                         </span>
                     </a>
 

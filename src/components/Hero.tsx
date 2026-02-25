@@ -19,11 +19,11 @@ export const Hero = () => {
 
             <div className="relative z-10 text-center px-4 max-w-5xl">
                 <div className="relative inline-block mb-8 animate-float">
-                    <div className="absolute inset-0 bg-asi-neon/20 blur-3xl rounded-full"></div>
+                    <div className="absolute inset-0 bg-asi-neon/30 blur-[100px] rounded-full"></div>
                     <img
-                        src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
-                        alt="CipherPolice Logo"
-                        className="relative h-40 w-auto mx-auto"
+                        src="/logo.png"
+                        alt="CipherPolice Neural Emblem"
+                        className="relative h-48 md:h-64 w-auto mx-auto drop-shadow-[0_0_30px_rgba(0,243,255,0.4)]"
                     />
                 </div>
 
