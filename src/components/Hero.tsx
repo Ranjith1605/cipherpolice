@@ -18,20 +18,20 @@ export const Hero = () => {
             </div>
 
             <div className="relative z-10 text-center px-4 max-w-5xl">
-                <div className="relative inline-block mb-12 group">
+                <div className="relative inline-block mb-16 group">
                     {/* Futuristic Logo Carrier */}
                     <div className="absolute inset-0 bg-asi-neon/20 blur-[80px] rounded-full group-hover:bg-asi-neon/30 transition-all duration-700"></div>
-                    <div className="relative p-1 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl border border-white/10 overflow-hidden neon-border-beam">
+                    <div className="relative p-1 rounded-3xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl border border-white/10 overflow-hidden neon-border-beam">
                         <img
                             src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
                             alt="CipherPolice Logo"
-                            className="relative h-40 md:h-52 w-auto mx-auto transform group-hover:scale-105 transition-transform duration-700"
+                            className="relative h-40 md:h-52 w-auto mx-auto block transform group-hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-asi-neon/10 to-transparent"></div>
                     </div>
                     {/* Status Pill Attached to Logo */}
-                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-asi-dark border border-asi-neon/50 rounded-full shadow-[0_0_15px_rgba(0,243,255,0.3)] animate-bounce-slow">
-                        <span className="text-[10px] font-black text-asi-neon tracking-widest uppercase">ENHANCED SECURITY ACTIVE</span>
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-asi-dark border border-asi-neon/50 rounded-full shadow-[0_0_20px_rgba(0,243,255,0.4)] animate-bounce-slow whitespace-nowrap">
+                        <span className="text-[10px] font-black text-asi-neon tracking-[0.2em] uppercase">ENHANCED SECURITY ACTIVE</span>
                     </div>
                 </div>
 
