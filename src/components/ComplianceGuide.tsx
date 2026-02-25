@@ -1,50 +1,53 @@
-import { GoldText } from './ui/GoldText';
+import { ShieldCheck, Scale, Globe, Binary, Check, Cpu, Lock, UserCheck } from 'lucide-react';
 
 const ComplianceGuide = () => {
   const regulations = [
     {
       title: 'GDPR (EU)',
-      emoji: '🇪🇺',
+      icon: <Globe className="w-8 h-8 text-asi-neon" />,
       desc: 'General Data Protection Regulation',
       key_points: [
-        'Explicit consent required for data collection',
-        'Right to be forgotten',
-        'Data portability rights',
-        'Privacy by design mandatory',
-        '72-hour breach notification',
+        'Explicit Neural Consent',
+        'Right to Erasure (Zero-Link)',
+        'Data Portability Protocols',
+        'Privacy by Design Mandatory',
+        'Rapid Breach Intelligence',
       ],
     },
     {
       title: 'CCPA (US)',
-      emoji: '🇺🇸',
+      icon: <ShieldCheck className="w-8 h-8 text-asi-purple" />,
       desc: 'California Consumer Privacy Act',
       key_points: [
-        'Consumer right to know what data is collected',
-        'Right to delete personal information',
-        'Right to opt-out of sale',
-        'Non-discrimination for exercising rights',
+        'Right to Know Data Vectors',
+        'Right to Delete Persona Info',
+        'Opt-Out of Data Liquidation',
+        'Non-Discrimination Assurance',
+        'Behavioral Privacy Guard',
       ],
     },
     {
-      title: 'PIPEDA (Canada)',
-      emoji: '🍁',
-      desc: 'Personal Information Protection Act',
+      title: 'PIPEDA (CA)',
+      icon: <Scale className="w-8 h-8 text-white" />,
+      desc: 'Persona Info Protection Act',
       key_points: [
-        'Accountability principles',
-        'Identification of purposes',
-        'Consent required',
-        'Limited collection, use & retention',
+        'Accountability Cascades',
+        'Purpose Identification',
+        'Strict Consent Handshakes',
+        'Limited Lifecycle Retention',
+        'Verification Audits',
       ],
     },
     {
       title: 'AI Act (EU)',
-      emoji: '🤖',
+      icon: <Binary className="w-8 h-8 text-asi-neon" />,
       desc: 'Comprehensive AI Regulation',
       key_points: [
-        'Risk-based classification',
-        'Transparency requirements',
-        'Human oversight mandatory',
-        'Bias and discrimination prevention',
+        'Risk-Based Classification',
+        'Neural Transparency',
+        'Human Oversight Override',
+        'Bias Mitigation Logic',
+        'Model Sovereignty',
       ],
     },
   ];
@@ -52,52 +55,60 @@ const ComplianceGuide = () => {
   const aiEthics = [
     {
       title: 'Transparency',
-      icon: '👁️',
-      desc: 'Users must know when they interact with AI systems',
+      icon: <Cpu className="w-6 h-6 text-asi-neon" />,
+      desc: 'Neural clarity on all AI interaction vectors.'
     },
     {
       title: 'Fairness',
-      icon: '⚖️',
-      desc: 'AI systems must not discriminate based on protected characteristics',
+      icon: <Scale className="w-6 h-6 text-asi-purple" />,
+      desc: 'Algorithmic neutrality for all digital citizens.'
     },
     {
       title: 'Accountability',
-      icon: '📋',
-      desc: 'Organizations must be responsible for AI decisions and outcomes',
+      icon: <UserCheck className="w-6 h-6 text-white" />,
+      desc: 'Organization-level liability for AI outcomes.'
     },
     {
       title: 'Security',
-      icon: '🔒',
-      desc: 'Robust protection against misuse and unauthorized access',
+      icon: <Lock className="w-6 h-6 text-asi-neon" />,
+      desc: 'Hardened defense against neural manipulation.'
     },
   ];
 
   return (
-    <section id="compliance" className="py-24 bg-slate-900">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-4xl font-extrabold text-center mb-4">
-          <GoldText>
-            Global AI & Data Protection Laws
-          </GoldText>
-        </h2>
-        <p className="text-center text-gray-400 mb-16 max-w-3xl mx-auto">
-          Navigate the complex landscape of data protection and AI regulations across the globe. Stay compliant with international standards and best practices.
-        </p>
+    <section id="compliance" className="py-32 relative overflow-hidden bg-asi-dark">
+      <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none"></div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div className="container-vision relative z-10 px-4">
+        <div className="max-w-4xl mx-auto text-center mb-24">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-asi-neon/5 border border-asi-neon/20 rounded mb-6">
+            <span className="text-[10px] font-black text-asi-neon tracking-[0.4em] uppercase">Legal Intelligence</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono">
+            Regulatory <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic underline decoration-white/10 underline-offset-8">Protocols</span>
+          </h2>
+          <p className="text-gray-500 text-lg font-medium leading-relaxed">
+            Navigating the complex multi-jurisdictional landscape of meta-quantum data protection.
+            We ensure tactical compliance with international AI standards.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {regulations.map((reg, idx) => (
             <div
               key={idx}
-              className="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-xl border border-gold-500/20 hover:border-gold-500/50 transition duration-300"
+              className="holographic-card p-8 group transition-all duration-500 hover:scale-[1.02]"
             >
-              <div className="text-4xl mb-3">{reg.emoji}</div>
-              <h3 className="text-xl font-bold mb-1 text-white">{reg.title}</h3>
-              <p className="text-sm text-gray-400 mb-4">{reg.desc}</p>
-              <ul className="space-y-2">
+              <div className="mb-6 p-4 bg-white/5 rounded-xl border border-white/10 group-hover:border-asi-neon transition-colors w-fit">
+                {reg.icon}
+              </div>
+              <h3 className="text-xl font-black mb-1 text-white uppercase tracking-tight group-hover:text-asi-neon transition-colors">{reg.title}</h3>
+              <p className="text-[10px] font-mono text-gray-600 mb-6 uppercase tracking-widest">{reg.desc}</p>
+              <ul className="space-y-3">
                 {reg.key_points.map((point, i) => (
-                  <li key={i} className="text-xs text-gray-300 flex items-start">
-                    <span className="text-gold-500 mr-2">✓</span>
-                    <span>{point}</span>
+                  <li key={i} className="text-[10px] text-gray-400 flex items-start gap-3 group-hover:text-gray-300">
+                    <Check className="w-3 h-3 text-asi-neon mt-0.5" />
+                    <span className="font-medium tracking-wide">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -105,52 +116,61 @@ const ComplianceGuide = () => {
           ))}
         </div>
 
-        <div className="bg-slate-800 p-8 rounded-xl border border-gold-500/30 mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center">
-            <GoldText>
-              AI Ethics & Responsible Development
-            </GoldText>
+        <div className="glass-premium p-12 border border-white/5 mb-16 relative overflow-hidden group">
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-asi-neon to-asi-purple"></div>
+          <h3 className="text-2xl font-black mb-12 text-center text-white italic uppercase tracking-widest">
+            AI Ethics <span className="not-italic text-asi-neon">&</span> Responsibility Logic
           </h3>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-4 gap-12">
             {aiEthics.map((item, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h4 className="font-bold mb-2 text-white">{item.title}</h4>
-                <p className="text-gray-400 text-sm">{item.desc}</p>
+              <div key={idx} className="text-center group-hover:translate-y-[-4px] transition-transform duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                <div className="mx-auto w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-asi-neon transition-all">
+                  {item.icon}
+                </div>
+                <h4 className="font-black mb-3 text-white uppercase text-xs tracking-[0.2em]">{item.title}</h4>
+                <p className="text-gray-500 text-[10px] leading-relaxed font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-xl border border-gold-500/30">
-          <h3 className="text-2xl font-bold mb-6 text-white">
-            <GoldText>
-              Digital Rights & Best Practices
-            </GoldText>
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="font-bold text-lg mb-4 text-gold-400">Consumer Rights</h4>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li>• Right to access your personal data</li>
-                <li>• Right to correct inaccurate data</li>
-                <li>• Right to request deletion</li>
-                <li>• Right to restrict processing</li>
-                <li>• Right to data portability</li>
-                <li>• Right to lodge complaints</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-lg mb-4 text-gold-400">Best Practices for Businesses</h4>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li>• Implement privacy by design</li>
-                <li>• Conduct regular security audits</li>
-                <li>• Maintain clear consent records</li>
-                <li>• Have incident response plans</li>
-                <li>• Train employees on compliance</li>
-                <li>• Use encryption for data</li>
-              </ul>
-            </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="glass-premium p-10 border border-white/5 bg-asi-dark/40">
+            <h4 className="text-lg font-black text-asi-neon mb-8 uppercase tracking-[0.3em]">Consumer Sovereignty</h4>
+            <ul className="space-y-4">
+              {[
+                'Right to access neural data streams',
+                'Right to correct algorithmic bias',
+                'Right to absolute erasure',
+                'Right to processing restriction',
+                'Right to data portability protocol',
+                'Right to lodge judicial complaints'
+              ].map((item, i) => (
+                <li key={i} className="flex gap-4 items-center text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                  <div className="w-1 h-1 rounded-full bg-asi-neon"></div>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="glass-premium p-10 border border-white/5 bg-asi-dark/40">
+            <h4 className="text-lg font-black text-asi-purple mb-8 uppercase tracking-[0.3em]">Operational Readiness</h4>
+            <ul className="space-y-4">
+              {[
+                'Privacy-by-Design implementation',
+                'Bi-annual security neural audits',
+                'Immutable consent ledger records',
+                'Real-time incident response strike-teams',
+                'Force-wide compliance training',
+                'Quantum-level data encryption'
+              ].map((item, i) => (
+                <li key={i} className="flex gap-4 items-center text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                  <div className="w-1 h-1 rounded-full bg-asi-purple"></div>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

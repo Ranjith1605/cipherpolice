@@ -1,32 +1,65 @@
 
+import { Radar, Sword, Shield, Scale } from 'lucide-react';
 
 export const Features = () => {
-    const problems = [
-        { icon: '🧠', title: 'Artificial Super Intelligence', desc: 'Beyond simple algorithms. Our ASI predicts threats before they manifest in your network.' },
-        { icon: '🛡️', title: 'Autonomous Defence', desc: 'Self-healing systems that detect, isolate, and neutralize attacks without human intervention.' },
-        { icon: '🔮', title: 'Predictive Security', desc: 'We don\'t just react. We forecast potential vulnerabilities based on global threat patterns.' },
-        { icon: '⚡', title: 'Quantum-Ready Encryption', desc: 'Future-proof protection designed to withstand next-generation decryption attacks.' },
+    const capabilities = [
+        {
+            icon: <Radar className="w-8 h-8 text-asi-neon" />,
+            title: 'Neural Surveillance',
+            desc: 'Real-time cognitive monitoring of the AI browser, detecting patterns of manipulation before they infiltrate your flow.'
+        },
+        {
+            icon: <Sword className="w-8 h-8 text-asi-purple" />,
+            title: 'Elite Prosecution',
+            desc: 'Autonomous enforcement protocols that isolate and neutralize quantum-level threats with forensic precision.'
+        },
+        {
+            icon: <Shield className="w-8 h-8 text-white" />,
+            title: 'Defender Legacy',
+            desc: 'The next evolution of OS-level protection. Born from the legacy of Windows Defender, built for the Meta-Quantum era.'
+        },
+        {
+            icon: <Scale className="w-8 h-8 text-asi-neon" />,
+            title: 'Digital Sovereignty',
+            desc: 'Protecting the rights of digital citizens against dark patterns and attention-harvesting algorithms.'
+        },
     ];
 
     return (
-        <section id="features" className="py-24 bg-slate-900 border-t border-b border-white/5 relative">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
+        <section id="features" className="py-32 relative overflow-hidden bg-asi-dark/30 border-y border-white/5">
+            {/* Cyber Grid Background */}
+            <div className="absolute inset-0 bg-cyber-grid opacity-10 pointer-events-none fade-mask-t"></div>
 
-            <div className="container mx-auto px-4 max-w-7xl relative z-10">
-                <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
-                    <span className="bg-gradient-to-r from-asi-neon via-white to-asi-purple bg-clip-text text-transparent">
-                        Next-Gen Capabilities
-                    </span>
-                </h2>
+            <div className="container-vision relative z-10 px-4">
+                <div className="text-center mb-20">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-asi-neon/5 border border-asi-neon/20 rounded mb-6">
+                        <span className="text-[10px] font-black text-asi-neon tracking-[0.4em] uppercase">Tactical Advantage</span>
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono">
+                        Elite <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic">Capabilities</span>
+                    </h2>
+                    <p className="text-gray-500 max-w-3xl mx-auto text-lg font-medium leading-relaxed">
+                        Defending the meta-quantum frontier with high-fidelity behavioral analysis and autonomous threat mitigation.
+                    </p>
+                </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {problems.map((problem, index) => (
-                        <div key={index} className="group text-center p-8 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-white/5 transition-all duration-300 hover:border-asi-neon/50 hover:shadow-[0_0_30px_rgba(0,243,255,0.1)] hover:-translate-y-2">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-700/50 mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <span className="text-4xl">{problem.icon}</span>
+                    {capabilities.map((feature, index) => (
+                        <div
+                            key={index}
+                            className="holographic-card p-10 group relative transition-all duration-500 hover:scale-[1.02]"
+                        >
+                            <div className="relative z-10">
+                                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:border-asi-neon transition-all duration-500 w-fit mb-8">
+                                    {feature.icon}
+                                </div>
+                                <h4 className="text-xl font-black mb-4 text-white group-hover:text-asi-neon transition-colors duration-300 tracking-tight uppercase font-mono">
+                                    {feature.title}
+                                </h4>
+                                <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                                    {feature.desc}
+                                </p>
                             </div>
-                            <h3 className="text-xl font-bold mb-4 text-white group-hover:text-asi-neon transition-colors">{problem.title}</h3>
-                            <p className="text-gray-400 text-sm leading-relaxed">{problem.desc}</p>
                         </div>
                     ))}
                 </div>

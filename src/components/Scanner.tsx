@@ -1,7 +1,5 @@
 import { useState, useMemo } from 'react';
-import { GoldText } from './ui/GoldText';
-import { GoldButton } from './ui/GoldButton';
-import { Icon } from './ui/Icon';
+import { Search, ShieldAlert, Cpu, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export const Scanner = () => {
     const [domain, setDomain] = useState('');
@@ -22,113 +20,149 @@ export const Scanner = () => {
             const isSecure = Math.random() > 0.3;
             setResults({
                 score: isSecure ? Math.floor(Math.random() * 20) + 80 : Math.floor(Math.random() * 40) + 50,
-                sslStatus: isSecure ? 'Secure (A+)' : 'Insecure (Missing Ciphers)',
+                sslStatus: isSecure ? 'A+ [SECURE]' : 'F [VULNERABLE]',
                 headers: isSecure
                     ? ['X-Content-Type-Options: nosniff', 'Strict-Transport-Security: max-age=31536000', 'Content-Security-Policy: default-src \'self\'']
                     : ['Server: Apache/2.4', 'X-Powered-By: PHP/7.4', 'No Security Headers Detected'],
                 fixes: isSecure
-                    ? ['Keep software updated.', 'Review third-party scripts.']
-                    : ['<strong>CRITICAL:</strong> Implement HSTS header.', '<strong>URGENT:</strong> Fix SSL/TLS Ciphers.', 'Set X-Frame-Options to DENY.'],
+                    ? ['Neural baseline maintained.', 'Monitor 3rd party script injection.']
+                    : ['CRITICAL: Implement HSTS header immediately.', 'URGENT: Deprecated SSL Ciphers detected.', 'BLOCK: Neural manipulation vectors found.'],
             });
             setScanStatus('complete');
-        }, 2000);
+        }, 2500);
     };
 
     const scoreColor = useMemo(() => {
         if (!results) return 'text-white';
-        if (results.score >= 90) return 'text-green-400';
+        if (results.score >= 90) return 'text-asi-neon';
         if (results.score >= 70) return 'text-yellow-400';
-        return 'text-red-400';
+        return 'text-red-500';
     }, [results]);
 
     return (
-        <section id="scanner" className="py-24 bg-slate-900">
-            <div className="container mx-auto px-4 max-w-5xl">
-                <h2 className="text-4xl font-extrabold text-center mb-4">
-                    <GoldText>Instant Website Security Scan</GoldText>
-                </h2>
-                <p className="text-center text-gray-400 mb-10 max-w-3xl mx-auto">
-                    Enter any domain below to get an instant, high-level analysis of basic vulnerabilities, SSL status, and critical HTTP security headers. Proactive defense starts here.
-                </p>
+        <section id="scanner" className="py-32 bg-[#050a14] relative overflow-hidden">
+            <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none"></div>
 
-                <div className="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto mb-16">
-                    <input
-                        type="text"
-                        value={domain}
-                        onChange={(e) => setDomain(e.target.value)}
-                        placeholder="Enter domain name (e.g., example.com)"
-                        className="flex-grow p-4 bg-slate-800 border border-gold-500/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-[#FFD26F] focus:border-transparent transition duration-200"
-                    />
-                    <GoldButton onClick={handleScan} disabled={scanStatus === 'scanning' || !domain.trim()}>
-                        {scanStatus === 'scanning' ? 'Scanning...' : 'Scan Now'}
-                    </GoldButton>
+            <div className="container-vision relative z-10 px-4">
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-asi-neon/5 border border-asi-neon/20 rounded mb-6">
+                        <Cpu className="w-3 h-3 text-asi-neon animate-pulse" />
+                        <span className="text-[10px] font-black text-asi-neon tracking-[0.3em] uppercase">Neural Threat Engine</span>
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-black mb-8 italic text-white tracking-tighter">
+                        Tactical <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic underline decoration-white/10 underline-offset-8">Scan</span>
+                    </h2>
+                    <p className="text-gray-500 text-lg font-medium leading-relaxed">
+                        Execute a high-fidelity audit of basic vulnerabilities, SSL integrity, and cryptographic headers.
+                        Proactive neural defense starts with absolute visibility.
+                    </p>
+                </div>
+
+                <div className="max-w-2xl mx-auto relative mb-24">
+                    <div className="absolute inset-0 bg-asi-neon/5 blur-2xl rounded-full animate-pulse"></div>
+                    <div className="relative flex flex-col sm:flex-row gap-2">
+                        <div className="relative flex-grow group">
+                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                                <Search className="w-5 h-5 text-gray-500 group-focus-within:text-asi-neon transition-colors" />
+                            </div>
+                            <input
+                                type="text"
+                                value={domain}
+                                onChange={(e) => setDomain(e.target.value)}
+                                placeholder="TARGET DOMAIN (e.g., example.com)"
+                                className="w-full pl-12 pr-6 py-5 bg-white/5 border border-white/10 rounded-sm text-white font-mono placeholder-gray-700 outline-none focus:border-asi-neon focus:bg-white/10 transition-all text-xs tracking-widest uppercase"
+                            />
+                        </div>
+                        <button
+                            onClick={handleScan}
+                            disabled={scanStatus === 'scanning' || !domain.trim()}
+                            className="px-10 py-5 bg-asi-neon text-asi-dark font-black text-[11px] uppercase tracking-[0.2em] hover:shadow-[0_0_30px_rgba(0,243,255,0.4)] transition-all disabled:opacity-50 active:scale-95"
+                        >
+                            {scanStatus === 'scanning' ? 'ANALYZING...' : 'INITIATE SCAN'}
+                        </button>
+                    </div>
                 </div>
 
                 {scanStatus === 'scanning' && (
-                    <div className="text-center text-xl text-yellow-400 space-y-4">
-                        <Icon>⚙️</Icon>
-                        <p>Analyzing {domain} with AI Core...</p>
-                        <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
-                            <div className="h-full bg-gradient-to-r from-transparent to-[#FFD26F] animate-pulse"></div>
+                    <div className="max-w-2xl mx-auto text-center space-y-10 animate-pulse">
+                        <div className="relative inline-block">
+                            <div className="absolute -inset-4 border border-asi-neon/20 rounded-full animate-ping"></div>
+                            <div className="p-8 rounded-full bg-asi-neon/5 border border-asi-neon">
+                                <ShieldAlert className="w-16 h-16 text-asi-neon" />
+                            </div>
+                        </div>
+                        <div className="space-y-4">
+                            <p className="text-white font-black tracking-[0.4em] uppercase text-xs">Decrypting {domain}...</p>
+                            <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                                <div className="h-full bg-asi-neon animate-loading-bar shadow-[0_0_15px_var(--asi-neon)]"></div>
+                            </div>
                         </div>
                     </div>
                 )}
 
                 {scanStatus === 'complete' && results && (
-                    <div className="bg-slate-800 p-8 rounded-xl shadow-2xl border border-gold-500/30">
-                        <h3 className="text-3xl font-bold mb-6 text-white text-center">
-                            <GoldText>Scan Results for {domain}</GoldText>
-                        </h3>
-
-                        <div className="grid md:grid-cols-3 gap-8 mb-8 items-center border-b border-gold-500/20 pb-6">
-                            <div className="text-center">
-                                <p className="text-xl text-gray-400 uppercase tracking-widest">Security Score</p>
-                                <p className={`text-7xl font-black ${scoreColor} mt-2`} style={{ textShadow: `0 0 15px ${scoreColor}` }}>
+                    <div className="animate-fade-in space-y-8">
+                        <div className="grid md:grid-cols-3 gap-6">
+                            <div className="holographic-card p-10 flex flex-col items-center justify-center text-center group border-asi-neon/20">
+                                <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4">Neural Affinity</p>
+                                <div className={`text-8xl font-black font-mono tracking-tighter italic ${scoreColor} drop-shadow-[0_0_30px_currentColor]`}>
                                     {results.score}
-                                </p>
+                                </div>
                             </div>
 
-                            <div className="text-center p-4 bg-slate-900 rounded-lg border border-gold-500/10">
-                                <p className="text-lg font-semibold mb-2">SSL Status</p>
-                                <p className={`text-2xl font-bold ${results.sslStatus.includes('Secure') ? 'text-green-400' : 'text-red-400'}`}>
+                            <div className="holographic-card p-10 flex flex-col justify-center group">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="p-2 bg-white/5 rounded border border-white/10">
+                                        <ShieldCheck className="w-5 h-5 text-asi-neon" />
+                                    </div>
+                                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em]">SSL Integrity</p>
+                                </div>
+                                <div className={`text-4xl font-black font-mono ${results.sslStatus.includes('SECURE') ? 'text-asi-neon' : 'text-red-500'}`}>
                                     {results.sslStatus}
-                                </p>
+                                </div>
                             </div>
 
-                            <div className="text-center p-4 bg-slate-900 rounded-lg border border-gold-500/10">
-                                <p className="text-lg font-semibold mb-2">Security Headers</p>
-                                <p className={`text-2xl font-bold ${results.headers.length > 2 ? 'text-green-400' : 'text-red-400'}`}>
-                                    {results.headers.length} Found
-                                </p>
+                            <div className="holographic-card p-10 flex flex-col justify-center group">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="p-2 bg-white/5 rounded border border-white/10">
+                                        <CheckCircle2 className="w-5 h-5 text-asi-purple" />
+                                    </div>
+                                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em]">Header Count</p>
+                                </div>
+                                <div className="text-4xl font-black font-mono text-white">
+                                    {results.headers.length} / 03 <span className="text-xs text-gray-600">IDENTIFIED</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 className="text-2xl font-bold mb-4">
-                                    <GoldText>Prioritized Fixes</GoldText>
+                        <div className="grid lg:grid-cols-2 gap-8">
+                            <div className="glass-premium p-10 border border-white/5">
+                                <h4 className="text-xl font-black text-white italic mb-8 flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-asi-neon animate-ping"></div>
+                                    Tactical Corrections
                                 </h4>
-                                <ul className="space-y-3 text-gray-300">
+                                <ul className="space-y-4">
                                     {results.fixes.map((fix, index) => (
-                                        <li key={index} className="flex items-start">
-                                            <Icon className="text-xl mr-3 text-[#FFD26F]">🔑</Icon>
-                                            <span dangerouslySetInnerHTML={{ __html: fix }} />
+                                        <li key={index} className="flex gap-4 items-start text-sm">
+                                            <span className="text-xs font-mono text-asi-neon">[0{index + 1}]</span>
+                                            <span className="text-gray-400 font-medium leading-relaxed">{fix}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
 
-                            <div>
-                                <h4 className="text-2xl font-bold mb-4">
-                                    <GoldText>Security Headers Info</GoldText>
-                                </h4>
-                                <ul className="space-y-2 text-gray-400 text-sm bg-slate-900 p-4 rounded-lg">
+                            <div className="glass-premium p-10 border border-white/5 bg-asi-dark/40">
+                                <h4 className="text-xl font-black text-white italic mb-8">Header Analysis</h4>
+                                <div className="bg-black/50 p-6 rounded border border-white/5 font-mono text-[11px] text-gray-500 space-y-3">
                                     {results.headers.map((header, index) => (
-                                        <li key={index} className="truncate">{header}</li>
+                                        <div key={index} className="flex gap-3">
+                                            <span className="text-asi-neon/40">{'>>'}</span>
+                                            <span className="truncate">{header}</span>
+                                        </div>
                                     ))}
-                                </ul>
-                                <p className="text-sm text-gray-500 mt-4">
-                                    *Only key headers are listed. Full report available soon.
+                                </div>
+                                <p className="text-[9px] font-mono text-gray-600 mt-6 uppercase tracking-widest">
+                                    *Analysis strictly restricted to neural baseline protocols.
                                 </p>
                             </div>
                         </div>

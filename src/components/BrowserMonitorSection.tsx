@@ -178,126 +178,143 @@ const BrowserMonitorSection: React.FC = () => {
     const hColor = getHealthColor(healthScore);
 
     return (
-        <section id="browser-monitor" className="py-20 bg-[#050a14] relative overflow-hidden">
-            {/* Background grid */}
-            <div className="absolute inset-0" style={{
-                backgroundImage: 'linear-gradient(rgba(0,243,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,243,255,0.03) 1px, transparent 1px)',
-                backgroundSize: '60px 60px'
-            }} />
+        <section id="browser-monitor" className="py-32 relative overflow-hidden bg-asi-dark">
+            {/* Background Grid */}
+            <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none"></div>
 
-            <div className="container mx-auto px-4 max-w-7xl relative z-10">
+            <div className="container-vision relative z-10">
                 {/* Section Header */}
-                <div className="text-center mb-14">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-5">
-                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" style={{ boxShadow: '0 0 6px #00f3ff' }} />
-                        <span className="text-cyan-400 font-mono text-xs tracking-widest">AI BROWSER SECURITY · LIVE</span>
+                <div className="text-center mb-20 animate-fade-in px-4">
+                    <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-asi-neon/30 bg-asi-neon/5 mb-8 neon-border-beam">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-asi-neon opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-asi-neon"></span>
+                        </span>
+                        <span className="text-asi-neon font-black font-mono text-[10px] tracking-[0.4em] uppercase">Quantum Perimeter Scanner Active</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-black mb-4">
-                        <span className="bg-gradient-to-r from-cyan-400 via-white to-purple-400 bg-clip-text text-transparent">
-                            AI Browser Monitor
+                    <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-6">
+                        <span className="bg-gradient-to-r from-asi-neon via-white to-asi-purple bg-clip-text text-transparent">
+                            Neural Monitor Display
                         </span>
                     </h2>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Real-time security posture of your AI-augmented browser. CipherPolice actively scans for cognitive manipulation, data exfiltration, and neural interface threats.
+                    <p className="text-gray-500 text-lg md:text-xl max-w-3xl mx-auto font-medium leading-relaxed">
+                        CipherPolice actively enforces security protocols across the meta-quantum frontier. Real-time monitoring of browser-level LLM exfiltration and cognitive scripts.
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-3 gap-6">
-                    {/* Radar Display */}
-                    <div className="lg:col-span-1 bg-slate-900/80 border border-cyan-500/20 rounded-2xl p-6 flex flex-col items-center backdrop-blur-sm">
-                        <p className="text-xs text-gray-500 uppercase tracking-widest mb-4">Perimeter Radar</p>
-                        <canvas ref={canvasRef} width={200} height={200} className="mb-4" />
-                        {/* Health Score */}
-                        <div className="text-center">
-                            <div className="text-5xl font-black font-mono mb-1" style={{ color: hColor, textShadow: `0 0 20px ${hColor}` }}>
-                                {healthScore}
-                            </div>
-                            <div className="text-xs text-gray-500">AI Health Score</div>
+                <div className="grid lg:grid-cols-12 gap-8 px-4">
+                    {/* Left: Quantum Radar HUD */}
+                    <div className="lg:col-span-4 holographic-card p-10 flex flex-col items-center justify-center relative overflow-hidden group">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-asi-neon/40 to-transparent"></div>
+
+                        <div className="relative mb-10">
+                            <div className="absolute inset-0 bg-asi-neon/10 blur-[60px] rounded-full group-hover:bg-asi-neon/20 transition-all duration-700"></div>
+                            <canvas ref={canvasRef} width={280} height={280} className="relative z-10 drop-shadow-[0_0_15px_rgba(0,243,255,0.2)]" />
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-asi-neon/10 rounded-full animate-pulse-slow"></div>
                         </div>
-                        {/* Scan Progress */}
-                        <div className="w-full mt-4">
-                            <div className="flex justify-between text-xs text-gray-500 mb-1">
-                                <span>Perimeter Scan</span>
-                                <span>{Math.round(scanProgress)}%</span>
+
+                        <div className="text-center relative z-10">
+                            <div className="text-7xl font-black font-mono tracking-tighter mb-2 italic" style={{ color: hColor, textShadow: `0 0 30px ${hColor}44` }}>
+                                {healthScore}<span className="text-2xl not-italic ml-1 opacity-50 font-sans">%</span>
                             </div>
-                            <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                            <div className="text-xs font-black text-asi-neon tracking-[0.3em] uppercase opacity-70">Neural Integrity Index</div>
+                        </div>
+
+                        {/* Scanner Status Bar */}
+                        <div className="w-full mt-10 p-4 border border-white/5 bg-white/5 rounded-xl">
+                            <div className="flex justify-between text-[10px] font-black text-gray-500 mb-3 uppercase tracking-widest">
+                                <span>Perimeter Depth</span>
+                                <span className="text-asi-neon">{Math.round(scanProgress)}%</span>
+                            </div>
+                            <div className="h-1 bg-white/5 rounded-full overflow-hidden">
                                 <div
-                                    className="h-full rounded-full transition-all duration-100"
+                                    className="h-full rounded-full transition-all duration-300 relative"
                                     style={{
                                         width: `${scanProgress}%`,
                                         background: 'linear-gradient(90deg, #00f3ff, #bc13fe)',
-                                        boxShadow: '0 0 8px rgba(0,243,255,0.5)',
+                                        boxShadow: '0 0 10px rgba(0,243,255,0.5)',
                                     }}
-                                />
+                                >
+                                    <div className="absolute top-0 right-0 w-2 h-full bg-white animate-shine opacity-50"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Metrics + Scan Log */}
-                    <div className="lg:col-span-2 flex flex-col gap-4">
-                        {/* Metric Cards */}
-                        <div className="grid grid-cols-2 gap-4">
-                            {metrics.map(m => (
-                                <div key={m.label} className="bg-slate-900/80 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className="text-lg">{m.icon}</span>
-                                        <span className="text-xs text-gray-500">{m.label}</span>
+                    {/* Right: Metrics & Tactical Feed */}
+                    <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Metrics Grid */}
+                        <div className="grid grid-cols-1 gap-6">
+                            {metrics.map((m, idx) => (
+                                <div
+                                    key={m.label}
+                                    className="holographic-card p-8 group hover:border-asi-neon/30 animate-slide-up"
+                                    style={{ animationDelay: `${idx * 100}ms` }}
+                                >
+                                    <div className="flex items-center justify-between mb-4">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-lg bg-asi-dark border border-white/10 flex items-center justify-center text-xl group-hover:border-asi-neon transition-colors">
+                                                {m.icon}
+                                            </div>
+                                            <span className="text-[10px] font-black text-gray-500 tracking-[0.2em] uppercase">{m.label}</span>
+                                        </div>
+                                        <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: m.color, boxShadow: `0 0 8px ${m.color}` }}></div>
                                     </div>
-                                    <div className="text-2xl font-black font-mono" style={{ color: m.color }}>
+                                    <div className="text-4xl font-black font-mono tracking-tighter" style={{ color: m.color }}>
                                         {m.label === 'Threat Surface' ? m.value : m.value.toFixed(1)}
-                                        <span className="text-sm ml-1 font-normal text-gray-500">{m.unit}</span>
+                                        <span className="text-sm ml-2 font-black text-gray-600 uppercase tracking-widest">{m.unit}</span>
                                     </div>
                                 </div>
                             ))}
                         </div>
 
-                        {/* Live Scan Checks */}
-                        <div className="bg-slate-900/80 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex-1">
-                            <p className="text-xs text-gray-500 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping inline-block" />
-                                Active Security Scan
-                            </p>
-                            <div className="space-y-2">
-                                {SCAN_CHECKS.map((check, i) => {
-                                    const isActive = i === activeLine;
-                                    const statusColor = {
-                                        ok: '#22c55e',
-                                        warning: '#f59e0b',
-                                        scanning: '#00f3ff',
-                                    };
-                                    return (
-                                        <div
-                                            key={i}
-                                            className="flex items-center gap-3 py-1.5 px-2 rounded-lg text-xs font-mono transition-all duration-300"
-                                            style={{
-                                                background: isActive ? 'rgba(0,243,255,0.04)' : 'transparent',
-                                                borderLeft: isActive ? '2px solid rgba(0,243,255,0.4)' : '2px solid transparent',
-                                            }}
-                                        >
-                                            <span className="flex-shrink-0 w-4 h-4 flex items-center justify-center">
-                                                {isActive ? (
-                                                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                                                ) : check.status === 'ok' ? (
-                                                    <span style={{ color: '#22c55e' }}>✓</span>
-                                                ) : check.status === 'warning' ? (
-                                                    <span style={{ color: '#f59e0b' }}>⚠</span>
-                                                ) : (
-                                                    <span style={{ color: '#00f3ff' }}>…</span>
-                                                )}
-                                            </span>
-                                            <span style={{
-                                                color: isActive ? '#00f3ff' : check.status === 'warning' ? '#f59e0b' : '#6b7280'
-                                            }}>
-                                                {check.text}
-                                            </span>
-                                            {!isActive && (
-                                                <span className="ml-auto text-xs" style={{ color: statusColor[check.status] }}>
-                                                    {check.status.toUpperCase()}
+                        {/* Tactical Security Feed */}
+                        <div className="holographic-card p-8 flex flex-col relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-asi-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+                            <div className="relative z-10 flex flex-col h-full">
+                                <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
+                                    <span className="text-xs font-black text-asi-neon tracking-[0.4em] uppercase">Tactical Feed</span>
+                                    <span className="text-[10px] font-mono text-gray-500">UID: CP-100-PRO</span>
+                                </div>
+
+                                <div className="space-y-4 flex-1">
+                                    {SCAN_CHECKS.map((check, i) => {
+                                        const isActive = i === activeLine;
+                                        return (
+                                            <div
+                                                key={i}
+                                                className={`flex items-center gap-4 py-2 px-3 rounded-lg text-[11px] font-mono transition-all duration-300 ${isActive ? 'bg-asi-neon/10 border-l-2 border-asi-neon' : 'opacity-40'}`}
+                                            >
+                                                <div className="flex-shrink-0 w-4 h-4 flex items-center justify-center">
+                                                    {isActive ? (
+                                                        <span className="w-2 h-2 rounded-full bg-asi-neon animate-ping" />
+                                                    ) : check.status === 'ok' ? (
+                                                        <span className="text-green-500">●</span>
+                                                    ) : check.status === 'warning' ? (
+                                                        <span className="text-yellow-500">●</span>
+                                                    ) : (
+                                                        <span className="text-asi-neon">●</span>
+                                                    )}
+                                                </div>
+                                                <span className={`${isActive ? 'text-white font-bold' : 'text-gray-400'}`}>
+                                                    {check.text}
                                                 </span>
-                                            )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                <div className="mt-8 pt-6 border-t border-white/5">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex -space-x-2">
+                                            {[1, 2, 3].map(i => (
+                                                <div key={i} className="w-6 h-6 rounded-full bg-asi-slate border border-asi-dark"></div>
+                                            ))}
                                         </div>
-                                    );
-                                })}
+                                        <span className="text-[10px] font-black text-gray-500 tracking-widest uppercase italic">Encryption: Active Elite Force</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

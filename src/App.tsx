@@ -9,6 +9,12 @@ import Team from './components/Team';
 import { Footer } from './components/Footer';
 import { ChatSidebar } from './components/ChatSidebar';
 
+import { About } from './components/About';
+import { Methodology } from './components/Methodology';
+import { Scanner } from './components/Scanner';
+import ComplianceGuide from './components/ComplianceGuide';
+import { Contact } from './components/Contact';
+
 export default function App() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
@@ -25,21 +31,36 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-asi-dark font-sans text-white" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div className="min-h-screen bg-asi-dark font-sans text-white relative overflow-x-hidden selection:bg-asi-neon selection:text-asi-dark" style={{ fontFamily: 'Inter, sans-serif' }}>
+      {/* Futuristic Background Layers */}
+      <div className="fixed inset-0 bg-cyber-grid opacity-20 pointer-events-none"></div>
+      <div className="scanline-overlay"></div>
+      <div className="scanline-beam"></div>
+      <div className="fixed inset-0 bg-gradient-to-t from-asi-dark via-transparent to-transparent pointer-events-none"></div>
+
       <Navbar />
-      <main className="pt-20">
+      <main className="relative z-10">
         <Hero />
-        <section id="features">
-          <Features />
-        </section>
+
+        <About />
+
+        <Features />
+
+        <Methodology />
+
         <BrowserMonitorSection />
+
         <DashboardPage />
-        <section id="data-ethics">
-          <DataEthics />
-        </section>
-        <section id="team">
-          <Team />
-        </section>
+
+        <Scanner />
+
+        <ComplianceGuide />
+
+        <DataEthics />
+
+        <Team />
+
+        <Contact />
       </main>
       <Footer />
       <ChatSidebar isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />

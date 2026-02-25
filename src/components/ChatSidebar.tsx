@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { sendMessage, Message, initializeChatHistory } from '../services/geminiService';
+import { Shield, Send, RefreshCcw, X, MessageSquare, ShieldAlert } from 'lucide-react';
 
 interface ChatSidebarProps {
   isOpen: boolean;
@@ -7,10 +8,10 @@ interface ChatSidebarProps {
 }
 
 const quickChips = [
-  { label: '🧠 My Cognitive Risk', prompt: 'What is my current cognitive risk level and how can I reduce it?' },
-  { label: '🛡️ Enable Deep Focus', prompt: 'How does CipherPolice Deep Focus / Mental Shield work?' },
-  { label: '🤖 AI Browser Threats', prompt: 'What AI browser threats is CipherPolice currently monitoring for?' },
-  { label: '⚖️ GDPR & AI Laws', prompt: 'Explain GDPR compliance requirements for AI systems.' },
+  { label: '🧠 Neural Risk Audit', prompt: 'Analyze my current cognitive risk vectors and suggest mitigation protocols.' },
+  { label: '🛡️ Initiate Mental Shield', prompt: 'How do I activate the CipherPolice Mental Shield / Deep Focus protocol?' },
+  { label: '🤖 Threat Intelligence', prompt: 'Provide a summary of the latest AI-driven browser vulnerabilities.' },
+  { label: '⚖️ Sovereignty Law', prompt: 'Explain how my digital sovereignty is protected under quantum-GDPR.' },
 ];
 
 export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
@@ -41,8 +42,7 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
     setIsLoading(true);
     setIsTyping(true);
 
-    // Simulate typing delay for realism
-    await new Promise(r => setTimeout(r, 600));
+    await new Promise(r => setTimeout(r, 800));
     const response = await sendMessage(text);
     setIsTyping(false);
 
@@ -50,7 +50,7 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
       role: 'assistant',
       content: response.success
         ? response.message
-        : `⚠️ ${response.error || 'Connection to AI failed. Please try again.'}`,
+        : `CRITICAL_ERROR: ${response.error || 'Uplink failed. Retrying neural link...'}`,
       timestamp: new Date(),
     };
     setMessages(prev => [...prev, assistantMsg]);
@@ -72,85 +72,86 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
 
   return (
     <>
-      {/* Toggle Button */}
+      {/* Tactical Toggle */}
       <button
         onClick={onToggle}
-        className={`fixed ${isOpen ? 'right-[26rem]' : 'right-6'} bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center`}
+        className={`fixed ${isOpen ? 'right-[27rem]' : 'right-8'} bottom-8 z-50 w-16 h-16 rounded-2xl transition-all duration-500 hover:scale-110 flex items-center justify-center group overflow-hidden`}
         style={{
-          background: isOpen
-            ? 'linear-gradient(135deg, #ef4444, #dc2626)'
-            : 'linear-gradient(135deg, #00f3ff22, #050a14)',
-          border: isOpen ? '2px solid rgba(239,68,68,0.5)' : '2px solid rgba(0,243,255,0.4)',
+          background: 'rgba(5, 10, 20, 0.8)',
+          border: isOpen ? '1px solid rgba(239, 68, 68, 0.5)' : '1px solid rgba(0, 243, 255, 0.3)',
           boxShadow: isOpen
-            ? '0 0 20px rgba(239,68,68,0.3)'
-            : '0 0 20px rgba(0,243,255,0.25)',
+            ? '0 0 30px rgba(239, 68, 68, 0.3)'
+            : '0 0 30px rgba(0, 243, 255, 0.2)',
+          backdropFilter: 'blur(10px)'
         }}
-        title={isOpen ? 'Close Agent' : 'Open CipherPolice Agent'}
+        title={isOpen ? 'Secure Uplink' : 'Summon Liaison'}
       >
+        <div className="absolute inset-0 bg-asi-neon/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         {isOpen ? (
-          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <X className="w-6 h-6 text-red-500 animate-pulse" />
         ) : (
-          <span className="text-xl">🤖</span>
+          <div className="relative">
+            <MessageSquare className="w-6 h-6 text-asi-neon" />
+            <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-asi-purple border-2 border-asi-dark animate-pulse"></div>
+          </div>
         )}
       </button>
 
-      {/* Sidebar */}
+      {/* Liaison Sidebar */}
       <div
-        className={`fixed bottom-0 right-0 h-screen w-[26rem] z-40 flex flex-col transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed bottom-0 right-0 h-screen w-[26rem] z-40 flex flex-col transform transition-all duration-500 ease-in-out glass-premium border-l border-white/5 ${isOpen ? 'translate-x-0' : 'translate-x-full shadow-none'}`}
         style={{
-          background: 'linear-gradient(180deg, #0a1628 0%, #050a14 100%)',
-          borderLeft: '1px solid rgba(0,243,255,0.15)',
-          boxShadow: '-10px 0 40px rgba(0,0,0,0.6)',
+          background: 'rgba(5, 10, 20, 0.95)',
+          boxShadow: isOpen ? '-20px 0 50px rgba(0,0,0,0.8)' : 'none',
         }}
       >
-        {/* Header */}
-        <div className="p-4 border-b" style={{ borderColor: 'rgba(0,243,255,0.1)', background: 'rgba(0,243,255,0.03)' }}>
-          <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: 'linear-gradient(135deg, rgba(0,243,255,0.2), rgba(188,19,254,0.2))', border: '1px solid rgba(0,243,255,0.3)' }}>
-              <span className="text-lg">🛡️</span>
-              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-[#050a14]" style={{ boxShadow: '0 0 6px #22c55e' }} />
+        {/* HUD Header */}
+        <div className="p-6 border-b border-white/5 bg-white/5">
+          <div className="flex items-center gap-4">
+            <div className="relative w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-asi-dark border border-asi-neon/30 overflow-hidden">
+              <div className="absolute inset-0 bg-cyber-grid opacity-20"></div>
+              <Shield className="w-6 h-6 text-asi-neon relative z-10 animate-float" />
+              <div className="absolute top-0 right-0 p-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping shadow-[0_0_5px_#22c55e]" />
+              </div>
             </div>
-            <div>
-              <h2 className="text-sm font-bold text-white">CipherPolice Agent</h2>
-              <p className="text-xs text-cyan-400/70 font-mono">AI Security · Legal · Cognitive Intelligence</p>
+            <div className="flex-1">
+              <h2 className="text-sm font-black text-white uppercase tracking-[0.2em]">Security Liaison</h2>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="text-[9px] font-mono text-asi-neon uppercase tracking-widest">Active Link</span>
+                <div className="h-px flex-1 bg-asi-neon/20"></div>
+              </div>
             </div>
             <button
               onClick={handleClearChat}
-              className="ml-auto text-xs text-gray-600 hover:text-gray-400 transition-colors p-1"
-              title="Clear chat"
+              className="p-2 rounded-lg hover:bg-white/5 text-gray-600 hover:text-asi-purple transition-all"
+              title="Purge Logs"
             >
-              🔄
+              <RefreshCcw className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3" style={{ scrollbarWidth: 'none' }}>
+        {/* Tactical Feed (Messages) */}
+        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 scrollbar-hide">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center pb-8">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-                style={{ background: 'linear-gradient(135deg, rgba(0,243,255,0.15), rgba(188,19,254,0.15))', border: '1px solid rgba(0,243,255,0.2)' }}>
-                <span className="text-3xl">🛡️</span>
+            <div className="flex flex-col items-center justify-center h-full text-center py-10">
+              <div className="w-24 h-24 rounded-3xl flex items-center justify-center mb-8 bg-asi-neon/5 border border-asi-neon/20 relative group">
+                <div className="absolute inset-0 bg-asi-neon/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <ShieldAlert className="w-10 h-10 text-asi-neon" />
               </div>
-              <p className="text-sm text-gray-300 font-medium mb-1">CipherPolice Agent</p>
-              <p className="text-xs text-gray-500 max-w-56 leading-relaxed mb-5">
-                Your AI expert on security, cognitive load monitoring, and digital rights law.
+              <p className="text-lg font-black text-white mb-2 uppercase tracking-tighter italic">Liaison <span className="text-asi-neon">Idle</span></p>
+              <p className="text-xs text-gray-500 max-w-[220px] leading-relaxed mb-10 font-medium">
+                Neural connection standby. Awaiting mission parameters or security inquiries.
               </p>
-              {/* Quick Chips */}
-              <div className="w-full space-y-2">
+
+              <div className="w-full space-y-3">
+                <p className="text-[10px] font-black text-gray-700 uppercase tracking-[0.3em] mb-4">Suggested Protocols</p>
                 {quickChips.map(chip => (
                   <button
                     key={chip.label}
                     onClick={() => handleSend(chip.prompt)}
-                    className="w-full text-left px-3 py-2.5 rounded-xl text-xs transition-all duration-200 hover:border-cyan-500/30"
-                    style={{
-                      background: 'rgba(0,243,255,0.04)',
-                      border: '1px solid rgba(0,243,255,0.1)',
-                      color: '#9ca3af',
-                    }}
+                    className="w-full text-left px-4 py-3 rounded-sm text-[10px] font-black uppercase tracking-[0.1em] transition-all duration-300 border border-white/5 bg-white/5 hover:border-asi-neon/40 hover:bg-asi-neon/5 text-gray-500 hover:text-white"
                   >
                     {chip.label}
                   </button>
@@ -159,53 +160,42 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
             </div>
           ) : (
             messages.map((msg, idx) => (
-              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
-                {msg.role === 'assistant' && (
-                  <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
-                    style={{ background: 'rgba(0,243,255,0.1)', border: '1px solid rgba(0,243,255,0.2)' }}>
-                    <span className="text-xs">🛡️</span>
-                  </div>
-                )}
-                <div className="max-w-[76%]">
+              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`} style={{ animationDelay: `${idx * 50}ms` }}>
+                <div className={`max-w-[85%] group`}>
                   <div
-                    className="px-3 py-2.5 rounded-2xl text-xs leading-relaxed"
-                    style={msg.role === 'user' ? {
-                      background: 'linear-gradient(135deg, rgba(0,243,255,0.15), rgba(188,19,254,0.1))',
-                      border: '1px solid rgba(0,243,255,0.25)',
-                      color: '#e2e8f0',
-                      borderBottomRightRadius: 4,
-                    } : {
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      color: '#cbd5e1',
-                      borderBottomLeftRadius: 4,
-                    }}
+                    className={`px-4 py-3 rounded-xl text-xs leading-relaxed transition-all duration-300 ${msg.role === 'user'
+                        ? 'bg-asi-neon text-asi-dark font-bold shadow-[0_0_20px_rgba(0,243,255,0.2)] rounded-tr-none'
+                        : 'holographic-card text-white/90 border-white/10 rounded-tl-none'
+                      }`}
                   >
                     {msg.content}
                   </div>
-                  <p className="text-[10px] text-gray-700 mt-1 px-1">{formatTime(msg.timestamp)}</p>
+                  <div className={`mt-2 flex items-center gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <span className="text-[9px] font-mono text-gray-700 uppercase tracking-widest">{msg.role === 'assistant' ? 'LIAISON' : 'OPERATOR'}</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-800"></span>
+                    <span className="text-[9px] font-mono text-gray-700">{formatTime(msg.timestamp)}</span>
+                  </div>
                 </div>
               </div>
             ))
           )}
 
-          {/* Typing indicator */}
           {isTyping && (
-            <div className="flex justify-start gap-2">
-              <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center"
-                style={{ background: 'rgba(0,243,255,0.1)', border: '1px solid rgba(0,243,255,0.2)' }}>
-                <span className="text-xs">🛡️</span>
-              </div>
-              <div className="px-4 py-3 rounded-2xl rounded-bl-sm"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <div className="flex gap-1">
+            <div className="flex justify-start animate-fade-in">
+              <div className="holographic-card px-5 py-3 rounded-xl rounded-tl-none">
+                <div className="flex gap-1.5 items-center">
                   {[0, 0.2, 0.4].map((delay) => (
-                    <span
+                    <div
                       key={delay}
-                      className="w-1.5 h-1.5 rounded-full animate-bounce"
-                      style={{ background: '#00f3ff', animationDelay: `${delay}s`, boxShadow: '0 0 4px #00f3ff' }}
+                      className="w-1.5 h-1.5 rounded-full bg-asi-neon"
+                      style={{
+                        animation: 'pulse 1.5s infinite',
+                        animationDelay: `${delay}s`,
+                        boxShadow: '0 0 8px var(--asi-neon)'
+                      }}
                     />
                   ))}
+                  <span className="ml-2 text-[10px] font-mono text-asi-neon/60 uppercase tracking-widest">Processing...</span>
                 </div>
               </div>
             </div>
@@ -213,45 +203,38 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input */}
-        <div className="p-4 border-t" style={{ borderColor: 'rgba(0,243,255,0.1)', background: 'rgba(0,0,0,0.3)' }}>
-          <form onSubmit={handleFormSubmit} className="flex gap-2">
+        {/* Command Input Area */}
+        <div className="p-6 border-t border-white/5 bg-black/40">
+          <form onSubmit={handleFormSubmit} className="relative group">
             <input
               ref={inputRef}
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask CipherPolice anything…"
+              placeholder="Input Command..."
               disabled={isLoading}
-              className="flex-1 px-3 py-2.5 rounded-xl text-sm focus:outline-none disabled:opacity-50 transition-all"
-              style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(0,243,255,0.2)',
-                color: '#e2e8f0',
-              }}
+              className="w-full pl-5 pr-14 py-4 bg-white/5 border border-white/10 rounded-xl text-xs font-mono placeholder-gray-700 outline-none focus:border-asi-neon/40 focus:bg-white/10 transition-all text-white tracking-widest"
             />
             <button
               type="submit"
               disabled={isLoading || !inputValue.trim()}
-              className="w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40"
-              style={{
-                background: 'linear-gradient(135deg, rgba(0,243,255,0.2), rgba(188,19,254,0.2))',
-                border: '1px solid rgba(0,243,255,0.4)',
-              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40 group-hover:bg-asi-neon/10"
             >
-              <svg className="w-4 h-4" style={{ color: '#00f3ff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
+              <Send className={`w-4 h-4 transition-colors ${inputValue.trim() ? 'text-asi-neon' : 'text-gray-700'}`} />
             </button>
           </form>
+          <div className="mt-4 flex justify-between items-center px-1">
+            <span className="text-[8px] font-mono text-gray-700 uppercase tracking-[0.2em]">Ready For Input</span>
+            <span className="text-[8px] font-mono text-gray-700 uppercase tracking-[0.2em] animate-pulse">Encryption: Aes-256</span>
+          </div>
         </div>
       </div>
 
-      {/* Backdrop */}
+      {/* Neural Mask (Backdrop) */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-30"
-          style={{ background: 'rgba(0,0,0,0.3)', backdropFilter: 'blur(2px)' }}
+          className="fixed inset-0 z-30 transition-opacity duration-500 animate-fade-in"
+          style={{ background: 'rgba(5, 10, 20, 0.4)', backdropFilter: 'blur(4px)' }}
           onClick={onToggle}
         />
       )}

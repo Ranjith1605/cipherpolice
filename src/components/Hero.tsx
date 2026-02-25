@@ -18,13 +18,21 @@ export const Hero = () => {
             </div>
 
             <div className="relative z-10 text-center px-4 max-w-5xl">
-                <div className="relative inline-block mb-8 animate-float">
-                    <div className="absolute inset-0 bg-asi-neon/20 blur-3xl rounded-full"></div>
-                    <img
-                        src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
-                        alt="CipherPolice Logo"
-                        className="relative h-40 w-auto mx-auto"
-                    />
+                <div className="relative inline-block mb-12 group">
+                    {/* Futuristic Logo Carrier */}
+                    <div className="absolute inset-0 bg-asi-neon/20 blur-[80px] rounded-full group-hover:bg-asi-neon/30 transition-all duration-700"></div>
+                    <div className="relative p-1 rounded-2xl bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl border border-white/10 overflow-hidden neon-border-beam">
+                        <img
+                            src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
+                            alt="CipherPolice Logo"
+                            className="relative h-40 md:h-52 w-auto mx-auto transform group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-asi-neon/10 to-transparent"></div>
+                    </div>
+                    {/* Status Pill Attached to Logo */}
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-asi-dark border border-asi-neon/50 rounded-full shadow-[0_0_15px_rgba(0,243,255,0.3)] animate-bounce-slow">
+                        <span className="text-[10px] font-black text-asi-neon tracking-widest uppercase">ENHANCED SECURITY ACTIVE</span>
+                    </div>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 leading-tight">
@@ -42,13 +50,17 @@ export const Hero = () => {
                     <span className="text-asi-silver block mt-2 underline decoration-asi-neon/30">The Guardian of your Global AI Existence.</span>
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="#scanner" className="group relative px-8 py-4 bg-asi-neon/10 border border-asi-neon/50 text-asi-neon font-bold rounded-lg overflow-hidden transition-all hover:bg-asi-neon/20 hover:shadow-[0_0_30px_rgba(0,243,255,0.3)]">
-                        <span className="relative z-10">INITIALIZE SCAN</span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-asi-neon/20 to-transparent -translate-x-full group-hover:animate-shimmer"></div>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-4">
+                    <a href="#scanner" className="group relative px-10 py-4 bg-transparent border border-asi-neon/50 text-asi-neon font-black rounded-sm tracking-tighter overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(0,243,255,0.4)] hover:border-asi-neon">
+                        <div className="absolute inset-0 bg-asi-neon/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        <span className="relative z-10 flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-asi-neon animate-pulse"></span>
+                            INITIALIZE DEFENSE PROTOCOL
+                        </span>
                     </a>
-                    <a href="#methodology" className="px-8 py-4 text-gray-400 hover:text-white transition-colors">
-                        View Methodology
+                    <a href="#methodology" className="group px-10 py-4 text-gray-500 hover:text-white font-bold transition-all flex items-center gap-2">
+                        VIEW METHODOLOGY
+                        <span className="text-asi-neon group-hover:translate-x-1 transition-transform">→</span>
                     </a>
                 </div>
             </div>

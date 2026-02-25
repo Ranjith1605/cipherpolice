@@ -16,75 +16,69 @@ const tabs: { id: Tab; label: string; icon: string }[] = [
 
 const LiveTicker: React.FC = () => {
     const alerts = [
-        '⚡ 3 trackers neutralized · cipherpolice.io',
-        '🔐 Identity confidence: 97.2% · verified',
-        '🛡️ AI browser perimeter · SECURE',
-        '⚠️ Prompt injection attempt · blocked',
-        '🧠 Cognitive load · Elevated (74/100)',
-        '🔒 HTTPS enforcement · active globally',
-        '✅ WebGPU memory isolation · intact',
+        'SYSTEM: Neural perimeter active · SCANNING',
+        'PROSECUTION: 3 manipulation vectors isolated',
+        'IDENTITY: Confidence 98.4% · BIOMETRIC MATCH',
+        'ALERT: Prompt injection attempt from [REDACTED]',
+        'COGNITIVE: Load balancing at 64% · OPTIMAL',
+        'NETWORK: Quantum-level encryption verified',
     ];
     const [idx, setIdx] = useState(0);
 
     useEffect(() => {
-        const t = setInterval(() => setIdx(i => (i + 1) % alerts.length), 3000);
+        const t = setInterval(() => setIdx(i => (i + 1) % alerts.length), 4000);
         return () => clearInterval(t);
     }, []);
 
     return (
-        <div className="bg-slate-900/80 border border-cyan-500/20 rounded-xl px-4 py-2.5 flex items-center gap-3 mb-6 backdrop-blur-sm">
-            <span className="flex-shrink-0 w-2 h-2 rounded-full bg-cyan-400 animate-pulse" style={{ boxShadow: '0 0 6px #00f3ff' }} />
-            <span className="text-xs font-mono text-cyan-400 font-medium uppercase tracking-widest flex-shrink-0">LIVE</span>
+        <div className="glass-premium border border-asi-neon/20 px-6 py-3 flex items-center gap-4 mb-10 overflow-hidden relative">
+            <div className="absolute top-0 left-0 h-full w-1 bg-asi-neon shadow-[0_0_10px_var(--asi-neon)]"></div>
+            <span className="flex-shrink-0 w-2 h-2 rounded-full bg-asi-neon animate-ping" />
+            <span className="text-[10px] font-black text-asi-neon tracking-[0.3em] flex-shrink-0">LIVE SEC_FEED</span>
             <div className="flex-1 overflow-hidden">
-                <p
-                    key={idx}
-                    className="text-xs text-gray-300 font-mono animate-slide-right"
-                >
+                <p key={idx} className="text-xs font-mono text-white/80 animate-slide-up tracking-tight">
                     {alerts[idx]}
                 </p>
             </div>
-            <span className="text-xs text-gray-600 flex-shrink-0 font-mono">{new Date().toLocaleTimeString()}</span>
+            <span className="text-[10px] font-mono text-gray-500 flex-shrink-0 uppercase">{new Date().toLocaleTimeString()}</span>
         </div>
     );
 };
 
 const OverviewGrid: React.FC = () => {
     const [stats, setStats] = useState([
-        { label: 'Threats Blocked Today', value: 147, color: '#ef4444', icon: '🚫', delta: '+3' },
-        { label: 'Focus Time (hrs)', value: 4.5, color: '#22c55e', icon: '🎯', delta: '+0.5h' },
-        { label: 'Cognitive Score', value: 74, color: '#f59e0b', icon: '🧠', delta: '-2' },
-        { label: 'Identity Confidence', value: 97.2, color: '#00f3ff', icon: '🔐', delta: 'STABLE' },
-        { label: 'AI Breach Attempts', value: 12, color: '#bc13fe', icon: '⚡', delta: '+1' },
-        { label: 'HTTPS Enforcements', value: 389, color: '#22c55e', icon: '🔒', delta: '+12' },
+        { label: 'Threats Neutralized', value: 147, color: '#ef4444', icon: '⚔️', delta: '+3' },
+        { label: 'Deep Focus Time', value: 4.5, color: '#00f3ff', icon: '🎯', delta: '+0.5h' },
+        { label: 'Neural Stability', value: 74, color: '#bc13fe', icon: '🧠', delta: '-2%' },
+        { label: 'Confidence Index', value: 97.2, color: '#10b981', icon: '🔐', delta: 'STABLE' },
     ]);
 
     useEffect(() => {
         const t = setInterval(() => {
-            setStats(prev => prev.map(s => ({
+            setStats(prev => prev.map((s, i) => i === 3 ? s : ({
                 ...s,
-                value: typeof s.value === 'number' ? parseFloat((s.value + (Math.random() * 2 - 1)).toFixed(1)) : s.value
+                value: typeof s.value === 'number' ? parseFloat((s.value + (Math.random() * 0.4 - 0.2)).toFixed(1)) : s.value
             })));
-        }, 4000);
+        }, 5000);
         return () => clearInterval(t);
     }, []);
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {stats.map(s => (
-                <div
-                    key={s.label}
-                    className="bg-slate-900/80 border border-white/10 rounded-2xl p-5 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 group"
-                >
-                    <div className="flex items-center justify-between mb-3">
-                        <span className="text-2xl group-hover:scale-110 transition-transform">{s.icon}</span>
-                        <span className="text-xs font-mono bg-slate-800 px-2 py-0.5 rounded-full text-gray-400">
+                <div key={s.label} className="holographic-card p-6 group hover:border-asi-neon/30 overflow-hidden relative">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                        <span className="text-3xl">{s.icon}</span>
+                    </div>
+                    <div className="flex items-center gap-2 mb-4">
+                        <span className="text-[10px] font-black text-gray-500 tracking-widest uppercase">{s.label}</span>
+                        <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded bg-white/5 ${s.delta.startsWith('+') ? 'text-green-400' : 'text-yellow-400'}`}>
                             {s.delta}
                         </span>
                     </div>
-                    <div className="text-2xl font-black font-mono mb-1" style={{ color: s.color }}>
+                    <div className="text-4xl font-black font-mono tracking-tighter" style={{ color: s.color }}>
                         {typeof s.value === 'number' ? s.value.toFixed(s.value % 1 !== 0 ? 1 : 0) : s.value}
                     </div>
-                    <div className="text-xs text-gray-500">{s.label}</div>
                 </div>
             ))}
         </div>
@@ -95,73 +89,83 @@ const DashboardPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<Tab>('overview');
 
     return (
-        <section id="dashboard" className="py-16 min-h-screen bg-[#050a14] relative">
-            <div className="absolute inset-0" style={{
-                backgroundImage: 'linear-gradient(rgba(0,243,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,243,255,0.02) 1px, transparent 1px)',
-                backgroundSize: '80px 80px',
-            }} />
+        <section id="dashboard" className="py-32 relative overflow-hidden bg-asi-dark">
+            {/* Background Layers */}
+            <div className="absolute inset-0 bg-cyber-grid opacity-5"></div>
 
-            <div className="container mx-auto px-4 max-w-7xl relative z-10">
-                {/* Header */}
-                <div className="mb-8">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                        <span className="text-cyan-400 font-mono text-xs tracking-widest">COGNITIVE COMMAND CENTER</span>
+            <div className="container-vision relative z-10 px-4">
+                {/* Header HUD */}
+                <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-asi-neon/30 bg-asi-neon/5 mb-4">
+                            <span className="text-[10px] font-black text-asi-neon tracking-[0.4em] uppercase">Tactical Operations Center</span>
+                        </div>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
+                            Center <span className="bg-gradient-to-r from-asi-neon via-white to-asi-purple bg-clip-text text-transparent italic">Monitor</span>
+                        </h2>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-2">
-                        Live <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Dashboard</span>
-                    </h2>
-                    <p className="text-gray-500 text-lg">Real-time monitoring of your digital environment and cognitive security posture.</p>
+                    <div className="hidden md:flex flex-col items-end">
+                        <span className="text-[10px] font-black text-gray-500 tracking-[0.3em] uppercase">System Latency: 4ms</span>
+                        <div className="flex gap-1 mt-1">
+                            {[1, 2, 3, 4, 5].map(i => (
+                                <div key={i} className={`w-3 h-1 rounded-full ${i < 4 ? 'bg-asi-neon' : 'bg-white/10'}`}></div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
-                {/* Live Ticker */}
+                {/* Dashboard HUD Components */}
                 <LiveTicker />
+                <OverviewGrid />
 
-                {/* Tab Navigation */}
-                <div className="flex gap-1 bg-slate-900/80 border border-white/10 rounded-xl p-1 mb-6 overflow-x-auto backdrop-blur-sm">
+                {/* Navigation HUD */}
+                <div className="flex gap-2 p-1.5 glass-premium border border-white/5 mb-10 overflow-x-auto scrollbar-hide">
                     {tabs.map(tab => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
-                                    ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 shadow-inner'
-                                    : 'text-gray-500 hover:text-gray-300'
+                            className={`flex items-center gap-3 px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase transition-all duration-300 whitespace-nowrap ${activeTab === tab.id
+                                ? 'bg-asi-neon text-asi-dark shadow-[0_0_20px_rgba(0,243,255,0.4)]'
+                                : 'text-gray-500 hover:text-white hover:bg-white/5'
                                 }`}
                         >
-                            <span>{tab.icon}</span>
+                            <span className="text-lg">{tab.icon}</span>
                             {tab.label}
                         </button>
                     ))}
                 </div>
 
-                {/* Tab Content */}
-                <div>
+                {/* Main Display Area */}
+                <div className="animate-fade-in">
                     {activeTab === 'overview' && (
-                        <div className="space-y-6">
-                            <OverviewGrid />
-                            <div className="grid lg:grid-cols-2 gap-6">
-                                <SecurityPanelV2 />
-                                <CognitivePanelV2 />
+                        <div className="grid lg:grid-cols-2 gap-8">
+                            <SecurityPanelV2 />
+                            <CognitivePanelV2 />
+                            <div className="lg:col-span-1">
+                                <RiskAnalyticsPanel />
+                            </div>
+                            <div className="lg:col-span-1">
+                                <DeepFocusPanel />
                             </div>
                         </div>
                     )}
                     {activeTab === 'security' && (
-                        <div className="max-w-3xl mx-auto">
+                        <div className="max-w-4xl mx-auto">
                             <SecurityPanelV2 />
                         </div>
                     )}
                     {activeTab === 'cognitive' && (
-                        <div className="max-w-3xl mx-auto">
+                        <div className="max-w-4xl mx-auto">
                             <CognitivePanelV2 />
                         </div>
                     )}
                     {activeTab === 'analytics' && (
-                        <div className="max-w-3xl mx-auto">
+                        <div className="max-w-4xl mx-auto">
                             <RiskAnalyticsPanel />
                         </div>
                     )}
                     {activeTab === 'focus' && (
-                        <div className="max-w-3xl mx-auto">
+                        <div className="max-w-4xl mx-auto">
                             <DeepFocusPanel />
                         </div>
                     )}
