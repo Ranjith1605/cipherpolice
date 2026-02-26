@@ -67,8 +67,6 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
     setMessages([]);
   };
 
-  const formatTime = (d: Date) =>
-    `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 
   return (
     <>
@@ -122,17 +120,25 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
         </div>
 
         {/* Tactical Feed (Messages) */}
-        <div className="flex-1 overflow-y-auto px-8 py-8 space-y-8 scrollbar-hide">
+        <div className="flex-1 overflow-y-auto px-8 py-8 space-y-6 scrollbar-hide">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <p className="text-[10px] font-bold text-gray-700 uppercase tracking-[0.5em] mb-12 italic">Neural Link Standby</p>
+              <div className="flex gap-1.5 mb-12">
+                {[0, 0.2, 0.4].map((delay) => (
+                  <div
+                    key={delay}
+                    className="w-1 h-1 rounded-full bg-white/10"
+                    style={{ animation: 'pulse 2s infinite', animationDelay: `${delay}s` }}
+                  />
+                ))}
+              </div>
 
-              <div className="w-full space-y-4">
+              <div className="w-full space-y-3">
                 {quickChips.map(chip => (
                   <button
                     key={chip.label}
                     onClick={() => handleSend(chip.prompt)}
-                    className="w-full text-left px-5 py-4 rounded-sm text-[9px] font-bold uppercase tracking-[0.15em] transition-all duration-300 border border-white/[0.03] bg-white/[0.01] hover:border-asi-neon/20 hover:bg-white/[0.03] text-gray-600 hover:text-gray-300"
+                    className="w-full text-left px-5 py-3 rounded-sm text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300 border border-white/[0.02] bg-white/[0.01] hover:border-asi-neon/10 hover:bg-white/[0.02] text-gray-700 hover:text-gray-400"
                   >
                     {chip.label}
                   </button>
@@ -144,16 +150,15 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`}>
                 <div className="max-w-[85%]">
                   <div
-                    className={`px-5 py-4 rounded-lg text-[13px] leading-relaxed transition-all duration-300 font-medium ${msg.role === 'user'
-                      ? 'bg-white/[0.03] text-gray-300 border border-white/10'
-                      : 'bg-asi-neon/5 text-gray-300 border border-asi-neon/10'
+                    className={`px-4 py-3 rounded text-[12px] leading-relaxed transition-all duration-300 font-medium ${msg.role === 'user'
+                      ? 'bg-white/[0.02] text-gray-400 border border-white/5'
+                      : 'bg-asi-neon/[0.02] text-gray-300 border border-asi-neon/5'
                       }`}
                   >
                     {msg.content}
                   </div>
-                  <div className={`mt-3 flex items-center gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <span className="text-[8px] font-bold text-gray-700 uppercase tracking-widest">{msg.role === 'assistant' ? 'Liaison' : 'Operator'}</span>
-                    <span className="text-[8px] font-mono text-gray-800">{formatTime(msg.timestamp)}</span>
+                  <div className={`mt-2 flex items-center gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <span className="text-[7px] font-bold text-gray-800 uppercase tracking-widest">{msg.role === 'assistant' ? 'Liaison' : 'Operator'}</span>
                   </div>
                 </div>
               </div>
@@ -162,21 +167,14 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
 
           {isTyping && (
             <div className="flex justify-start animate-fade-in">
-              <div className="holographic-card px-5 py-3 rounded-xl rounded-tl-none">
-                <div className="flex gap-1.5 items-center">
-                  {[0, 0.2, 0.4].map((delay) => (
-                    <div
-                      key={delay}
-                      className="w-1.5 h-1.5 rounded-full bg-asi-neon"
-                      style={{
-                        animation: 'pulse 1.5s infinite',
-                        animationDelay: `${delay}s`,
-                        boxShadow: '0 0 8px var(--asi-neon)'
-                      }}
-                    />
-                  ))}
-                  <span className="ml-2 text-[10px] font-mono text-asi-neon/60 uppercase tracking-widest">Processing...</span>
-                </div>
+              <div className="flex gap-1.5 px-4 py-2 border border-white/5 rounded bg-white/[0.01]">
+                {[0, 0.2, 0.4].map((delay) => (
+                  <div
+                    key={delay}
+                    className="w-1 h-1 rounded-full bg-asi-neon/20"
+                    style={{ animation: 'pulse 1.5s infinite', animationDelay: `${delay}s` }}
+                  />
+                ))}
               </div>
             </div>
           )}
@@ -184,28 +182,28 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
         </div>
 
         {/* Command Input Area */}
-        <div className="p-6 border-t border-white/5 bg-black/40">
+        <div className="p-8 border-t border-white/5 bg-black/20">
           <form onSubmit={handleFormSubmit} className="relative group">
             <input
               ref={inputRef}
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Input Command..."
+              placeholder="COMMAND..."
               disabled={isLoading}
-              className="w-full pl-5 pr-14 py-4 bg-white/5 border border-white/10 rounded-xl text-xs font-mono placeholder-gray-700 outline-none focus:border-asi-neon/40 focus:bg-white/10 transition-all text-white tracking-widest"
+              className="w-full pl-5 pr-14 py-3 bg-white/[0.02] border border-white/5 rounded text-[10px] font-mono placeholder-gray-800 outline-none focus:border-white/10 transition-all text-gray-400 tracking-[0.3em]"
             />
             <button
               type="submit"
               disabled={isLoading || !inputValue.trim()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40 group-hover:bg-asi-neon/10"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center transition-all opacity-20 hover:opacity-100"
             >
-              <Send className={`w-4 h-4 transition-colors ${inputValue.trim() ? 'text-asi-neon' : 'text-gray-700'}`} />
+              <Send className="w-3 h-3 text-white" />
             </button>
           </form>
           <div className="mt-4 flex justify-between items-center px-1">
-            <span className="text-[8px] font-mono text-gray-700 uppercase tracking-[0.2em]">Ready For Input</span>
-            <span className="text-[8px] font-mono text-gray-700 uppercase tracking-[0.2em] animate-pulse">Encryption: Aes-256</span>
+            <span className="text-[7px] font-mono text-gray-850 uppercase tracking-[0.3em]">SECURE_UPLINK</span>
+            <span className="text-[7px] font-mono text-gray-850 uppercase tracking-[0.3em]">AES_256</span>
           </div>
         </div>
       </div>
