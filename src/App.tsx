@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { ChatSidebar } from './components/ChatSidebar';
 
 import { About } from './components/About';
+import { GuardianCreed } from './components/GuardianCreed';
 import { Methodology } from './components/Methodology';
 import { Scanner } from './components/Scanner';
 import ComplianceGuide from './components/ComplianceGuide';
@@ -44,6 +45,7 @@ export default function App() {
         <Hero />
 
         <About />
+        <GuardianCreed />
 
         <Features />
 

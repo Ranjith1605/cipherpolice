@@ -30,7 +30,7 @@ export const Hero = () => {
                     </div>
                     {/* Status Pill Attached to Logo */}
                     <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-asi-dark/80 backdrop-blur-md border border-white/10 rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.5)] whitespace-nowrap">
-                        <span className="text-[9px] font-bold text-gray-400 tracking-[0.3em] uppercase">Security Level: Elite</span>
+                        <span className="text-[9px] font-bold text-asi-neon tracking-[0.3em] uppercase">Protocol: Universal Guardian</span>
                     </div>
                 </div>
 
@@ -41,19 +41,19 @@ export const Hero = () => {
                 </h1>
 
                 <div className="inline-block px-4 py-1 mb-8 border border-white/5 rounded-full bg-white/[0.02] backdrop-blur-sm">
-                    <span className="text-gray-400 font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase">Autonomous Security Interface</span>
+                    <span className="text-gray-400 font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase">Saviour of the Digital World</span>
                 </div>
 
-                <p className="text-base md:text-xl text-gray-500 font-medium mb-10 tracking-wide max-w-3xl mx-auto leading-relaxed">
-                    The next evolution of digital defense. Protecting digital citizens across the meta-quantum frontier.
-                    <span className="text-gray-600 block mt-2">The Guardian of your Global AI Existence.</span>
+                <p className="text-base md:text-xl text-gray-400 font-medium mb-10 tracking-wide max-w-3xl mx-auto leading-relaxed">
+                    The ultimate protector of digital citizens. Building a world of harmonious, peaceful, and enlightened civilization across the meta-frontier.
+                    <span className="text-gray-500 block mt-2">The Sovereign Shield of your Global AI Existence.</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mt-4">
                     <a href="#scanner" className="group relative px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-sm tracking-widest text-[10px] uppercase overflow-hidden transition-all hover:bg-white/10">
                         <span className="relative z-10 flex items-center gap-3">
                             <span className="w-1.5 h-1.5 rounded-full bg-asi-neon shadow-[0_0_8px_var(--asi-neon)]"></span>
-                            INITIATE DEFENSE
+                            ACTIVATE PROTECTION
                         </span>
                     </a>
                     <a href="#methodology" className="group px-10 py-4 text-gray-500 hover:text-white font-bold transition-all flex items-center gap-2">

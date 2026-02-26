@@ -12,6 +12,7 @@ export const Navbar = () => {
 
     const navItems = [
         { name: 'Home', href: '#home' },
+        { name: 'Creed', href: '#creed' },
         { name: 'Mission', href: '#about' }, // About section
         { name: 'Features', href: '#features' },
         { name: 'Protocols', href: '#compliance' }, // Compliance section

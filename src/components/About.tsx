@@ -3,19 +3,19 @@ import { Shield, Zap, Target } from 'lucide-react';
 export const About = () => {
     const values = [
         {
-            title: 'Proactive Intelligence',
+            title: 'Enlightened Defense',
             icon: <Zap className="w-8 h-8 text-asi-neon" />,
-            desc: 'Leveraging neural algorithms to identify and mitigate risks before they evolve into vectors.'
+            desc: 'Merging advanced neural logic with ethical wisdom to protect the digital essence of every citizen.'
         },
         {
-            title: 'Sovereign Experience',
+            title: 'Saviour Protocol',
             icon: <Target className="w-8 h-8 text-asi-purple" />,
-            desc: 'Eliminating complexity. Security should be intuitive, elegant, and controlled by the individual.'
+            desc: 'Actively neutralizing hackers and illegal activities to ensure a peaceful, harmonious digital existence.'
         },
         {
-            title: 'Unified Shield Core',
+            title: 'Universal Sanctuary',
             icon: <Shield className="w-8 h-8 text-white" />,
-            desc: 'A central, trustworthy platform where all your digital security needs are managed with zero-knowledge protocols.'
+            desc: 'Providing a secure, transparent refuge where digital rights are absolute and data is truly sovereign.'
         },
     ];
 
@@ -24,14 +24,14 @@ export const About = () => {
             <div className="container-vision relative z-10 px-4">
                 <div className="text-center mb-24">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-asi-neon/5 border border-asi-neon/20 rounded mb-6">
-                        <span className="text-[10px] font-black text-asi-neon tracking-[0.4em] uppercase">Core Mandate</span>
+                        <span className="text-[10px] font-black text-asi-neon tracking-[0.4em] uppercase">The Guardian's Creed</span>
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono">
-                        Mission <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic">Briefing</span>
+                        Digital <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic">Sanctuary</span>
                     </h2>
-                    <p className="text-gray-500 max-w-3xl mx-auto text-xl font-medium leading-relaxed">
-                        CipherPolice was founded to bridge the gap between complex enterprise-grade protocols and everyday digital existence.
-                        We simplify the defense process, ensuring robust, intelligent protection is within reach for every digital citizen.
+                    <p className="text-gray-400 max-w-3xl mx-auto text-xl font-medium leading-relaxed">
+                        CipherPolice exists as the shield of an enlightened civilization. We are the protectors of digital citizens,
+                        dedicated to building a world where peace, harmony, and sovereignty are the foundation of your AI existence.
                     </p>
                 </div>
 

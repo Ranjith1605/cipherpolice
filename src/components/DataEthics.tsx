@@ -31,15 +31,14 @@ const DataEthics: React.FC = () => {
                 {/* Header Section */}
                 <div className="text-center mb-24 max-w-4xl mx-auto">
                     <div className="inline-flex items-center gap-2 px-4 py-1 border border-white/10 bg-white/5 rounded-full mb-8">
-                        <span className="text-[10px] font-black text-gray-500 tracking-[0.4em] uppercase">Ethical Protocol V2.1</span>
+                        <span className="text-[10px] font-black text-gray-500 tracking-[0.4em] uppercase">Protective Protocol V3.0</span>
                     </div>
                     <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 italic">
-                        Digital <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic">Sovereignty</span>
+                        Digital <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic">Peace</span>
                     </h2>
                     <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed">
-                        At CipherPolice, we believe your cognitive footprint is the most sacred information you possess.
-                        Our "Elite Force" narrative isn't just a theme—it's a commitment to protecting your mind from
-                        attention-harvesting algorithms and digital exploitation.
+                        CipherPolice is the guardian of your digital essence. We stand between you and the chaos of the digital frontier,
+                        protecting you from data breaches, hackers, and illegal activities to maintain a harmonious and enlightened civilization.
                     </p>
                 </div>
 
