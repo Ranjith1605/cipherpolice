@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import BrowserMonitorSection from './components/BrowserMonitorSection';
+import { ActiveDefenseGrid } from './components/ActiveDefenseGrid';
 import DashboardPage from './pages/DashboardPage';
 import DataEthics from './components/DataEthics';
 import Team from './components/Team';
@@ -49,6 +50,7 @@ export default function App() {
         <Methodology />
 
         <BrowserMonitorSection />
+        <ActiveDefenseGrid />
 
         <DashboardPage />
 

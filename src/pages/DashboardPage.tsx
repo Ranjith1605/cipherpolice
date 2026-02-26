@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import SecurityPanelV2 from '../components/dashboard/SecurityPanelV2';
 import CognitivePanelV2 from '../components/dashboard/CognitivePanelV2';
 import RiskAnalyticsPanel from '../components/dashboard/RiskAnalyticsPanel';
+import DefenseGridPanel from '../components/dashboard/DefenseGridPanel';
 import DeepFocusPanel from '../components/dashboard/DeepFocusPanel';
 
-type Tab = 'overview' | 'security' | 'cognitive' | 'analytics' | 'focus';
+type Tab = 'overview' | 'security' | 'defense' | 'cognitive' | 'analytics' | 'focus';
 
 const tabs: { id: Tab; label: string; icon: string }[] = [
     { id: 'overview', label: 'Overview', icon: '🖥️' },
     { id: 'security', label: 'Security Center', icon: '🛡️' },
+    { id: 'defense', label: 'Defense Center', icon: '⚔️' },
     { id: 'cognitive', label: 'Cognitive Fire.', icon: '🧠' },
     { id: 'analytics', label: 'Risk Analytics', icon: '📊' },
     { id: 'focus', label: 'Deep Focus', icon: '🧘' },
@@ -140,6 +142,7 @@ const DashboardPage: React.FC = () => {
                     {activeTab === 'overview' && (
                         <div className="grid lg:grid-cols-2 gap-8">
                             <SecurityPanelV2 />
+                            <DefenseGridPanel />
                             <CognitivePanelV2 />
                             <div className="lg:col-span-1">
                                 <RiskAnalyticsPanel />
@@ -152,6 +155,11 @@ const DashboardPage: React.FC = () => {
                     {activeTab === 'security' && (
                         <div className="max-w-4xl mx-auto">
                             <SecurityPanelV2 />
+                        </div>
+                    )}
+                    {activeTab === 'defense' && (
+                        <div className="max-w-4xl mx-auto">
+                            <DefenseGridPanel />
                         </div>
                     )}
                     {activeTab === 'cognitive' && (
