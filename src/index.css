@@ -279,26 +279,27 @@ html {
   to {
     transform: rotate(360deg);
   }
+}
 
-  /* Enlightenment & Protection Utilities */
-  .glow-gold {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
-    border-color: rgba(255, 215, 0, 0.2);
-  }
+/* Enlightenment & Protection Utilities */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.2);
+}
 
-  .glow-gold-strong {
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.25);
-    border-color: rgba(255, 215, 0, 0.4);
-  }
+.glow-gold-strong {
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.25);
+  border-color: rgba(255, 215, 0, 0.4);
+}
 
-  .text-enlightened {
-    background: linear-gradient(to right, #ffffff, #ffd700, #ff8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.text-enlightened {
+  background: linear-gradient(to right, #ffffff, #ffd700, #ff8c00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  .bg-enlightened-grid {
-    background-image: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
+.bg-enlightened-grid {
+  background-image: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }

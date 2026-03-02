@@ -42,7 +42,6 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
     setIsLoading(true);
     setIsTyping(true);
 
-    await new Promise(r => setTimeout(r, 800));
     const response = await sendMessage(text);
     setIsTyping(false);
 
@@ -76,16 +75,16 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
         className={`fixed ${isOpen ? 'right-[27rem]' : 'right-8'} bottom-8 z-50 w-14 h-14 rounded-full transition-all duration-500 hover:scale-105 flex items-center justify-center group overflow-hidden`}
         style={{
           background: 'rgba(5, 10, 20, 0.9)',
-          border: '1px solid rgba(255, 255, 255, 0.05)',
-          boxShadow: isOpen ? '0 0 30px rgba(239, 68, 68, 0.1)' : '0 10px 30px rgba(0,0,0,0.5)',
+          border: '1px solid rgba(255, 215, 0, 0.2)',
+          boxShadow: isOpen ? '0 0 30px rgba(255, 215, 0, 0.1)' : '0 10px 30px rgba(0,0,0,0.5)',
           backdropFilter: 'blur(10px)'
         }}
       >
-        <div className="absolute inset-0 bg-asi-neon/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="absolute inset-0 bg-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         {isOpen ? (
           <X className="w-5 h-5 text-gray-500 hover:text-red-500 transition-colors" />
         ) : (
-          <MessageSquare className="w-5 h-5 text-gray-400 group-hover:text-asi-neon transition-colors" />
+          <MessageSquare className="w-5 h-5 text-gray-400 group-hover:text-yellow-500 transition-colors" />
         )}
       </button>
 
@@ -101,13 +100,13 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
         {/* HUD Header */}
         <div className="p-8 border-b border-white/5">
           <div className="flex items-center gap-5">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/[0.02] border border-white/5">
-              <Shield className="w-5 h-5 text-gray-500" />
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-yellow-500/[0.02] border border-yellow-500/10">
+              <Shield className="w-5 h-5 text-yellow-500" />
             </div>
             <div className="flex-1">
-              <h2 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">Liaison 02</h2>
+              <h2 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">Enlightened Liaison</h2>
               <div className="flex items-center gap-2 mt-1">
-                <span className="text-[8px] font-mono text-asi-neon/50 uppercase tracking-widest">Link Protocol Active</span>
+                <span className="text-[8px] font-mono text-yellow-500/50 uppercase tracking-widest">Heavenly Uplink | Light Speed</span>
               </div>
             </div>
             <button
