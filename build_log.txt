@@ -1,0 +1,31 @@
+
+> vite-react-typescript-starter@0.0.0 build
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 8 modules transformed.
+x Build failed in 392ms
+error during build:
+[vite:esbuild] Transform failed with 1 error:
+/Users/ranjith007/cipher/cipherpolice/src/components/Navbar.tsx:25:4: ERROR: Unexpected "return"
+file: /Users/ranjith007/cipher/cipherpolice/src/components/Navbar.tsx:25:4
+
+Unexpected "return"
+23 |  
+24 |      return (
+25 |      return (
+   |      ^
+26 |          <nav className={`fixed top-8 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl z-[200] transition-all duration-700 ${scrolled ? 'py-0' : 'py-2'}`}>
+27 |              <div className={`relative px-6 py-2 glass-ethereal border border-white/5 shadow-2xl transition-all duration-700 rounded-3xl ${scrolled ? 'bg-obsidian/90 scale-[0.99] border-quantum/20' : 'bg-obsidian/40'}`}>
+
+    at failureErrorWithLog (/Users/ranjith007/cipher/cipherpolice/node_modules/esbuild/lib/main.js:1472:15)
+    at /Users/ranjith007/cipher/cipherpolice/node_modules/esbuild/lib/main.js:755:50
+    at responseCallbacks.<computed> (/Users/ranjith007/cipher/cipherpolice/node_modules/esbuild/lib/main.js:622:9)
+    at handleIncomingPacket (/Users/ranjith007/cipher/cipherpolice/node_modules/esbuild/lib/main.js:677:12)
+    at Socket.readFromStdout (/Users/ranjith007/cipher/cipherpolice/node_modules/esbuild/lib/main.js:600:7)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)

@@ -22,7 +22,6 @@ export const Navbar = () => {
     ];
 
     return (
-    return (
         <nav className={`fixed top-8 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl z-[200] transition-all duration-700 ${scrolled ? 'py-0' : 'py-2'}`}>
             <div className={`relative px-6 py-2 glass-ethereal border border-white/5 shadow-2xl transition-all duration-700 rounded-3xl ${scrolled ? 'bg-obsidian/90 scale-[0.99] border-quantum/20' : 'bg-obsidian/40'}`}>
                 <div className="flex items-center justify-between h-16">
