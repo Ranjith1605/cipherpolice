@@ -46,31 +46,6 @@ export const getConversationHistory = (): Message[] => {
 
 export const sendMessage = async (userMessage: string): Promise<ChatResponse> => {
   try {
-    if (!GEMINI_API_KEY || GEMINI_API_KEY === 'your_gemini_api_key_here') {
-      return {
-        message: 'API key not configured. Please add VITE_GEMINI_API_KEY to your .env file.',
-        success: false,
-        error: 'No API key',
-      };
-    }
-
-    // Initialize session if it doesn't exist
-    if (!chatSession) {
-      const model = genAI.getGenerativeModel({
-        model: 'gemini-1.5-pro', // Upgraded to Pro for highest reasoning and tactical intelligence
-        systemInstruction: systemPrompt,
-        generationConfig: {
-          temperature: 0.7,
-          topP: 0.95,
-          topK: 40,
-          maxOutputTokens: 2048,
-        },
-      });
-      chatSession = model.startChat({
-        history: [],
-      });
-    }
-
     // Add user message to local history for UI tracking
     const userMsg: Message = {
       role: 'user',
@@ -79,9 +54,26 @@ export const sendMessage = async (userMessage: string): Promise<ChatResponse> =>
     };
     conversationHistory.push(userMsg);
 
-    const result = await chatSession.sendMessage(userMessage);
-    const response = await result.response;
-    const assistantMessage = response.text();
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: userMessage,
+        history: conversationHistory.slice(0, -1).map(msg => ({
+          role: msg.role,
+          parts: [{ text: msg.content }]
+        }))
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Cloud Uplink Error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    const assistantMessage = data.message;
 
     // Add assistant message to history
     const assistantMsg: Message = {
@@ -96,10 +88,10 @@ export const sendMessage = async (userMessage: string): Promise<ChatResponse> =>
       success: true,
     };
   } catch (error) {
-    console.error('Gemini Error:', error);
+    console.error('Neural Uplink Failure:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return {
-      message: 'Failed to get response from Cipher Police. Ensure your API key is valid and you have internet access.',
+      message: 'Neural Uplink failed. The Guardian is currently silent. Synchronizing...',
       success: false,
       error: errorMessage,
     };

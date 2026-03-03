@@ -5,7 +5,17 @@ export const SentryHeartbeat = () => {
     return (
         <motion.div
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{
+                opacity: 1,
+                y: [0, -5, 0]
+            }}
+            transition={{
+                y: {
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }
+            }}
             className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] px-6 py-2 glass-ethereal rounded-full border border-white/5 flex items-center gap-4 shadow-2xl"
         >
             <div className="flex items-center gap-2">
