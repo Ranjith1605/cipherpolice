@@ -29,43 +29,43 @@ export const AgentTerminal = () => {
             animate={{
                 opacity: 1,
                 x: 0,
-                y: [0, -10, 0],
+                y: [0, -8, 0],
             }}
             transition={{
                 y: {
-                    duration: 4,
+                    duration: 5,
                     repeat: Infinity,
                     ease: "easeInOut"
                 }
             }}
             drag
             dragConstraints={{ left: -500, right: 0, top: 0, bottom: 500 }}
-            className="fixed top-24 right-8 z-[90] w-80 glass-ethereal rounded-xl border border-quantum/20 p-4 shadow-2xl cursor-grab active:cursor-grabbing"
+            className="fixed top-32 right-8 z-[90] w-72 glass-ethereal rounded-2xl border border-quantum/20 p-5 shadow-2xl cursor-grab active:cursor-grabbing"
         >
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/5">
-                <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+                <div className="flex items-center gap-2.5">
                     <Terminal className="w-3.5 h-3.5 text-quantum-blue" />
-                    <span className="text-[10px] font-black text-white tracking-widest uppercase">Agent Terminal</span>
+                    <span className="text-[10px] font-black text-white tracking-[0.2em] uppercase">Patrol Unit 01</span>
                 </div>
-                <div className="flex gap-1.5">
-                    <Cpu className="w-3 h-3 text-gray-600" />
+                <div className="flex gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-quantum-blue animate-pulse"></div>
                     <Lock className="w-3 h-3 text-guardian-gold/40" />
                 </div>
             </div>
 
-            <div className="space-y-3 font-mono">
+            <div className="space-y-4 font-mono">
                 <AnimatePresence mode="popLayout">
                     {logs.map((log, i) => (
                         <motion.div
                             key={log + i}
-                            initial={{ opacity: 0, y: -5 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            className="flex gap-3 text-[10px]"
+                            initial={{ opacity: 0, x: -5 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, scale: 0.98 }}
+                            className="flex gap-3 text-[9px]"
                         >
-                            <ShieldAlert className="w-3 h-3 text-quantum-blue mt-0.5 shrink-0" />
-                            <p className="text-gray-400 break-words leading-tight">
-                                <span className="text-quantum-blue/60 mr-2">[{new Date().toLocaleTimeString([], { hour12: false })}]</span>
+                            <span className="text-quantum-blue/40 shrink-0">›</span>
+                            <p className="text-gray-500 break-words leading-tight">
+                                <span className="text-quantum-blue/60 mr-2 opacity-50">[{new Date().toLocaleTimeString([], { hour12: false, second: '2-digit' })}]</span>
                                 {log}
                             </p>
                         </motion.div>
@@ -73,10 +73,12 @@ export const AgentTerminal = () => {
                 </AnimatePresence>
             </div>
 
-            {/* Floating Status Line */}
-            <div className="mt-4 flex items-center gap-2 text-[8px] font-bold text-gray-600 uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-quantum-blue animate-pulse"></span>
-                Patrol Level: Divine Guardian
+            {/* Anchored Footer Status */}
+            <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-[8px] font-bold text-gray-600 uppercase tracking-widest">
+                    Metaphysics: Nominal
+                </div>
+                <div className="text-[8px] font-black text-quantum-blue opacity-50 tracking-[0.1em]">DIVINE_SHIELD</div>
             </div>
         </motion.div>
     );

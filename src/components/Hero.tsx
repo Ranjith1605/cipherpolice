@@ -16,75 +16,72 @@ export const Hero = () => {
 
             <div className="relative z-10 text-center px-4 max-w-5xl">
                 <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
+                    initial={{ scale: 0.95, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="relative inline-block mb-16 group"
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    className="relative inline-block mb-12 group"
                 >
-                    {/* Futuristic Logo Carrier */}
-                    <div className="absolute inset-0 bg-quantum-blue/10 blur-[120px] rounded-full group-hover:bg-quantum-blue/20 transition-all duration-700"></div>
-                    <div className="relative p-2 rounded-3xl bg-white/[0.02] backdrop-blur-3xl border border-white/5 overflow-hidden">
+                    {/* Futuristic Logo Carrier - Mathematically Scaled Down */}
+                    <div className="absolute inset-0 bg-quantum-blue/5 blur-[80px] rounded-full group-hover:bg-quantum-blue/15 transition-all duration-1000"></div>
+                    <div className="relative p-6 rounded-[2rem] bg-white/[0.01] backdrop-blur-2xl border border-white/5 overflow-hidden transition-all duration-500 group-hover:border-quantum/20">
                         <img
                             src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
                             alt="CipherPolice Logo"
-                            className="relative h-40 md:h-56 w-auto mx-auto block transform group-hover:scale-105 transition-transform duration-700"
+                            className="relative h-32 md:h-40 w-auto mx-auto block transform group-hover:scale-[1.02] transition-transform duration-1000"
                         />
-                        {/* Divine Glow Overlays */}
-                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-quantum-blue/10 to-transparent"></div>
-                        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-guardian-gold/5 to-transparent"></div>
+                        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-quantum-blue/10 to-transparent"></div>
                     </div>
-                    {/* Status Pill */}
+                    {/* Status Pill - Precision Placement */}
                     <motion.div
-                        initial={{ y: 20, opacity: 0 }}
+                        initial={{ y: 10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                        className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-6 py-2 glass-ethereal border border-quantum/30 rounded-full shadow-2xl whitespace-nowrap"
+                        transition={{ delay: 0.6 }}
+                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 glass-ethereal border border-quantum/20 rounded-full shadow-xl whitespace-nowrap"
                     >
-                        <span className="text-[10px] font-black text-quantum-blue tracking-[0.4em] uppercase">Citizen Identified. Protection Initiated.</span>
+                        <span className="text-[9px] font-black text-quantum-blue italic tracking-[0.4em] uppercase">Protection Vector: SEEDED</span>
                     </motion.div>
                 </motion.div>
 
                 <motion.h1
-                    initial={{ y: 20, opacity: 0 }}
+                    initial={{ y: 15, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.8 }}
-                    className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-tight"
+                    className="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-none"
                 >
-                    <span className="bg-gradient-to-b from-white via-white to-white/40 bg-clip-text text-transparent italic">
+                    <span className="bg-gradient-to-b from-white via-white to-white/30 bg-clip-text text-transparent italic">
                         Cipher
                     </span>
-                    <span className="text-white">Police</span>
+                    <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">Police</span>
                 </motion.h1>
 
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                    className="inline-block px-5 py-1.5 mb-12 border border-white/5 rounded-full bg-white/[0.02] backdrop-blur-sm"
+                    transition={{ delay: 1 }}
+                    className="inline-block px-4 py-1 mb-10 border border-white/5 rounded-full bg-white/[0.01]"
                 >
-                    <span className="text-gray-400 font-mono text-[10px] md:text-xs tracking-[0.5em] uppercase">The Initiation Portal</span>
+                    <span className="text-gray-500 font-mono text-[9px] md:text-[10px] tracking-[0.6em] uppercase">Celestial Command Interface</span>
                 </motion.div>
 
                 <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5 }}
-                    className="text-base md:text-xl text-gray-400 font-medium mb-16 tracking-wide max-w-3xl mx-auto leading-relaxed"
+                    transition={{ delay: 1.2 }}
+                    className="text-base md:text-lg text-gray-500 font-medium mb-12 tracking-wide max-w-2xl mx-auto leading-relaxed px-6"
                 >
-                    Your digital soul is sacred. We stand as the <span className="text-guardian-gold">Guardian Angel</span> of your meta-existence,
-                    neutralizing the forces of darkness through <span className="text-quantum-blue">Divine Protocols</span>.
-                    <span className="text-gray-500 block mt-4 font-mono text-sm tracking-widest italic font-light">"Fear not, for the Light of the Shield is with you."</span>
+                    Your digital sovereignty is absolute. We stand as the <span className="text-white">Universal Guardian</span> of your meta-existence,
+                    neutralizing threats through <span className="text-quantum-blue">Sacred Protocols</span>.
                 </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.8 }}
-                    className="flex justify-center gap-16 md:gap-24"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4 }}
+                    className="flex flex-wrap justify-center gap-8 md:gap-12"
                 >
-                    <FloatingOrb icon={Shield} label="Vow of Protection" variant="quantum" onClick={() => window.location.hash = '#scanner'} />
-                    <FloatingOrb icon={Lock} label="Divine Protocols" variant="guardian" onClick={() => window.location.hash = '#about'} />
-                    <FloatingOrb icon={Eye} label="Patrol Insights" variant="quantum" onClick={() => window.location.hash = '#browser-monitor'} />
+                    <FloatingOrb icon={Shield} label="Vow" variant="quantum" onClick={() => window.location.hash = '#scanner'} />
+                    <FloatingOrb icon={Lock} label="Creed" variant="guardian" onClick={() => window.location.hash = '#about'} />
+                    <FloatingOrb icon={Eye} label="Monitor" variant="quantum" onClick={() => window.location.hash = '#browser-monitor'} />
                 </motion.div>
             </div>
 
