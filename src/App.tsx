@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -9,6 +10,8 @@ import DataEthics from './components/DataEthics';
 import Team from './components/Team';
 import { Footer } from './components/Footer';
 import { ChatSidebar } from './components/ChatSidebar';
+import { SentryHeartbeat } from './components/SentryHeartbeat';
+import { AgentTerminal } from './components/AgentTerminal';
 
 import { About } from './components/About';
 import { GuardianCreed } from './components/GuardianCreed';
@@ -20,25 +23,40 @@ import { Contact } from './components/Contact';
 export default function App() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
+  // Mouse reactive motion values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
   useEffect(() => {
-    document.title = 'CipherPolice – AI Security & Cognitive Firewall';
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-    const meta = document.createElement('meta');
-    meta.name = 'description';
-    meta.content = "CipherPolice – The world's first AI-powered digital security force for the AI browser. Protecting digital citizens in the meta-quantum world.";
-    document.head.appendChild(meta);
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      mouseX.set((clientX / innerWidth - 0.5) * 40);
+      mouseY.set((clientY / innerHeight - 0.5) * 40);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    document.title = 'CipherPolice – Anti-Gravity Meta-Quantum Protocol';
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
-    <div className="min-h-screen bg-asi-dark font-sans text-white relative overflow-x-hidden selection:bg-asi-neon selection:text-asi-dark" style={{ fontFamily: 'Inter, sans-serif' }}>
-      {/* Futuristic Background Layers */}
-      <div className="fixed inset-0 bg-cyber-grid opacity-20 pointer-events-none"></div>
-      <div className="scanline-overlay"></div>
-      <div className="scanline-beam"></div>
-      <div className="fixed inset-0 bg-gradient-to-t from-asi-dark via-transparent to-transparent pointer-events-none"></div>
+    <div className="min-h-screen bg-[#050a14] font-sans text-white relative overflow-x-hidden selection:bg-quantum-blue selection:text-black">
+      {/* Anti-Gravity Reactive Background */}
+      <motion.div
+        style={{ x: springX, y: springY }}
+        className="fixed inset-0 pointer-events-none z-0 opacity-20"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--quantum-blue)_1px,_transparent_1px)] bg-[size:100px_100px]" />
+      </motion.div>
+
+      <div className="fixed inset-0 bg-gradient-to-t from-[#050a14] via-transparent to-transparent pointer-events-none z-[1]"></div>
+
+      <SentryHeartbeat />
+      <AgentTerminal />
 
       <Navbar />
       <main className="relative z-10">

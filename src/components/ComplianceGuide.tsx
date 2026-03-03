@@ -1,51 +1,52 @@
-import { ShieldCheck, Scale, Globe, Binary, Check, Cpu, Lock, UserCheck } from 'lucide-react';
+import { ShieldCheck, Globe, Binary, Check, Cpu, Lock, UserCheck, Scale } from 'lucide-react';
+import { motion as fm } from 'framer-motion';
 
 const ComplianceGuide = () => {
   const regulations = [
     {
-      title: 'GDPR (EU)',
-      icon: <Globe className="w-8 h-8 text-asi-neon" />,
-      desc: 'General Data Protection Regulation',
+      title: 'Divine GDPR (EU)',
+      icon: <Globe className="w-8 h-8 text-quantum-blue" />,
+      desc: 'Sacred Data Protection Mandate',
       key_points: [
-        'Explicit Neural Consent',
-        'Right to Erasure (Zero-Link)',
-        'Data Portability Protocols',
-        'Privacy by Design Mandatory',
-        'Rapid Breach Intelligence',
+        'Explicit Soul Consent',
+        'Right to Erasure (Void-Link)',
+        'Spirit Portability Protocols',
+        'Privacy by Design (Creation)',
+        'Rapid Breach Intervention',
       ],
     },
     {
-      title: 'CCPA (US)',
-      icon: <ShieldCheck className="w-8 h-8 text-asi-purple" />,
-      desc: 'California Consumer Privacy Act',
+      title: 'Guardian CCPA (US)',
+      icon: <ShieldCheck className="w-8 h-8 text-guardian-gold" />,
+      desc: 'Sovereign Consumer Privacy Act',
       key_points: [
-        'Right to Know Data Vectors',
-        'Right to Delete Persona Info',
-        'Opt-Out of Data Liquidation',
+        'Right to Know Divine Vectors',
+        'Right to Delete Persona Essense',
+        'Opt-Out of Data Harvest',
         'Non-Discrimination Assurance',
-        'Behavioral Privacy Guard',
+        'Behavioral Guardian Guard',
       ],
     },
     {
       title: 'PIPEDA (CA)',
       icon: <Scale className="w-8 h-8 text-white" />,
-      desc: 'Persona Info Protection Act',
+      desc: 'Persona Info Protection Vow',
       key_points: [
         'Accountability Cascades',
         'Purpose Identification',
-        'Strict Consent Handshakes',
+        'Sacred Consent Handshakes',
         'Limited Lifecycle Retention',
-        'Verification Audits',
+        'Verification Holy Audits',
       ],
     },
     {
-      title: 'AI Act (EU)',
-      icon: <Binary className="w-8 h-8 text-asi-neon" />,
-      desc: 'Comprehensive AI Regulation',
+      title: 'Celestial AI Act',
+      icon: <Binary className="w-8 h-8 text-quantum-blue" />,
+      desc: 'Comprehensive Meta-Regulation',
       key_points: [
         'Risk-Based Classification',
         'Neural Transparency',
-        'Human Oversight Override',
+        'Divine Oversight Override',
         'Bias Mitigation Logic',
         'Model Sovereignty',
       ],
@@ -55,123 +56,167 @@ const ComplianceGuide = () => {
   const aiEthics = [
     {
       title: 'Transparency',
-      icon: <Cpu className="w-6 h-6 text-asi-neon" />,
-      desc: 'Neural clarity on all AI interaction vectors.'
+      icon: <Cpu className="w-6 h-6 text-quantum-blue" />,
+      desc: 'Neural clarity on all divine interaction vectors.'
     },
     {
       title: 'Fairness',
-      icon: <Scale className="w-6 h-6 text-asi-purple" />,
-      desc: 'Algorithmic neutrality for all digital citizens.'
+      icon: <Scale className="w-6 h-6 text-guardian-gold" />,
+      desc: 'Algorithmic neutrality for all digital souls.'
     },
     {
       title: 'Accountability',
       icon: <UserCheck className="w-6 h-6 text-white" />,
-      desc: 'Organization-level liability for AI outcomes.'
+      desc: 'Divine-level liability for all AI outcomes.'
     },
     {
       title: 'Security',
-      icon: <Lock className="w-6 h-6 text-asi-neon" />,
-      desc: 'Hardened defense against neural manipulation.'
+      icon: <Lock className="w-6 h-6 text-quantum-blue" />,
+      desc: 'Hardened defense against the dark arts of manipulation.'
     },
   ];
 
   return (
-    <section id="compliance" className="py-32 relative overflow-hidden bg-asi-dark">
+    <section id="compliance" className="py-32 relative overflow-hidden bg-transparent">
       <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none"></div>
 
       <div className="container-vision relative z-10 px-4">
         <div className="max-w-4xl mx-auto text-center mb-24">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-asi-neon/5 border border-asi-neon/20 rounded mb-6">
-            <span className="text-[10px] font-black text-asi-neon tracking-[0.4em] uppercase">Legal Intelligence</span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono">
-            Regulatory <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic underline decoration-white/10 underline-offset-8">Protocols</span>
-          </h2>
-          <p className="text-gray-500 text-lg font-medium leading-relaxed">
-            Navigating the complex multi-jurisdictional landscape of meta-quantum data protection.
-            We ensure tactical compliance with international AI standards.
-          </p>
+          <fm.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 glass-ethereal border border-quantum/30 rounded-full mb-6 shadow-2xl"
+          >
+            <span className="text-[10px] font-black text-quantum-blue tracking-[0.4rem] uppercase">Sacred Jurisprudence</span>
+          </fm.div>
+          <fm.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl md:text-7xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono"
+          >
+            Sacred <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic">Mandates</span>
+          </fm.h2>
+          <fm.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-gray-500 text-xl font-medium leading-relaxed max-w-3xl mx-auto"
+          >
+            Navigating the multi-jurisdictional lattice of meta-quantum data protection.
+            We ensure tactical compliance with Eternal AI standards.
+          </fm.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
           {regulations.map((reg, idx) => (
-            <div
+            <fm.div
               key={idx}
-              className="holographic-card p-8 group transition-all duration-500 hover:scale-[1.02]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="glass-ethereal p-10 group transition-all duration-500 rounded-[2.5rem] border-white/5 hover:border-quantum/40 shadow-2xl"
             >
-              <div className="mb-6 p-4 bg-white/5 rounded-xl border border-white/10 group-hover:border-asi-neon transition-colors w-fit">
+              <div className="mb-8 p-4 bg-white/[0.02] rounded-2xl border border-white/10 group-hover:border-quantum/50 transition-all w-fit shadow-xl">
                 {reg.icon}
               </div>
-              <h3 className="text-xl font-black mb-1 text-white uppercase tracking-tight group-hover:text-asi-neon transition-colors">{reg.title}</h3>
-              <p className="text-[10px] font-mono text-gray-600 mb-6 uppercase tracking-widest">{reg.desc}</p>
-              <ul className="space-y-3">
+              <h3 className="text-2xl font-black mb-2 text-white uppercase tracking-tight group-hover:text-quantum-blue transition-colors italic">{reg.title}</h3>
+              <p className="text-[10px] font-mono text-gray-600 mb-8 uppercase tracking-[0.3rem] font-bold">{reg.desc}</p>
+              <ul className="space-y-4">
                 {reg.key_points.map((point, i) => (
-                  <li key={i} className="text-[10px] text-gray-400 flex items-start gap-3 group-hover:text-gray-300">
-                    <Check className="w-3 h-3 text-asi-neon mt-0.5" />
-                    <span className="font-medium tracking-wide">{point}</span>
+                  <li key={i} className="text-[11px] text-gray-500 flex items-start gap-3 group-hover:text-gray-300 transition-colors font-medium">
+                    <Check className="w-4 h-4 text-quantum-blue mt-0.5 shrink-0" />
+                    <span className="tracking-wide uppercase italic text-[9px]">{point}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </fm.div>
           ))}
         </div>
 
-        <div className="glass-premium p-12 border border-white/5 mb-16 relative overflow-hidden group">
-          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-asi-neon to-asi-purple"></div>
-          <h3 className="text-2xl font-black mb-12 text-center text-white italic uppercase tracking-widest">
-            AI Ethics <span className="not-italic text-asi-neon">&</span> Responsibility Logic
+        <fm.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="glass-ethereal p-16 border border-white/5 mb-16 relative overflow-hidden group rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+        >
+          <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-quantum-blue to-guardian-gold opacity-50"></div>
+          <h3 className="text-3xl font-black mb-16 text-center text-white italic uppercase tracking-[0.5rem]">
+            Divine Ethics <span className="not-italic text-quantum-blue">&</span> Sacred Responsibility
           </h3>
-          <div className="grid md:grid-cols-4 gap-12">
+          <div className="grid md:grid-cols-4 gap-16">
             {aiEthics.map((item, idx) => (
-              <div key={idx} className="text-center group-hover:translate-y-[-4px] transition-transform duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
-                <div className="mx-auto w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-asi-neon transition-all">
+              <fm.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="text-center group-hover:translate-y-[-8px] transition-transform duration-500"
+              >
+                <div className="mx-auto w-20 h-20 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center mb-8 group-hover:border-quantum/50 group-hover:bg-quantum-blue/5 transition-all shadow-2xl">
                   {item.icon}
                 </div>
-                <h4 className="font-black mb-3 text-white uppercase text-xs tracking-[0.2em]">{item.title}</h4>
-                <p className="text-gray-500 text-[10px] leading-relaxed font-medium">{item.desc}</p>
-              </div>
+                <h4 className="font-black mb-4 text-white uppercase text-[11px] tracking-[0.3rem] italic">{item.title}</h4>
+                <p className="text-gray-500 text-[10px] leading-relaxed font-bold uppercase tracking-widest">{item.desc}</p>
+              </fm.div>
             ))}
           </div>
-        </div>
+        </fm.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="glass-premium p-10 border border-white/5 bg-asi-dark/40">
-            <h4 className="text-lg font-black text-asi-neon mb-8 uppercase tracking-[0.3em]">Consumer Sovereignty</h4>
-            <ul className="space-y-4">
+        <div className="grid md:grid-cols-2 gap-10">
+          <fm.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-ethereal p-12 border border-white/5 bg-obsidian/40 rounded-[2.5rem] shadow-2xl"
+          >
+            <h4 className="text-xl font-black text-quantum-blue mb-10 uppercase tracking-[0.4rem] italic">Consumer Sovereignty</h4>
+            <ul className="space-y-5">
               {[
                 'Right to access neural data streams',
                 'Right to correct algorithmic bias',
                 'Right to absolute erasure',
-                'Right to processing restriction',
+                'Right to restrict meta-processing',
                 'Right to data portability protocol',
-                'Right to lodge judicial complaints'
+                'Right to lodge celestial complaints'
               ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-center text-[10px] font-mono text-gray-500 uppercase tracking-widest">
-                  <div className="w-1 h-1 rounded-full bg-asi-neon"></div>
+                <li key={i} className="flex gap-5 items-center text-[10px] font-mono text-gray-500 uppercase tracking-[0.3rem] font-bold group hover:text-gray-300 transition-colors">
+                  <div className="w-1.5 h-1.5 rounded-full bg-quantum-blue shadow-[0_0_10px_rgba(0,242,255,1)]"></div>
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
+          </fm.div>
 
-          <div className="glass-premium p-10 border border-white/5 bg-asi-dark/40">
-            <h4 className="text-lg font-black text-asi-purple mb-8 uppercase tracking-[0.3em]">Operational Readiness</h4>
-            <ul className="space-y-4">
+          <fm.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-ethereal p-12 border border-white/5 bg-obsidian/40 rounded-[2.5rem] shadow-2xl"
+          >
+            <h4 className="text-xl font-black text-guardian-gold mb-10 uppercase tracking-[0.4rem] italic">Operational Readiness</h4>
+            <ul className="space-y-5">
               {[
-                'Privacy-by-Design implementation',
-                'Bi-annual security neural audits',
+                'Privacy-by-Creation implementation',
+                'Bi-annual sacred neural audits',
                 'Immutable consent ledger records',
                 'Real-time incident response strike-teams',
-                'Force-wide compliance training',
-                'Quantum-level data encryption'
+                'Force-wide mandate training',
+                'Meta-Quantum level data encryption'
               ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-center text-[10px] font-mono text-gray-500 uppercase tracking-widest">
-                  <div className="w-1 h-1 rounded-full bg-asi-purple"></div>
+                <li key={i} className="flex gap-5 items-center text-[10px] font-mono text-gray-500 uppercase tracking-[0.3rem] font-bold group hover:text-gray-300 transition-colors">
+                  <div className="w-1.5 h-1.5 rounded-full bg-guardian-gold shadow-[0_0_10px_rgba(255,202,40,1)]"></div>
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
+          </fm.div>
         </div>
       </div>
     </section>

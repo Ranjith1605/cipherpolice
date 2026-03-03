@@ -2,19 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables */
+/* Ethereal Cyber-Law Design System */
 :root {
-  --asi-neon: #00f3ff;
-  --asi-purple: #bc13fe;
-  --asi-dark: #050a14;
+  --quantum-blue: #00f2ff;
+  --guardian-gold: #ffca28;
+  --obsidian: #050a14;
   --asi-slate: #0f172a;
-  --asi-silver: #e2e8f0;
 
-  --gradient-asi: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
-  --gradient-dark: linear-gradient(135deg, #050a14 0%, #0f172a 100%);
+  --glow-quantum: 0 0 15px rgba(0, 242, 255, 0.4);
+  --glow-gold: 0 0 15px rgba(255, 202, 40, 0.4);
+}
 
-  --glow-neon: 0 0 15px rgba(0, 243, 255, 0.6);
-  --glow-purple: 0 0 15px rgba(188, 19, 254, 0.6);
+.glass-ethereal {
+  background: rgba(5, 10, 20, 0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.border-quantum {
+  border-color: var(--quantum-blue);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+}
+
+.border-guardian {
+  border-color: var(--guardian-gold);
+  box-shadow: 0 0 10px rgba(255, 202, 40, 0.2);
+}
+
+.ui-floating {
+  margin: 1.5rem;
+  border-radius: 1.5rem;
 }
 
 /* Smooth Scrolling */

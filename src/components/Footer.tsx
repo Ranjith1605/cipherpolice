@@ -1,33 +1,46 @@
+import { motion } from 'framer-motion';
+
 export const Footer = () => (
-    <footer className="py-20 relative overflow-hidden bg-asi-dark border-t border-white/5">
+    <footer className="py-24 relative overflow-hidden bg-transparent border-t border-white/5">
         <div className="container-vision relative z-10 px-4 text-center">
-            <div className="flex flex-col items-center gap-8">
-                <div className="flex items-center gap-4 text-[10px] font-black text-gray-500 tracking-[0.4em] uppercase">
-                    <span>Protocol 01</span>
-                    <span className="w-1 h-1 rounded-full bg-asi-neon"></span>
-                    <span>System Secure</span>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center gap-10"
+            >
+                <div className="flex items-center gap-6 text-[10px] font-black text-gray-500 tracking-[0.5em] uppercase">
+                    <span>Sovereign Protocol</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-quantum-blue shadow-[0_0_8px_var(--quantum-blue)]"></span>
+                    <span>Spirit Safe</span>
                 </div>
 
-                <h3 className="text-2xl font-black italic text-white tracking-widest uppercase">
-                    CIPHER<span className="not-italic text-asi-neon">POLICE</span>
+                <h3 className="text-3xl font-black italic text-white tracking-[0.4em] uppercase">
+                    CIPHER<span className="not-italic text-quantum-blue drop-shadow-[0_0_15px_rgba(0,242,255,0.4)]">POLICE</span>
                 </h3>
 
-                <p className="text-[10px] font-mono text-gray-600 max-w-sm leading-relaxed uppercase tracking-[0.1em]">
-                    The world's first AI-powered digital security force for the AI browser.
-                    Protecting digital citizens in the meta-quantum world.
+                <p className="text-[11px] font-mono text-gray-500 max-w-md leading-relaxed uppercase tracking-[0.2em] italic font-medium">
+                    The world's first divine digital security force for the meta-quantum browser.
+                    Providing a vow of protection for every digital soul.
                 </p>
 
-                <div className="h-px w-24 bg-gradient-to-r from-transparent via-asi-neon/50 to-transparent"></div>
+                <div className="h-px w-48 bg-gradient-to-r from-transparent via-quantum-blue/30 to-transparent"></div>
 
-                <div className="flex flex-col gap-2">
-                    <p className="text-[9px] font-mono text-gray-500 tracking-widest uppercase">
-                        © 2026 CipherPolice [GLOBAL COMMAND CENTER]
+                <div className="flex flex-col gap-4">
+                    <p className="text-[10px] font-mono text-gray-600 tracking-[0.3em] uppercase font-bold">
+                        © 2026 CipherPolice [CELESTIAL COMMAND CENTER]
                     </p>
-                    <p className="text-[8px] font-mono text-asi-neon/40 tracking-[0.3em] uppercase">
-                        Sovereignty Ensured :: Transparency Protocol Active
-                    </p>
+                    <div className="flex items-center justify-center gap-4">
+                        <span className="text-[8px] font-mono text-quantum-blue/40 tracking-[0.4em] uppercase animate-pulse">
+                            Sovereignty Ensured
+                        </span>
+                        <span className="text-[8px] font-mono text-white/10 tracking-[0.4em] uppercase">::</span>
+                        <span className="text-[8px] font-mono text-guardian-gold/40 tracking-[0.4em] uppercase">
+                            Sacred Protocols Active
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     </footer>
 );

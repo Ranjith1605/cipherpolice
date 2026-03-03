@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { motion as fm, AnimatePresence } from 'framer-motion';
+import { Zap, ShieldCheck, ShieldX } from 'lucide-react';
 
 interface ShieldRingProps {
     level: number; // 0-100
@@ -11,49 +13,57 @@ const ShieldRing: React.FC<ShieldRingProps> = ({ level, active }) => {
     const strokeDashoffset = circumference - (level / 100) * circumference;
 
     return (
-        <div className="relative w-40 h-40 mx-auto">
+        <div className="relative w-48 h-48 mx-auto mb-8">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
                 {/* Background ring */}
                 <circle
                     cx="60" cy="60" r={radius}
                     fill="none"
-                    stroke="rgba(255,255,255,0.05)"
-                    strokeWidth="10"
+                    stroke="rgba(255,255,255,0.03)"
+                    strokeWidth="8"
                 />
                 {/* Progress ring */}
-                <circle
+                <fm.circle
                     cx="60" cy="60" r={radius}
                     fill="none"
-                    stroke={active ? '#00f3ff' : '#475569'}
-                    strokeWidth="10"
+                    stroke={active ? '#00f2ff' : '#1e293b'}
+                    strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray={circumference}
-                    strokeDashoffset={strokeDashoffset}
+                    animate={{ strokeDashoffset: strokeDashoffset }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                     style={{
-                        transition: 'stroke-dashoffset 1s ease, stroke 0.5s ease',
-                        filter: active ? `drop-shadow(0 0 8px #00f3ff)` : 'none',
+                        filter: active ? `drop-shadow(0 0 12px #00f2ff)` : 'none',
                     }}
                 />
                 {/* Inner glow ring */}
                 {active && (
-                    <circle
-                        cx="60" cy="60" r={radius - 8}
+                    <fm.circle
+                        cx="60" cy="60" r={radius - 12}
                         fill="none"
-                        stroke="rgba(0,243,255,0.1)"
-                        strokeWidth="6"
+                        stroke="rgba(0,242,255,0.1)"
+                        strokeWidth="4"
+                        animate={{ scale: [0.98, 1.02, 0.98], opacity: [0.3, 0.6, 0.3] }}
+                        transition={{ duration: 4, repeat: Infinity }}
                     />
                 )}
             </svg>
             {/* Center content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-3xl mb-1">{active ? '🛡️' : '⚫'}</span>
+                <fm.div
+                    animate={active ? { y: [0, -5, 0], rotate: [0, 5, -5, 0] } : {}}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    className="mb-2"
+                >
+                    {active ? <ShieldCheck className="w-10 h-10 text-quantum-blue shadow-2xl" /> : <ShieldX className="w-10 h-10 text-gray-700" />}
+                </fm.div>
                 <span
-                    className="text-xl font-black font-mono"
-                    style={{ color: active ? '#00f3ff' : '#475569' }}
+                    className="text-2xl font-black font-mono tracking-tighter"
+                    style={{ color: active ? '#00f2ff' : '#475569' }}
                 >
                     {level}%
                 </span>
-                <span className="text-xs text-gray-500">{active ? 'Active' : 'Dormant'}</span>
+                <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{active ? 'Sacred' : 'Void'}</span>
             </div>
         </div>
     );
@@ -101,65 +111,83 @@ const DeepFocusPanel: React.FC = () => {
     };
 
     const policies = [
-        { label: 'Block social media', active: true },
-        { label: 'Mute notifications', active: true },
-        { label: 'Restrict tab count to 5', active: false },
-        { label: 'Enforce HTTPS-only', active: true },
+        { label: 'Purge social media', active: true },
+        { label: 'Silence void-notifications', active: true },
+        { label: 'Limit soul-vessels to 5', active: false },
+        { label: 'Enforce Sacred-Uplink only', active: true },
     ];
 
     return (
-        <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-            <div className="flex items-center justify-between mb-6">
+        <div className="glass-ethereal border border-white/10 rounded-[2.5rem] p-8 backdrop-blur-xl h-full shadow-2xl">
+            <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <span>🧘</span> Deep Focus
-                        <span className="text-xs text-gray-500 font-normal">/ Mental Shield</span>
+                    <h3 className="text-xl font-black text-white flex items-center gap-3 uppercase italic font-mono">
+                        <Zap className="w-6 h-6 text-quantum-blue" />
+                        Deep Vow
                     </h3>
-                    <p className="text-xs text-gray-500 mt-0.5">Cognitive firewall engagement</p>
+                    <p className="text-[10px] text-gray-500 mt-1 uppercase tracking-[0.3em] font-bold italic">Sacred Shield Activation</p>
                 </div>
-                {active && (
-                    <span className="text-xs bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-2 py-1 rounded-full font-mono animate-pulse">
-                        SHIELDED
-                    </span>
-                )}
+                <AnimatePresence>
+                    {active && (
+                        <fm.span
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            className="text-[10px] bg-quantum-blue/10 text-quantum-blue border border-quantum/30 px-3 py-1 rounded-full font-black tracking-widest font-mono shadow-[0_0_15px_rgba(0,242,255,0.2)]"
+                        >
+                            SHIELDED
+                        </fm.span>
+                    )}
+                </AnimatePresence>
             </div>
 
             {/* Shield Gauge */}
             <ShieldRing level={focusLevel} active={active} />
 
             {/* Timer */}
-            {active && (
-                <div className="text-center mt-3 mb-4">
-                    <span className="font-mono text-2xl font-bold text-cyan-400">
-                        {formatTime(countdown)}
-                    </span>
-                    <p className="text-xs text-gray-500 mt-1">Focus session remaining</p>
-                </div>
-            )}
+            <AnimatePresence>
+                {active && (
+                    <fm.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="text-center mb-6"
+                    >
+                        <span className="font-mono text-3xl font-black text-quantum-blue drop-shadow-[0_0_10px_rgba(0,242,255,0.4)]">
+                            {formatTime(countdown)}
+                        </span>
+                        <p className="text-[10px] text-gray-600 mt-2 font-black uppercase tracking-widest italic">Sacred Vow Remaining</p>
+                    </fm.div>
+                )}
+            </AnimatePresence>
 
             {/* Activate Button */}
-            <div className={`text-center ${active ? 'mt-2' : 'mt-4'} mb-5`}>
-                <button
+            <div className="text-center mb-8">
+                <fm.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => setActive(!active)}
-                    className={`px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 ${active
-                            ? 'bg-red-500/20 border border-red-500/50 text-red-400 hover:bg-red-500/30'
-                            : 'bg-cyan-500/10 border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(0,243,255,0.2)]'
+                    className={`w-full py-5 rounded-[2rem] font-black text-xs uppercase tracking-[0.4em] transition-all duration-500 italic shadow-2xl ${active
+                        ? 'bg-red-500/10 border border-red-500/40 text-red-500 hover:bg-red-500/20'
+                        : 'bg-quantum-blue text-obsidian shadow-[0_0_30px_rgba(0,242,255,0.3)]'
                         }`}
                 >
-                    {active ? '⛔ Disengage Shield' : '🛡️ Engage Mental Shield'}
-                </button>
+                    {active ? '⛔ Disengage Shield' : '🛡️ Engage Sacred Shield'}
+                </fm.button>
             </div>
 
             {/* Policies */}
             <div>
-                <p className="text-xs text-gray-500 mb-2 uppercase tracking-widest">Firewall Policies</p>
-                <div className="space-y-1.5">
+                <p className="text-[10px] text-gray-600 mb-4 uppercase tracking-[0.4em] font-black italic">✧ Firewall Vows</p>
+                <div className="space-y-3">
                     {policies.map((p) => (
-                        <div key={p.label} className="flex items-center gap-2">
-                            <div className={`w-2 h-2 rounded-full ${p.active && active ? 'bg-cyan-400' : 'bg-slate-600'}`}
-                                style={{ boxShadow: p.active && active ? '0 0 6px #00f3ff' : 'none' }}
+                        <div key={p.label} className="flex items-center gap-3 p-3 glass-ethereal rounded-xl border border-white/5">
+                            <fm.div
+                                animate={p.active && active ? { scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] } : {}}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className={`w-2 h-2 rounded-full ${p.active && active ? 'bg-quantum-blue shadow-[0_0_10px_var(--quantum-blue)]' : 'bg-slate-700'}`}
                             />
-                            <span className={`text-xs ${p.active && active ? 'text-gray-300' : 'text-gray-600'}`}>
+                            <span className={`text-[11px] font-bold tracking-widest uppercase italic ${p.active && active ? 'text-gray-300' : 'text-gray-700'}`}>
                                 {p.label}
                             </span>
                         </div>

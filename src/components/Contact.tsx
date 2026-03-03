@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Send, CheckCircle2, AlertTriangle, Radio, RefreshCcw } from 'lucide-react';
+import { motion as fm, AnimatePresence } from 'framer-motion';
 
 export const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -14,41 +15,58 @@ export const Contact = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsSending(true);
-        setStatus('ENCRYPTING_PACKETS...');
+        setStatus('ENCRYPTING_SOUL_PACKETS...');
 
         setTimeout(() => {
             console.log('Form Data:', formData);
             setIsSending(false);
-            setStatus('UPLINK_SUCCESS :: MESSAGE_TRANSMITTED');
+            setStatus('CELESTIAL_UPLINK_SUCCESS :: Vow Transmitted');
             setFormData({ name: '', email: '', message: '' });
         }, 2000);
     };
 
     return (
-        <section id="contact" className="py-32 bg-asi-dark relative overflow-hidden">
+        <section id="contact" className="py-40 bg-transparent relative overflow-hidden">
             <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none"></div>
 
-            <div className="container-vision relative z-10 px-4 max-w-2xl mx-auto">
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-asi-purple/5 border border-asi-purple/20 rounded mb-6">
-                        <Radio className="w-3 h-3 text-asi-purple animate-pulse" />
-                        <span className="text-[10px] font-black text-asi-purple tracking-[0.4em] uppercase">Emergency Frequency</span>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono">
-                        Secure <span className="bg-gradient-to-r from-asi-neon to-asi-purple bg-clip-text text-transparent not-italic underline decoration-white/10 underline-offset-8">Channel</span>
+            <div className="container-vision relative z-10 px-4 max-w-3xl mx-auto">
+                <fm.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-24"
+                >
+                    <fm.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-3 px-6 py-2 bg-guardian-gold/5 border border-guardian-gold/20 glass-ethereal rounded-full mb-10 shadow-2xl"
+                    >
+                        <Radio className="w-4 h-4 text-guardian-gold animate-pulse" />
+                        <span className="text-[10px] font-black text-guardian-gold tracking-[0.5em] uppercase">Celestial Frequency</span>
+                    </fm.div>
+                    <h2 className="text-4xl md:text-7xl font-black mb-10 italic text-white tracking-tighter uppercase font-mono">
+                        Divine <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic underline decoration-white/10 underline-offset-8">Uplink</span>
                     </h2>
-                </div>
+                    <p className="text-gray-500 text-xl font-medium italic">Establish a secure connection with the High Command.</p>
+                </fm.div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <fm.form
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    onSubmit={handleSubmit}
+                    className="space-y-6 glass-ethereal p-12 rounded-[3.5rem] border-white/5 shadow-2xl"
+                >
                     <div className="relative group">
                         <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="OPERATOR NAME"
+                            placeholder="CITIZEN NAME"
                             required
-                            className="w-full p-5 bg-white/5 border border-white/10 rounded-sm text-xs font-mono text-white placeholder-gray-700 outline-none focus:border-asi-neon/40 focus:bg-white/10 transition-all tracking-widest uppercase"
+                            className="w-full p-6 bg-white/[0.02] border border-white/10 rounded-2xl text-xs font-mono text-white placeholder-gray-800 outline-none focus:border-quantum/50 focus:bg-white/5 transition-all tracking-[0.3em] uppercase italic font-bold"
                         />
                     </div>
                     <div className="relative group">
@@ -57,9 +75,9 @@ export const Contact = () => {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="SECURE_UPLINK@DOMAIN.COM"
+                            placeholder="SACRED_UPLINK@SOUL.DOM"
                             required
-                            className="w-full p-5 bg-white/5 border border-white/10 rounded-sm text-xs font-mono text-white placeholder-gray-700 outline-none focus:border-asi-neon/40 focus:bg-white/10 transition-all tracking-widest uppercase"
+                            className="w-full p-6 bg-white/[0.02] border border-white/10 rounded-2xl text-xs font-mono text-white placeholder-gray-800 outline-none focus:border-quantum/50 focus:bg-white/5 transition-all tracking-[0.3em] uppercase italic font-bold"
                         />
                     </div>
                     <div className="relative group">
@@ -67,45 +85,53 @@ export const Contact = () => {
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            placeholder="TRANSMISSION CONTENT..."
-                            rows={5}
+                            placeholder="CELESTIAL TRANSMISSION CONTENT..."
+                            rows={6}
                             required
-                            className="w-full p-5 bg-white/5 border border-white/10 rounded-sm text-xs font-mono text-white placeholder-gray-700 outline-none focus:border-asi-neon/40 focus:bg-white/10 transition-all tracking-widest uppercase resize-none"
+                            className="w-full p-6 bg-white/[0.02] border border-white/10 rounded-2xl text-xs font-mono text-white placeholder-gray-800 outline-none focus:border-quantum/50 focus:bg-white/5 transition-all tracking-[0.3em] uppercase italic resize-none font-bold"
                         ></textarea>
                     </div>
 
-                    <div className="flex flex-col items-center gap-6 pt-4">
-                        <button
+                    <div className="flex flex-col items-center gap-8 pt-6">
+                        <fm.button
+                            whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(0,242,255,0.3)" }}
+                            whileTap={{ scale: 0.98 }}
                             type="submit"
                             disabled={isSending}
-                            className="w-full py-5 bg-asi-neon text-asi-dark font-black text-xs uppercase tracking-[0.3em] hover:shadow-[0_0_40px_rgba(0,243,255,0.4)] transition-all disabled:opacity-50 active:scale-95 flex items-center justify-center gap-3"
+                            className="w-full py-6 bg-quantum-blue text-obsidian font-black text-sm uppercase tracking-[0.5em] rounded-2xl transition-all disabled:opacity-50 flex items-center justify-center gap-4 italic shadow-2xl"
                         >
                             {isSending ? (
                                 <>
-                                    <RefreshCcw className="w-4 h-4 animate-spin" />
+                                    <RefreshCcw className="w-5 h-5 animate-spin" />
                                     TRANSMITTING...
                                 </>
                             ) : (
                                 <>
-                                    <Send className="w-4 h-4" />
-                                    INITIALIZE UPLINK
+                                    <Send className="w-5 h-5" />
+                                    INITIALIZE CELESTIAL UPLINK
                                 </>
                             )}
-                        </button>
+                        </fm.button>
 
-                        {status && (
-                            <div className={`flex items-center gap-3 px-6 py-3 rounded-full border bg-black/40 font-mono text-[10px] tracking-widest uppercase animate-slide-up ${status.includes('SUCCESS') ? 'border-asi-neon/30 text-asi-neon shadow-[0_0_15px_rgba(0,243,255,0.1)]' : 'border-asi-purple/30 text-asi-purple'
-                                }`}>
-                                {status.includes('SUCCESS') ? <CheckCircle2 className="w-3 h-3" /> : <AlertTriangle className="w-3 h-3 animate-pulse" />}
-                                {status}
-                            </div>
-                        )}
+                        <AnimatePresence>
+                            {status && (
+                                <fm.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0 }}
+                                    className={`flex items-center gap-4 px-8 py-4 rounded-full border bg-obsidian/60 glass-ethereal font-mono text-[11px] tracking-[0.2em] uppercase shadow-2xl ${status.includes('SUCCESS') ? 'border-quantum/40 text-quantum-blue shadow-[0_0_25px_rgba(0,242,255,0.2)]' : 'border-guardian-gold/40 text-guardian-gold'
+                                        }`}>
+                                    {status.includes('SUCCESS') ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4 animate-pulse" />}
+                                    {status}
+                                </fm.div>
+                            )}
+                        </AnimatePresence>
                     </div>
-                </form>
+                </fm.form>
 
-                <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 opacity-30">
-                    <div className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Encryption: PQ-End-to-End</div>
-                    <div className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Signal Strength: Optimal [98%]</div>
+                <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 opacity-20">
+                    <div className="text-[11px] font-mono text-gray-500 tracking-[0.4em] uppercase font-bold italic">Encryption: Metaphysical-Grade</div>
+                    <div className="text-[11px] font-mono text-gray-500 tracking-[0.4em] uppercase font-bold italic">Signal: Ascended [100%]</div>
                 </div>
             </div>
         </section>

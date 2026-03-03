@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { motion as fm } from 'framer-motion';
+import { BarChart3, TrendingUp, Layers } from 'lucide-react';
 
 interface MetricBar {
     label: string;
@@ -24,17 +26,15 @@ const weeklyData: WeeklyTrend[] = [
 
 const RiskAnalyticsPanel: React.FC = () => {
     const [metrics, setMetrics] = useState<MetricBar[]>([
-        { label: 'Attention Depth', value: 67, color: '#00f3ff', glow: 'rgba(0,243,255,0.4)' },
-        { label: 'Decision Clarity', value: 82, color: '#bc13fe', glow: 'rgba(188,19,254,0.4)' },
-        { label: 'Cognitive Friction', value: 41, color: '#f59e0b', glow: 'rgba(245,158,11,0.4)' },
+        { label: 'Attention Depth', value: 67, color: '#00f2ff', glow: 'rgba(0,242,255,0.4)' },
+        { label: 'Decision Clarity', value: 82, color: '#ffca28', glow: 'rgba(255,202,40,0.4)' },
+        { label: 'Soul Friction', value: 41, color: '#ffca28', glow: 'rgba(255,202,40,0.4)' },
         { label: 'Context Pressure', value: 58, color: '#ef4444', glow: 'rgba(239,68,68,0.4)' },
     ]);
 
-    const [animated, setAnimated] = useState(false);
+
 
     useEffect(() => {
-        const timer = setTimeout(() => setAnimated(true), 200);
-        return () => clearTimeout(timer);
     }, []);
 
     // Simulate live updates
@@ -49,46 +49,55 @@ const RiskAnalyticsPanel: React.FC = () => {
     }, []);
 
     const getEfficiencyColor = (val: number) => {
-        if (val >= 80) return '#00f3ff';
-        if (val >= 60) return '#f59e0b';
+        if (val >= 80) return '#00f2ff';
+        if (val >= 60) return '#ffca28';
         return '#ef4444';
     };
 
     const maxEfficiency = Math.max(...weeklyData.map(d => d.efficiency));
 
     return (
-        <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-            <div className="flex items-center justify-between mb-6">
+        <div className="glass-ethereal border border-white/10 rounded-[2.5rem] p-8 backdrop-blur-xl h-full shadow-2xl">
+            <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <span className="text-purple-400">📊</span> Risk Analytics
+                    <h3 className="text-xl font-black text-white flex items-center gap-3 uppercase italic font-mono">
+                        <BarChart3 className="w-6 h-6 text-quantum-blue" />
+                        Metaphysics
                     </h3>
-                    <p className="text-xs text-gray-500 mt-0.5">Cognitive Profiling & Baseline</p>
+                    <p className="text-[10px] text-gray-500 mt-1 uppercase tracking-[0.3em] font-bold italic">Soul Baseline & Profiling</p>
                 </div>
-                <span className="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-1 rounded-full font-mono">
-                    LIVE
-                </span>
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-quantum-blue/5 border border-quantum/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-quantum-blue animate-pulse shadow-[0_0_8px_var(--quantum-blue)]" />
+                    <span className="text-[9px] text-quantum-blue font-black tracking-widest font-mono uppercase">LIVE</span>
+                </div>
             </div>
 
             {/* Metric Bars */}
-            <div className="space-y-4 mb-6">
+            <div className="space-y-6 mb-10">
                 {metrics.map((metric) => (
                     <div key={metric.label}>
-                        <div className="flex justify-between mb-1.5">
-                            <span className="text-xs text-gray-400">{metric.label}</span>
-                            <span className="text-xs font-mono font-bold" style={{ color: metric.color }}>
+                        <div className="flex justify-between mb-2">
+                            <span className="text-[11px] text-gray-500 font-black uppercase tracking-widest flex items-center gap-2">
+                                <Layers className="w-3 h-3 text-gray-700" />
+                                {metric.label}
+                            </span>
+                            <span className="text-xs font-black font-mono tracking-tighter" style={{ color: metric.color }}>
                                 {Math.round(metric.value)}%
                             </span>
                         </div>
-                        <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div
-                                className="h-full rounded-full transition-all duration-700 ease-out"
+                        <div className="h-2.5 bg-white/[0.03] rounded-full overflow-hidden border border-white/5 shadow-inner">
+                            <fm.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${metric.value}%` }}
+                                transition={{ duration: 1, ease: "easeOut" }}
+                                className="h-full rounded-full relative"
                                 style={{
-                                    width: animated ? `${metric.value}%` : '0%',
                                     background: `linear-gradient(90deg, ${metric.color}99, ${metric.color})`,
-                                    boxShadow: animated ? `0 0 8px ${metric.glow}` : 'none',
+                                    boxShadow: `0 0 10px ${metric.glow}`,
                                 }}
-                            />
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
+                            </fm.div>
                         </div>
                     </div>
                 ))}
@@ -96,20 +105,29 @@ const RiskAnalyticsPanel: React.FC = () => {
 
             {/* Weekly Efficiency Chart */}
             <div>
-                <p className="text-xs text-gray-500 mb-3 font-medium uppercase tracking-widest">Weekly Efficiency Trend</p>
-                <div className="flex items-end gap-2 h-20">
+                <p className="text-[10px] text-gray-500 mb-6 font-black uppercase tracking-[0.4em] italic flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4" />
+                    ✧ Weekly Harmony Trend
+                </p>
+                <div className="flex items-end gap-3 h-28 px-2">
                     {weeklyData.map((d) => (
-                        <div key={d.day} className="flex-1 flex flex-col items-center gap-1">
-                            <div
-                                className="w-full rounded-t-sm transition-all duration-1000 ease-out"
-                                style={{
-                                    height: animated ? `${(d.efficiency / maxEfficiency) * 100}%` : '0%',
-                                    background: `linear-gradient(180deg, ${getEfficiencyColor(d.efficiency)}, ${getEfficiencyColor(d.efficiency)}55)`,
-                                    boxShadow: animated ? `0 0 6px ${getEfficiencyColor(d.efficiency)}66` : 'none',
-                                    minHeight: '4px',
-                                }}
-                            />
-                            <span className="text-xs text-gray-600">{d.day}</span>
+                        <div key={d.day} className="flex-1 flex flex-col items-center gap-3 group">
+                            <div className="relative w-full flex flex-col items-center justify-end h-full">
+                                <fm.div
+                                    initial={{ height: 0 }}
+                                    animate={{ height: `${(d.efficiency / maxEfficiency) * 100}%` }}
+                                    transition={{ duration: 1.5, ease: "easeOut" }}
+                                    className="w-full rounded-t-xl transition-all duration-500 group-hover:brightness-125"
+                                    style={{
+                                        background: `linear-gradient(180deg, ${getEfficiencyColor(d.efficiency)}, ${getEfficiencyColor(d.efficiency)}44)`,
+                                        boxShadow: `0 0 15px ${getEfficiencyColor(d.efficiency)}33`,
+                                        minHeight: '6px',
+                                    }}
+                                >
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-white/20 rounded-t-xl"></div>
+                                </fm.div>
+                            </div>
+                            <span className="text-[10px] text-gray-700 font-mono font-bold uppercase tracking-widest">{d.day}</span>
                         </div>
                     ))}
                 </div>

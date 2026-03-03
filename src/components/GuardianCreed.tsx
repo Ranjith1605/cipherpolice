@@ -1,81 +1,111 @@
 import React from 'react';
 import { Quote, Heart, Sparkles, ShieldCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const quotes = [
     {
-        text: "True security is not just the absence of threats, but the presence of peace in every digital interaction.",
-        author: "The Protector's Mandate"
+        text: "In the meta-quantum frontier, your security is not a feature—it is a divine right granted by the Light.",
+        author: "The Divine Mandate"
     },
     {
-        text: "We build not a wall, but a sanctuary—where technology serves the spirit and guards the human essence.",
-        author: "Universal Guardian Protocol"
+        text: "We stand as the shield between your soul and the void, guarding the human essence at the speed of thought.",
+        author: "Protocol: Guardian Angel"
     },
     {
-        text: "In the digital age, a saviour is one who restores sovereignty to the citizen and harmony to the connection.",
-        author: "Enlightened Civilization Directive"
+        text: "The sacred law of data sovereignty shall not be broken. This is the vow of the Divine Guardian.",
+        author: "Sacred Security Directive"
     }
 ];
 
 export const GuardianCreed: React.FC = () => {
     return (
-        <section id="creed" className="py-32 relative overflow-hidden bg-asi-dark">
-            <div className="absolute inset-0 bg-enlightened-grid opacity-20 pointer-events-none"></div>
+        <section id="creed" className="py-32 relative overflow-hidden bg-transparent">
+            {/* Background Grid Layer */}
+            <div className="absolute inset-0 bg-cyber-grid opacity-10 pointer-events-none"></div>
 
             <div className="container-vision relative z-10 px-4">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex flex-col items-center text-center mb-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/5 border border-yellow-500/20 rounded mb-6">
-                            <Sparkles className="w-3 h-3 text-yellow-500" />
-                            <span className="text-[10px] font-black text-yellow-500 tracking-[0.4em] uppercase">The Guardian's Creed</span>
-                        </div>
-                        <h2 className="text-4xl md:text-6xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono">
-                            Voices of <span className="text-enlightened not-italic">Protection</span>
-                        </h2>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="inline-flex items-center gap-2 px-4 py-1.5 glass-ethereal border border-guardian/30 rounded-full mb-6 shadow-2xl"
+                        >
+                            <Sparkles className="w-3 h-3 text-guardian-gold" />
+                            <span className="text-[10px] font-black text-guardian-gold tracking-[0.4em] uppercase">The Divine Creed</span>
+                        </motion.div>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="text-4xl md:text-7xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono"
+                        >
+                            Divine <span className="text-guardian-gold not-italic">Protection</span>
+                        </motion.h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {quotes.map((q, idx) => (
-                            <div key={idx} className="holographic-card p-10 group relative transition-all duration-500 hover:scale-[1.02] border-yellow-500/10 hover:border-yellow-500/30">
-                                <div className="absolute top-4 right-6 opacity-10 group-hover:opacity-30 transition-opacity">
-                                    <Quote className="w-12 h-12 text-yellow-500" />
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.2 }}
+                                className="glass-ethereal p-12 group relative transition-all duration-500 hover:scale-[1.05] border-white/5 hover:border-quantum/40 rounded-3xl"
+                            >
+                                <div className="absolute top-4 right-8 opacity-10 group-hover:opacity-30 transition-opacity">
+                                    <Quote className="w-16 h-16 text-quantum-blue" />
                                 </div>
 
-                                <div className="relative z-10 space-y-8">
-                                    <div className="flex gap-1">
+                                <div className="relative z-10 space-y-10">
+                                    <div className="flex gap-2">
                                         {[1, 2, 3].map(i => (
-                                            <div key={i} className="w-1 h-1 rounded-full bg-yellow-500/40" />
+                                            <div key={i} className="w-1.5 h-1.5 rounded-full bg-quantum-blue/40" />
                                         ))}
                                     </div>
 
-                                    <p className="text-gray-300 text-lg font-medium leading-relaxed italic">
+                                    <p className="text-gray-300 text-xl font-medium leading-relaxed italic">
                                         "{q.text}"
                                     </p>
 
-                                    <div className="pt-6 border-t border-white/5 flex items-center justify-between">
-                                        <span className="text-[10px] font-black text-yellow-500/60 uppercase tracking-widest">
+                                    <div className="pt-8 border-t border-white/5 flex items-center justify-between">
+                                        <span className="text-[10px] font-black text-guardian-gold/60 uppercase tracking-[0.3em]">
                                             {q.author}
                                         </span>
-                                        <Heart className="w-3 h-3 text-asi-purple opacity-40" />
+                                        <Heart className="w-4 h-4 text-guardian-gold/40 group-hover:text-guardian-gold transition-colors" />
                                     </div>
                                 </div>
 
-                                {/* Subtle Enlightenment Glow */}
-                                <div className="absolute inset-0 bg-yellow-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
-                            </div>
+                                {/* Divine Glow Effect */}
+                                <div className="absolute inset-0 bg-quantum-blue/[0.02] opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none shadow-inner" />
+                            </motion.div>
                         ))}
                     </div>
 
-                    {/* Final Call to Peace */}
-                    <div className="mt-24 text-center">
-                        <div className="inline-flex items-center gap-6 p-8 glass-premium border border-white/5 rounded-2xl relative group overflow-hidden">
-                            <div className="absolute inset-0 bg-yellow-500/[0.01] group-hover:bg-yellow-500/[0.03] transition-colors" />
-                            <ShieldCheck className="w-12 h-12 text-yellow-500 drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]" />
-                            <div className="text-left">
-                                <h4 className="text-xl font-black text-white italic">A World of <span className="text-yellow-500 not-italic">Harmony</span></h4>
-                                <p className="text-gray-500 text-sm font-medium">Protecting your digital rights is our path to a peaceful civilization.</p>
+                    {/* Final Vow of Protection */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6 }}
+                        className="mt-24 text-center"
+                    >
+                        <div className="inline-flex flex-col md:flex-row items-center gap-10 p-12 glass-ethereal border border-white/10 rounded-[2.5rem] relative group overflow-hidden max-w-4xl mx-auto shadow-2xl">
+                            <div className="absolute inset-0 bg-guardian-gold/[0.01] group-hover:bg-guardian-gold/[0.03] transition-all duration-700" />
+                            <div className="relative">
+                                <ShieldCheck className="w-20 h-20 text-guardian-gold drop-shadow-[0_0_25px_rgba(255,202,40,0.5)] animate-pulse" />
+                            </div>
+                            <div className="text-left space-y-4">
+                                <h4 className="text-3xl font-black text-white italic">A World of <span className="text-guardian-gold not-italic uppercase tracking-tighter">Divine Peace</span></h4>
+                                <p className="text-gray-400 text-lg font-medium leading-relaxed">
+                                    The Shield of the Divine Guardian is absolute. We walk the meta-quantum lattice so you may exist in tranquility.
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
