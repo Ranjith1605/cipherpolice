@@ -1,103 +1,110 @@
 import { motion } from 'framer-motion';
-import { Shield, Lock, Eye, Zap } from 'lucide-react';
-import { FloatingOrb } from './ui/FloatingOrb';
+import { Shield } from 'lucide-react';
 
 export const Hero = () => {
     return (
-        <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-transparent">
-            {/* Anti-Gravity Grid (Hero Layer) */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-                <div className="grid grid-cols-12 h-full w-full">
-                    {[...Array(12)].map((_, i) => (
-                        <div key={i} className="border-r border-white/5"></div>
-                    ))}
-                </div>
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            {/* Ambient radial glow */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#00f2ff]/5 blur-[120px]" />
             </div>
 
-            <div className="relative z-10 text-center px-4 max-w-5xl">
+            <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+                {/* Logo */}
                 <motion.div
-                    initial={{ scale: 0.95, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="relative inline-block mb-12 group"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    className="flex justify-center mb-10"
                 >
-                    {/* Futuristic Logo Carrier - Mathematically Scaled Down */}
-                    <div className="absolute inset-0 bg-quantum-blue/5 blur-[80px] rounded-full group-hover:bg-quantum-blue/15 transition-all duration-1000"></div>
-                    <div className="relative p-6 rounded-[2rem] bg-white/[0.01] backdrop-blur-2xl border border-white/5 overflow-hidden transition-all duration-500 group-hover:border-quantum/20">
-                        <img
-                            src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
-                            alt="CipherPolice Logo"
-                            className="relative h-32 md:h-40 w-auto mx-auto block transform group-hover:scale-[1.02] transition-transform duration-1000"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-quantum-blue/10 to-transparent"></div>
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-[#00f2ff]/10 blur-[60px] rounded-full" />
+                        <div className="relative p-5 rounded-2xl bg-white/[0.02] border border-white/8">
+                            <img
+                                src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
+                                alt="CipherPolice Logo"
+                                className="h-24 w-auto mx-auto"
+                            />
+                        </div>
+                        {/* Active indicator */}
+                        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-full bg-[#050a14] border border-[#00f2ff]/30">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#00f2ff] animate-pulse" />
+                            <span className="text-[9px] font-bold text-[#00f2ff] tracking-[0.3em] uppercase">Active</span>
+                        </div>
                     </div>
-                    {/* Status Pill - Precision Placement */}
-                    <motion.div
-                        initial={{ y: 10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 glass-ethereal border border-quantum/20 rounded-full shadow-xl whitespace-nowrap"
-                    >
-                        <span className="text-[9px] font-black text-quantum-blue italic tracking-[0.4em] uppercase">Protection Vector: SEEDED</span>
-                    </motion.div>
                 </motion.div>
 
+                {/* Headline */}
                 <motion.h1
-                    initial={{ y: 15, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-none"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.8 }}
+                    className="text-5xl md:text-7xl font-black tracking-tight mb-5 leading-[1.05]"
                 >
-                    <span className="bg-gradient-to-b from-white via-white to-white/30 bg-clip-text text-transparent italic">
-                        Cipher
-                    </span>
-                    <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">Police</span>
+                    Your data<br />
+                    <span className="text-[#00f2ff]">stays yours.</span>
                 </motion.h1>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    className="inline-block px-4 py-1 mb-10 border border-white/5 rounded-full bg-white/[0.01]"
-                >
-                    <span className="text-gray-500 font-mono text-[9px] md:text-[10px] tracking-[0.6em] uppercase">Celestial Command Interface</span>
-                </motion.div>
-
+                {/* Subheadline */}
                 <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2 }}
-                    className="text-base md:text-lg text-gray-500 font-medium mb-12 tracking-wide max-w-2xl mx-auto leading-relaxed px-6"
+                    transition={{ delay: 0.65, duration: 0.7 }}
+                    className="text-lg text-white/40 font-normal leading-relaxed mb-10 max-w-xl mx-auto"
                 >
-                    Your digital sovereignty is absolute. We stand as the <span className="text-white">Universal Guardian</span> of your meta-existence,
-                    neutralizing threats through <span className="text-quantum-blue">Sacred Protocols</span>.
+                    CipherPolice is a browser extension that blocks trackers, enforces consent laws, and keeps your browsing private — automatically. No configuration needed.
                 </motion.p>
 
+                {/* CTAs */}
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.4 }}
-                    className="flex flex-wrap justify-center gap-8 md:gap-12"
+                    transition={{ delay: 0.85 }}
+                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
-                    <FloatingOrb icon={Shield} label="Vow" variant="quantum" onClick={() => window.location.hash = '#scanner'} />
-                    <FloatingOrb icon={Lock} label="Creed" variant="guardian" onClick={() => window.location.hash = '#about'} />
-                    <FloatingOrb icon={Eye} label="Monitor" variant="quantum" onClick={() => window.location.hash = '#browser-monitor'} />
+                    <a
+                        href="#features"
+                        className="px-8 py-3.5 rounded-xl bg-[#00f2ff] text-[#050a14] font-bold text-sm tracking-wide hover:bg-[#00f2ff]/90 transition-all duration-300 shadow-[0_0_30px_rgba(0,242,255,0.25)]"
+                    >
+                        See How It Works
+                    </a>
+                    <a
+                        href="#contact"
+                        className="px-8 py-3.5 rounded-xl bg-transparent text-white/60 font-semibold text-sm tracking-wide border border-white/10 hover:border-white/25 hover:text-white transition-all duration-300"
+                    >
+                        Get in Touch
+                    </a>
+                </motion.div>
+
+                {/* Trust stats */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.1 }}
+                    className="mt-16 pt-10 border-t border-white/5 grid grid-cols-3 gap-8 max-w-md mx-auto"
+                >
+                    {[
+                        { value: '100%', label: 'Local Processing' },
+                        { value: '0', label: 'Data Sold' },
+                        { value: 'AES-256', label: 'Encryption' },
+                    ].map((stat) => (
+                        <div key={stat.label} className="text-center">
+                            <div className="text-xl font-black text-white mb-1">{stat.value}</div>
+                            <div className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-medium">{stat.label}</div>
+                        </div>
+                    ))}
                 </motion.div>
             </div>
 
-            {/* Anti-Gravity Orbs (Background Decoration) */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <motion.div
-                    animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
-                    transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-                    className="absolute top-1/4 right-[15%] w-64 h-64 rounded-full bg-quantum-blue/5 blur-[120px]"
-                />
-                <motion.div
-                    animate={{ y: [30, -30, 30], x: [20, -20, 20] }}
-                    transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-                    className="absolute bottom-1/4 left-[10%] w-96 h-96 rounded-full bg-guardian-gold/5 blur-[150px]"
-                />
-            </div>
+            {/* Scroll nudge */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, y: [0, 6, 0] }}
+                transition={{ delay: 1.5, y: { duration: 2, repeat: Infinity } }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+                <div className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent" />
+            </motion.div>
         </section>
     );
 };

@@ -1,15 +1,17 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, ShieldAlert, Cpu, Lock } from 'lucide-react';
+import { Terminal, Lock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const LOG_MESSAGES = [
     "0x-Threat Neutralized: SQL Injection Vector blocked.",
     "Identity Masked: Stealth Protocol 4.0 engaged.",
-    "Neural Firewall: Anomalous cognitive load detected.",
-    "Citizen Protection: Encryption handshakes verified.",
-    "Patrol: Scanning meta-quantum lattice...",
+    "Firewall: Anomalous network request pattern detected.",
+    "Citizen Protection: TLS handshakes verified [AES-256].",
+    "Scanner: Inspecting outbound data headers...",
     "Alert: Adversarial prompt detected and sanitized.",
-    "Status: Divine Protocol 'Sanctuary' active."
+    "Defense: Tracker fingerprint blocked [3rd-party].",
+    "Status: Content Security Policy enforced.",
+    "Audit: Cookie consent enforcement active.",
 ];
 
 export const AgentTerminal = () => {
@@ -45,7 +47,7 @@ export const AgentTerminal = () => {
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
                 <div className="flex items-center gap-2.5">
                     <Terminal className="w-3.5 h-3.5 text-quantum-blue" />
-                    <span className="text-[10px] font-black text-white tracking-[0.2em] uppercase">Patrol Unit 01</span>
+                    <span className="text-[10px] font-black text-white tracking-[0.2em] uppercase">Security Terminal</span>
                 </div>
                 <div className="flex gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-quantum-blue animate-pulse"></div>
@@ -73,12 +75,12 @@ export const AgentTerminal = () => {
                 </AnimatePresence>
             </div>
 
-            {/* Anchored Footer Status */}
+            {/* Terminal Footer */}
             <div className="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-[8px] font-bold text-gray-600 uppercase tracking-widest">
-                    Metaphysics: Nominal
+                    System: Nominal
                 </div>
-                <div className="text-[8px] font-black text-quantum-blue opacity-50 tracking-[0.1em]">DIVINE_SHIELD</div>
+                <div className="text-[8px] font-black text-quantum-blue opacity-50 tracking-[0.1em]">CIPHER_SHIELD</div>
             </div>
         </motion.div>
     );

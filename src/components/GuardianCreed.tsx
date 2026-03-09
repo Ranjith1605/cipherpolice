@@ -1,19 +1,19 @@
 import React from 'react';
-import { Quote, Heart, Sparkles, ShieldCheck } from 'lucide-react';
+import { Quote, ShieldCheck, Lock, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const quotes = [
+const principles = [
     {
-        text: "In the meta-quantum frontier, your security is not a feature—it is a divine right granted by the Light.",
-        author: "The Divine Mandate"
+        text: "Privacy is not a feature — it is a fundamental user right. Every line of code we ship is a commitment to that right.",
+        author: "Core Engineering Principle"
     },
     {
-        text: "We stand as the shield between your soul and the void, guarding the human essence at the speed of thought.",
-        author: "Protocol: Guardian Angel"
+        text: "We stand between your device and the network, blocking unauthorized data extraction at the browser layer before it reaches any server.",
+        author: "Protocol: Active Defense"
     },
     {
-        text: "The sacred law of data sovereignty shall not be broken. This is the vow of the Divine Guardian.",
-        author: "Sacred Security Directive"
+        text: "Data sovereignty means you decide what is collected, processed, and shared. This is enforced at the protocol level, not by policy alone.",
+        author: "Data Sovereignty Directive"
     }
 ];
 
@@ -32,8 +32,8 @@ export const GuardianCreed: React.FC = () => {
                             viewport={{ once: true }}
                             className="inline-flex items-center gap-2 px-4 py-1.5 glass-ethereal border border-guardian/30 rounded-full mb-6 shadow-2xl"
                         >
-                            <Sparkles className="w-3 h-3 text-guardian-gold" />
-                            <span className="text-[10px] font-black text-guardian-gold tracking-[0.4em] uppercase">The Divine Creed</span>
+                            <Lock className="w-3 h-3 text-guardian-gold" />
+                            <span className="text-[10px] font-black text-guardian-gold tracking-[0.4em] uppercase">Core Principles</span>
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
@@ -42,12 +42,12 @@ export const GuardianCreed: React.FC = () => {
                             transition={{ delay: 0.2 }}
                             className="text-4xl md:text-7xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono"
                         >
-                            Divine <span className="text-guardian-gold not-italic">Protection</span>
+                            Our <span className="text-guardian-gold not-italic">Mission</span>
                         </motion.h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {quotes.map((q, idx) => (
+                        {principles.map((q, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 30 }}
@@ -75,17 +75,17 @@ export const GuardianCreed: React.FC = () => {
                                         <span className="text-[10px] font-black text-guardian-gold/60 uppercase tracking-[0.3em]">
                                             {q.author}
                                         </span>
-                                        <Heart className="w-4 h-4 text-guardian-gold/40 group-hover:text-guardian-gold transition-colors" />
+                                        <ShieldCheck className="w-4 h-4 text-guardian-gold/40 group-hover:text-guardian-gold transition-colors" />
                                     </div>
                                 </div>
 
-                                {/* Divine Glow Effect */}
+                                {/* Hover glow */}
                                 <div className="absolute inset-0 bg-quantum-blue/[0.02] opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none shadow-inner" />
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* Final Vow of Protection */}
+                    {/* Zero-Trust commitment banner */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -99,9 +99,9 @@ export const GuardianCreed: React.FC = () => {
                                 <ShieldCheck className="w-20 h-20 text-guardian-gold drop-shadow-[0_0_25px_rgba(255,202,40,0.5)] animate-pulse" />
                             </div>
                             <div className="text-left space-y-4">
-                                <h4 className="text-3xl font-black text-white italic">A World of <span className="text-guardian-gold not-italic uppercase tracking-tighter">Divine Peace</span></h4>
+                                <h4 className="text-3xl font-black text-white italic">Zero-Trust <span className="text-guardian-gold not-italic uppercase tracking-tighter">Architecture</span></h4>
                                 <p className="text-gray-400 text-lg font-medium leading-relaxed">
-                                    The Shield of the Divine Guardian is absolute. We walk the meta-quantum lattice so you may exist in tranquility.
+                                    CipherPolice trusts no network, no server, no third party by default. All data processing happens locally on your device. Nothing leaves without your explicit consent.
                                 </p>
                             </div>
                         </div>

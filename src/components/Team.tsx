@@ -1,105 +1,76 @@
 import { Shield, Brain, Lock } from 'lucide-react';
-import { motion as fm } from 'framer-motion';
+import { motion } from 'framer-motion';
+
+const team = [
+    {
+        name: "Antigravity Unit-01",
+        id: "ID-FRONT-66",
+        role: "Frontend Engineer",
+        desc: "Builds the dashboard UI and browser extension interface.",
+        icon: <Shield className="w-5 h-5 text-[#00f2ff]" />,
+    },
+    {
+        name: "Cognitive Engine Lead",
+        id: "ID-NEURAL-42",
+        role: "ML Engineer",
+        desc: "Develops the behavioral detection model and real-time threat signals.",
+        icon: <Brain className="w-5 h-5 text-[#ffca28]" />,
+    },
+    {
+        name: "Ethics Command",
+        id: "ID-SEC-01",
+        role: "Security & Compliance",
+        desc: "Owns the compliance architecture and data sovereignty framework.",
+        icon: <Lock className="w-5 h-5 text-white" />,
+    }
+];
 
 const Team = () => {
-    const team = [
-        {
-            name: "Antigravity Unit-01",
-            id: "ID-FRONT-66",
-            role: "Metaphysical Architect",
-            description: "Implementing the meta-lattice dashboard and modular protection components, ensuring seamless integration of divine metrics with zero-knowledge overhead.",
-            icon: <Shield className="w-8 h-8 text-quantum-blue" />,
-            access: "Level 10"
-        },
-        {
-            name: "Cognitive Engine Lead",
-            id: "ID-NEURAL-42",
-            role: "Neural Seer",
-            description: "Crafting the sacred rulesets for behavioral pattern recognition. Translating raw telemetry into actionable soul-states of being.",
-            icon: <Brain className="w-8 h-8 text-guardian-gold" />,
-            access: "Level 09"
-        },
-        {
-            name: "Ethics Command",
-            id: "ID-SEC-01",
-            role: "Sovereign Arbitrator",
-            description: "Designing the security panel framework and crafting the authoritative microcopy. Ensuring digital sovereignty through radical transparency.",
-            icon: <Lock className="w-8 h-8 text-white" />,
-            access: "Level 10"
-        }
-    ];
-
     return (
-        <section id="team" className="py-40 relative overflow-hidden bg-transparent">
-            {/* Cyber Grid Background */}
-            <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none"></div>
-
-            <div className="container-vision relative z-10 px-4">
-                <div className="text-center mb-32 relative">
-                    <fm.div
-                        initial={{ opacity: 0, y: 10 }}
+        <section id="team" className="py-24 relative border-t border-white/5">
+            <div className="max-w-6xl mx-auto px-6">
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <motion.p
+                        initial={{ opacity: 0, y: 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-quantum/20 glass-ethereal mb-8 shadow-2xl"
+                        className="text-[11px] text-[#00f2ff]/60 font-bold tracking-[0.4em] uppercase mb-4"
                     >
-                        <span className="text-[10px] font-black text-quantum-blue tracking-[0.5em] uppercase">Sacred Vanguard</span>
-                    </fm.div>
-                    <fm.h2
-                        initial={{ opacity: 0, y: 20 }}
+                        The Team
+                    </motion.p>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-4xl md:text-8xl font-black tracking-tighter mb-10 italic text-white uppercase"
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-5xl font-black text-white tracking-tight"
                     >
-                        Celestial <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic font-mono">Guardians</span>
-                    </fm.h2>
-                    <fm.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                        className="text-gray-500 text-xl md:text-2xl font-medium max-w-3xl mx-auto leading-relaxed italic"
-                    >
-                        A multidisciplinary unit of sentinels dedicated to securing every digital soul in the meta-quantum expanse.
-                    </fm.p>
+                        People who <span className="text-[#00f2ff]">built this.</span>
+                    </motion.h2>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-10">
-                    {team.map((member, index) => (
-                        <fm.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
+                {/* Team cards */}
+                <div className="grid md:grid-cols-3 gap-6">
+                    {team.map((member, i) => (
+                        <motion.div
+                            key={member.id}
+                            initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.15 }}
-                            whileHover={{ y: -15 }}
-                            className="glass-ethereal p-12 group relative transition-all duration-500 rounded-[3rem] shadow-2xl border-white/5 hover:border-quantum/40"
+                            transition={{ delay: i * 0.1 }}
+                            className="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-300"
                         >
-                            {/* Biometric Header */}
-                            <div className="flex justify-between items-start mb-12">
-                                <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 group-hover:border-quantum/50 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] shadow-xl">
+                            <div className="flex items-start justify-between mb-6">
+                                <div className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
                                     {member.icon}
                                 </div>
-                                <div className="text-right">
-                                    <div className="text-[12px] font-mono text-quantum-blue font-black tracking-widest">{member.access}</div>
-                                    <div className="text-[9px] font-mono text-gray-600 uppercase tracking-[0.3em] mt-2 font-bold">Access Clear</div>
-                                </div>
+                                <span className="text-[9px] font-mono text-white/20 tracking-widest uppercase">{member.id}</span>
                             </div>
-
-                            <div className="space-y-6 relative z-10">
-                                <div className="space-y-2">
-                                    <h3 className="text-3xl font-black text-white tracking-tight italic uppercase font-mono">{member.name}</h3>
-                                    <div className="text-[11px] font-mono text-gray-600 font-bold uppercase tracking-widest">{member.id}</div>
-                                </div>
-                                <p className="text-quantum-blue font-black text-[12px] uppercase tracking-[0.3em] drop-shadow-[0_0_10px_rgba(0,242,255,0.4)]">{member.role}</p>
-                                <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition-colors font-bold italic">
-                                    {member.description}
-                                </p>
-                            </div>
-
-                            {/* Decorative Scan Line */}
-                            <div className="absolute left-0 bottom-10 w-full h-[1px] bg-gradient-to-r from-transparent via-quantum-blue/40 to-transparent group-hover:translate-y-[-150px] transition-transform duration-1000 opacity-20"></div>
-                        </fm.div>
+                            <div className="text-sm font-bold text-[#00f2ff] mb-1 tracking-wide">{member.role}</div>
+                            <div className="text-base font-black text-white mb-3">{member.name}</div>
+                            <p className="text-white/40 text-sm leading-relaxed">{member.desc}</p>
+                        </motion.div>
                     ))}
                 </div>
             </div>

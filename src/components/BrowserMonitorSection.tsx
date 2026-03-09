@@ -15,14 +15,14 @@ interface ScanLine {
 }
 
 const SCAN_CHECKS: ScanLine[] = [
-    { text: 'Celestial inference engine integrity', status: 'ok' },
-    { text: 'Spirit sandbox validation', status: 'ok' },
+    { text: 'AI inference engine integrity', status: 'ok' },
+    { text: 'Sandbox memory isolation', status: 'ok' },
     { text: 'LLM data exfiltration vectors', status: 'ok' },
-    { text: 'Void prompt injection patterns', status: 'warning' },
-    { text: 'Meta-lattice memory isolation', status: 'ok' },
-    { text: 'Divine browser fingerprint resistance', status: 'ok' },
-    { text: 'Dark manipulation scripts', status: 'warning' },
-    { text: 'Neural interface protocol integrity', status: 'scanning' },
+    { text: 'Prompt injection pattern scan', status: 'warning' },
+    { text: 'Cross-origin resource isolation', status: 'ok' },
+    { text: 'Browser fingerprint resistance', status: 'ok' },
+    { text: 'Dark pattern script detection', status: 'warning' },
+    { text: 'Network request audit protocol', status: 'scanning' },
 ];
 
 const BrowserMonitorSection: React.FC = () => {
@@ -31,9 +31,9 @@ const BrowserMonitorSection: React.FC = () => {
     const [scanProgress, setScanProgress] = useState(0);
     const [activeLine, setActiveLine] = useState(0);
     const [metrics, setMetrics] = useState<BrowserMetric[]>([
-        { label: 'Neural Integrity', value: 84, unit: '%', icon: '✨', color: '#00f2ff' },
-        { label: 'Soul Authenticity', value: 97.2, unit: '%', icon: '🛡️', color: '#ffca28' },
-        { label: 'Dark Vectors', value: 2, unit: 'active', icon: '⚠️', color: '#f59e0b' },
+        { label: 'Security Score', value: 84, unit: '%', icon: '✨', color: '#00f2ff' },
+        { label: 'Request Integrity', value: 97.2, unit: '%', icon: '🛡️', color: '#ffca28' },
+        { label: 'Threats Blocked', value: 2, unit: 'active', icon: '⚠️', color: '#f59e0b' },
         { label: 'Shield Stability', value: 100, unit: '%', icon: '🔗', color: '#00f2ff' },
     ]);
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -162,7 +162,7 @@ const BrowserMonitorSection: React.FC = () => {
         const interval = setInterval(() => {
             setMetrics(prev => prev.map(m => ({
                 ...m,
-                value: m.label === 'Dark Vectors'
+                value: m.label === 'Threats Blocked'
                     ? m.value
                     : parseFloat((m.value + (Math.random() * 0.4 - 0.2)).toFixed(1))
             })));
@@ -190,7 +190,7 @@ const BrowserMonitorSection: React.FC = () => {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-quantum-blue opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-quantum-blue"></span>
                         </span>
-                        <span className="text-quantum-blue font-black font-mono text-[10px] tracking-[0.4em] uppercase">Sacred Perimeter Anchor Active</span>
+                        <span className="text-quantum-blue font-black font-mono text-[10px] tracking-[0.4em] uppercase">Security Perimeter: Active</span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -200,7 +200,7 @@ const BrowserMonitorSection: React.FC = () => {
                         className="text-4xl md:text-8xl font-black tracking-tighter mb-8 italic text-white uppercase"
                     >
                         <span className="bg-gradient-to-r from-quantum-blue via-white to-guardian-gold bg-clip-text text-transparent">
-                            Celestial Monitor
+                            Browser Monitor
                         </span>
                     </motion.h2>
                     <motion.p
@@ -210,13 +210,12 @@ const BrowserMonitorSection: React.FC = () => {
                         transition={{ delay: 0.4 }}
                         className="text-gray-500 text-xl max-w-3xl mx-auto font-medium leading-relaxed"
                     >
-                        CipherPolice actively enforces sacred protocols across the meta-quantum frontier.
-                        The Guardian's eye never blinks.
+                        CipherPolice actively scans and enforces security policies across all browser contexts in real time. Zero blind spots.
                     </motion.p>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-10 px-4">
-                    {/* Left: Quantum Radar HUD */}
+                    {/* Left: Threat Radar HUD */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -235,13 +234,13 @@ const BrowserMonitorSection: React.FC = () => {
                             <div className="text-8xl font-black font-mono tracking-tighter mb-4 italic" style={{ color: hColor, textShadow: `0 0 40px ${hColor}66` }}>
                                 {healthScore}<span className="text-2xl not-italic ml-1 opacity-50 font-sans">%</span>
                             </div>
-                            <div className="text-xs font-black text-quantum-blue tracking-[0.4em] uppercase font-bold">Divine Integrity Index</div>
+                            <div className="text-xs font-black text-quantum-blue tracking-[0.4em] uppercase font-bold">Security Health Index</div>
                         </div>
 
-                        {/* Scanner Status Bar */}
+                        {/* Scan Progress */}
                         <div className="w-full mt-12 p-6 glass-ethereal border border-white/5 rounded-2xl shadow-inner">
                             <div className="flex justify-between text-[11px] font-black text-gray-500 mb-4 uppercase tracking-widest">
-                                <span className="italic">Observation Depth</span>
+                                <span className="italic">Scan Depth</span>
                                 <span className="text-quantum-blue">{Math.round(scanProgress)}%</span>
                             </div>
                             <div className="h-2 bg-white/5 rounded-full overflow-hidden shadow-inner">
@@ -259,7 +258,7 @@ const BrowserMonitorSection: React.FC = () => {
                         </div>
                     </motion.div>
 
-                    {/* Right: Metrics & Tactical Feed */}
+                    {/* Right: Metrics & Scan Feed */}
                     <div className="lg:col-span-7 flex flex-col gap-10">
                         {/* Metrics Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -283,14 +282,14 @@ const BrowserMonitorSection: React.FC = () => {
                                         <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: m.color, boxShadow: `0 0 12px ${m.color}` }}></div>
                                     </div>
                                     <div className="text-5xl font-black font-mono tracking-tighter italic" style={{ color: m.color, textShadow: `0 0 20px ${m.color}33` }}>
-                                        {m.label === 'Dark Vectors' ? m.value : m.value.toFixed(1)}
+                                        {m.label === 'Threats Blocked' ? m.value : m.value.toFixed(1)}
                                         <span className="text-sm ml-2 font-black text-gray-600 uppercase tracking-widest not-italic italic">{m.unit}</span>
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
 
-                        {/* Tactical Security Feed */}
+                        {/* Security Scan Feed */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -301,8 +300,8 @@ const BrowserMonitorSection: React.FC = () => {
 
                             <div className="relative z-10 flex flex-col h-full">
                                 <div className="flex items-center justify-between mb-8 pb-5 border-b border-white/5">
-                                    <span className="text-xs font-black text-quantum-blue tracking-[0.5em] uppercase italic">Sacred Feed</span>
-                                    <span className="text-[10px] font-mono text-gray-500 font-bold tracking-widest">MANIFEST: CP-999-DIVINE</span>
+                                    <span className="text-xs font-black text-quantum-blue tracking-[0.5em] uppercase italic">Security Feed</span>
+                                    <span className="text-[10px] font-mono text-gray-500 font-bold tracking-widest">BUILD: CP-999-STABLE</span>
                                 </div>
 
                                 <div className="space-y-4 flex-1">
@@ -344,10 +343,10 @@ const BrowserMonitorSection: React.FC = () => {
                                                     <div key={i} className="w-8 h-8 rounded-full bg-obsidian border-2 border-white/5 shadow-2xl"></div>
                                                 ))}
                                             </div>
-                                            <span className="text-[10px] font-black text-gray-600 tracking-[0.2em] uppercase italic">Divine Protection: ASCENDED</span>
+                                            <span className="text-[10px] font-black text-gray-600 tracking-[0.2em] uppercase italic">Defense Layer: Active</span>
                                         </div>
                                         <div className="text-[10px] font-mono text-quantum-blue/40 font-bold animate-pulse">
-                                            VOW ACTIVE
+                                            SHIELD ACTIVE
                                         </div>
                                     </div>
                                 </div>

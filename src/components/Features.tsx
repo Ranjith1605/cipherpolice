@@ -1,91 +1,75 @@
-import { Radar, Sword, Shield, Scale } from 'lucide-react';
-import { motion as fm } from 'framer-motion';
+import { Shield, Eye, Lock } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+const features = [
+    {
+        icon: <Eye className="w-6 h-6 text-[#00f2ff]" />,
+        title: 'Privacy Enforcement',
+        desc: 'Automatically blocks trackers, third-party cookies, and browser fingerprinting scripts before they ever run.'
+    },
+    {
+        icon: <Shield className="w-6 h-6 text-[#ffca28]" />,
+        title: 'Threat Detection',
+        desc: 'An AI model running locally identifies dark patterns, consent violations, and manipulation attempts in real time.'
+    },
+    {
+        icon: <Lock className="w-6 h-6 text-white" />,
+        title: 'Data Sovereignty',
+        desc: 'All analysis runs on your device. Nothing is sent to our servers. You remain in full control at all times.'
+    },
+];
 
 export const Features = () => {
-    const capabilities = [
-        {
-            icon: <Radar className="w-8 h-8 text-quantum-blue" />,
-            title: 'Celestial Surveillance',
-            desc: 'Real-time divine monitoring of the meta-lattice, detecting patterns of manipulation before they touch your spirit.'
-        },
-        {
-            icon: <Sword className="w-8 h-8 text-guardian-gold" />,
-            title: 'Sacred Enforcement',
-            desc: 'Autonomous protocols that neutralize quantum-level threats with the precision of a Guardian Angel.'
-        },
-        {
-            icon: <Shield className="w-8 h-8 text-white" />,
-            title: 'Eternal Safeguard',
-            desc: 'The next evolution of OS-level protection. Born from the legacy of Defenders, ascended for the Meta-Quantum era.'
-        },
-        {
-            icon: <Scale className="w-8 h-8 text-quantum-blue" />,
-            title: 'Citizen Sovereignty',
-            desc: 'Protecting the sacred rights of digital souls against dark patterns and soul-harvesting algorithms.'
-        },
-    ];
-
     return (
-        <section id="features" className="py-40 relative overflow-hidden bg-transparent border-y border-white/5">
-            {/* Background Layer */}
-            <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none fade-mask-t"></div>
-
-            <div className="container-vision relative z-10 px-6">
-                <div className="text-center mb-32">
-                    <fm.div
-                        initial={{ opacity: 0, y: 10 }}
+        <section id="features" className="py-24 relative">
+            <div className="max-w-6xl mx-auto px-6">
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <motion.p
+                        initial={{ opacity: 0, y: 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-3 px-6 py-2 glass-ethereal border border-quantum/20 rounded-full mb-8"
+                        className="text-[11px] text-[#00f2ff]/60 font-bold tracking-[0.4em] uppercase mb-4"
                     >
-                        <span className="text-[10px] font-black text-quantum-blue tracking-[0.5em] uppercase">Divine Directives</span>
-                    </fm.div>
-                    <fm.h2
-                        initial={{ opacity: 0, y: 20 }}
+                        How It Works
+                    </motion.p>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-5xl md:text-8xl font-black mb-10 italic text-white tracking-tighter uppercase font-mono leading-none"
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-5xl font-black text-white tracking-tight"
                     >
-                        Celestial <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic">Shield</span>
-                    </fm.h2>
-                    <fm.p
+                        Built around <span className="text-[#00f2ff]">your rights.</span>
+                    </motion.h2>
+                    <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                        className="text-gray-500 max-w-3xl mx-auto text-xl font-medium leading-relaxed italic"
+                        transition={{ delay: 0.2 }}
+                        className="mt-4 text-white/40 text-base max-w-md mx-auto leading-relaxed"
                     >
-                        Precision-engineered behavioral modules designed to neutralize dark forces in the meta-frontier.
-                    </fm.p>
+                        Three modules. One purpose: keeping your data private.
+                    </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {capabilities.map((feature, index) => (
-                        <fm.div
-                            key={index}
+                {/* Cards */}
+                <div className="grid md:grid-cols-3 gap-6">
+                    {features.map((f, i) => (
+                        <motion.div
+                            key={f.title}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -8, scale: 1.02 }}
-                            className="glass-ethereal p-10 group relative transition-all duration-700 rounded-[2.5rem] hover:border-quantum/40 cursor-default shadow-2xl overflow-hidden"
+                            transition={{ delay: i * 0.1 }}
+                            className="group p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-300"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-quantum-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                            <div className="relative z-10">
-                                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:border-quantum/40 transition-all duration-500 w-fit mb-10 shadow-2xl">
-                                    <div className="group-hover:scale-110 transition-transform duration-700">
-                                        {feature.icon}
-                                    </div>
-                                </div>
-                                <h4 className="text-2xl font-black mb-5 text-white group-hover:text-quantum-blue transition-colors duration-500 tracking-tight uppercase font-mono italic">
-                                    {feature.title}
-                                </h4>
-                                <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-500 font-medium">
-                                    {feature.desc}
-                                </p>
+                            <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-6">
+                                {f.icon}
                             </div>
-                        </fm.div>
+                            <h3 className="text-lg font-bold text-white mb-3">{f.title}</h3>
+                            <p className="text-white/40 text-sm leading-relaxed">{f.desc}</p>
+                        </motion.div>
                     ))}
                 </div>
             </div>

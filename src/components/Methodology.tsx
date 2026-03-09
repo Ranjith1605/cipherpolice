@@ -4,25 +4,25 @@ import { motion } from 'framer-motion';
 export const Methodology = () => {
     const methods = [
         {
-            title: "Divine Deployment",
+            title: "Agile Deployment",
             icon: <Zap className="w-8 h-8 text-quantum-blue" />,
-            desc: "Iterative progression through sacred strike teams. We adapt to meta-quantum threats in real-time.",
+            desc: "Iterative delivery through focused sprint teams. We ship security updates and feature patches on a continuous release cycle, adapting to emerging threats in real time.",
         },
         {
-            title: "Quantum Sprints",
+            title: "Sprint Cycles",
             icon: <Repeat className="w-8 h-8 text-guardian-gold" />,
-            desc: "Structured metaphysical cycles allowing us to manifest protection faster than the void can expand.",
+            desc: "Two-week structured development cycles with retrospectives and security reviews, enabling faster iteration without compromising stability or test coverage.",
         },
         {
-            title: "Absolute Defense",
+            title: "Security-First Build",
             icon: <Shield className="w-8 h-8 text-white" />,
-            desc: "Security is the core DNA of our existence. Every particle of our code is a vow of protection.",
+            desc: "Security is baked into our architecture from day one — not bolted on at the end. Every module undergoes threat modeling, static analysis, and penetration testing before release.",
         }
     ];
 
     return (
         <section id="methodology" className="py-40 relative overflow-hidden bg-transparent border-t border-white/5">
-            {/* Background Grid Layer */}
+            {/* Background Grid */}
             <div className="absolute inset-0 bg-cyber-grid opacity-5 pointer-events-none fade-mask-t"></div>
 
             <div className="container-vision relative z-10 px-6">
@@ -33,7 +33,7 @@ export const Methodology = () => {
                         viewport={{ once: true }}
                         className="inline-flex items-center gap-3 px-6 py-2 glass-ethereal border border-guardian/30 rounded-full mb-8 shadow-2xl"
                     >
-                        <span className="text-[10px] font-black text-guardian-gold tracking-[0.5em] uppercase italic">Metaphysical Operations</span>
+                        <span className="text-[10px] font-black text-guardian-gold tracking-[0.5em] uppercase italic">Engineering Approach</span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ export const Methodology = () => {
                         transition={{ delay: 0.2 }}
                         className="text-5xl md:text-8xl font-black mb-10 italic text-white tracking-tighter uppercase font-mono leading-none"
                     >
-                        Sacred <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic">Protocols</span>
+                        Build <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic">Methodology</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -51,7 +51,7 @@ export const Methodology = () => {
                         transition={{ delay: 0.4 }}
                         className="text-gray-500 max-w-2xl mx-auto text-xl font-medium leading-relaxed italic"
                     >
-                        Engineered with divine software principles to ensure zero-latency reliability and eternal adaptability.
+                        Engineered with modern DevSecOps principles to ensure zero-latency reliability, continuous delivery, and long-term maintainability.
                     </motion.p>
                 </div>
 
@@ -99,17 +99,17 @@ export const Methodology = () => {
                             <div className="w-4 h-4 rounded-full bg-quantum-blue animate-pulse shadow-[0_0_15px_var(--quantum-blue)]"></div>
                         </div>
                         <div>
-                            <h3 className="text-2xl font-black text-white uppercase tracking-tighter italic font-mono mb-2">Quantum Pipeline: <span className="text-quantum-blue not-italic">ASCENDED</span></h3>
-                            <p className="text-gray-500 text-[11px] font-bold tracking-[0.2em] uppercase opacity-70">Autonomous protection manifested across the meta-quantum lattice.</p>
+                            <h3 className="text-2xl font-black text-white uppercase tracking-tighter italic font-mono mb-2">CI/CD Pipeline: <span className="text-quantum-blue not-italic">Running</span></h3>
+                            <p className="text-gray-500 text-[11px] font-bold tracking-[0.2em] uppercase opacity-70">Automated security tests and builds are deployed continuously across all release branches.</p>
                         </div>
                     </div>
 
                     <div className="flex gap-6 relative z-10">
                         <div className="px-8 py-4 rounded-2xl bg-white/[0.02] border border-white/10 text-[10px] font-mono text-quantum-blue/60 tracking-[0.3em] uppercase shadow-inner hover:border-quantum/40 transition-colors">
-                            manifest force --divine
+                            run --mode=production
                         </div>
                         <div className="px-8 py-4 rounded-2xl bg-quantum-blue/10 border border-quantum/30 text-[10px] font-mono text-quantum-blue font-black tracking-[0.4em] uppercase animate-pulse shadow-2xl">
-                            Spirit Synchronized
+                            Pipeline Active
                         </div>
                     </div>
                 </motion.div>

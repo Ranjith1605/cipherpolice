@@ -4,19 +4,19 @@ import { motion } from 'framer-motion';
 export const About = () => {
     const values = [
         {
-            title: 'Quantum Defense',
+            title: 'Threat Detection',
             icon: <Zap className="w-8 h-8 text-quantum-blue" />,
-            desc: 'Merging advanced meta-quantum logic with divine wisdom to protect the digital soul of every citizen.'
+            desc: 'Combining AI behavioral analysis with real-time heuristics to detect tracking scripts, fingerprinting attempts, and data harvesting before they execute.'
         },
         {
-            title: 'Guardian Protocol',
+            title: 'Active Defense',
             icon: <Shield className="w-8 h-8 text-guardian-gold" />,
-            desc: 'Actively neutralizing the forces of darkness to ensure a peaceful, harmonious digital existence.'
+            desc: 'Continuously monitoring browser activity and automatically neutralizing intrusive elements, malicious redirects, and unauthorized data collection.'
         },
         {
-            title: 'Ethereal Sanctuary',
+            title: 'Data Isolation',
             icon: <Lock className="w-8 h-8 text-white" />,
-            desc: 'Providing an impenetrable, transparent refuge where digital rights are absolute and data is truly sovereign.'
+            desc: 'Providing an encrypted, sandboxed environment where your browsing data stays on your device with zero third-party transmission.'
         },
     ];
 
@@ -30,7 +30,7 @@ export const About = () => {
                         viewport={{ once: true }}
                         className="inline-flex items-center gap-2 px-4 py-1.5 glass-ethereal border border-quantum/30 rounded-full mb-6"
                     >
-                        <span className="text-[10px] font-black text-quantum-blue tracking-[0.4em] uppercase">Divine Protocols</span>
+                        <span className="text-[10px] font-black text-quantum-blue tracking-[0.4em] uppercase">Core Capabilities</span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export const About = () => {
                         transition={{ delay: 0.2 }}
                         className="text-4xl md:text-7xl font-black mb-8 italic text-white tracking-tighter uppercase font-mono"
                     >
-                        Ethereal <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic">Sanctuary</span>
+                        Security <span className="bg-gradient-to-r from-quantum-blue to-guardian-gold bg-clip-text text-transparent not-italic">Architecture</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -48,8 +48,7 @@ export const About = () => {
                         transition={{ delay: 0.4 }}
                         className="text-gray-400 max-w-3xl mx-auto text-xl font-medium leading-relaxed"
                     >
-                        CipherPolice exists as the shield of a meta-quantum civilization. We are the <span className="text-guardian-gold">Guardian Angels</span> of digital citizens,
-                        dedicated to building a world where peace, truth, and sovereignty are the foundation of your existence.
+                        CipherPolice is a browser security extension built on a <span className="text-guardian-gold">zero-trust architecture</span>. We protect digital citizens by enforcing data rights, blocking dark patterns, and keeping your browsing private by default.
                     </motion.p>
                 </div>
 
