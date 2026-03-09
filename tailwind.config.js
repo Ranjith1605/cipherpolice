@@ -4,13 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
         asi: {
-          neon: '#00f3ff',
-          purple: '#bc13fe',
+          neon: 'var(--primary)',
+          purple: 'var(--secondary)',
           dark: '#050a14',
           silver: '#e2e8f0',
           glass: 'rgba(255, 255, 255, 0.05)',
         }
+      },
+      fontFamily: {
+        sans: ['var(--font-body)'],
+        heading: ['var(--font-heading)'],
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',

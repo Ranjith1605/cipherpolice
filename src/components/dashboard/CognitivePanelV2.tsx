@@ -15,7 +15,7 @@ const CognitivePanelV2: React.FC<CognitivePanelV2Props> = ({ defaultPersona = 'f
     const personaData = {
         focused: {
             state: 'Ascended',
-            stateColor: '#00f2ff',
+            stateColor: 'var(--primary)',
             stateGlow: 'rgba(0,242,255,0.3)',
             loadTarget: 28,
             tabsOpen: 4,
@@ -74,8 +74,8 @@ const CognitivePanelV2: React.FC<CognitivePanelV2Props> = ({ defaultPersona = 'f
     }, [persona]);
 
     const getLoadColor = (score: number) => {
-        if (score < 40) return '#00f2ff';
-        if (score < 65) return '#ffca28';
+        if (score < 40) return 'var(--primary)';
+        if (score < 65) return 'var(--secondary)';
         return '#ef4444';
     };
 

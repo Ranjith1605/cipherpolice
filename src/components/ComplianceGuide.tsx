@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 
 const regulations = [
   {
-    icon: <Globe className="w-5 h-5 text-[#00f2ff]" />,
+    icon: <Globe className="w-5 h-5 text-primary" />,
     title: 'GDPR',
     region: 'European Union',
     desc: 'Full compliance with EU data protection regulation — consent, erasure, portability, and privacy by design.'
   },
   {
-    icon: <ShieldCheck className="w-5 h-5 text-[#ffca28]" />,
+    icon: <ShieldCheck className="w-5 h-5 text-secondary" />,
     title: 'CCPA',
     region: 'California, USA',
     desc: 'Meets California consumer privacy requirements — right to know, delete, and opt out of data sale.'
@@ -21,7 +21,7 @@ const regulations = [
     desc: 'Aligns with Canadian personal information protection standards for accountability and limited retention.'
   },
   {
-    icon: <Binary className="w-5 h-5 text-[#00f2ff]" />,
+    icon: <Binary className="w-5 h-5 text-primary" />,
     title: 'EU AI Act',
     region: 'European Union',
     desc: 'Built under the EU AI Act framework — transparent model logic, bias mitigation, and human oversight.'
@@ -38,7 +38,7 @@ const ComplianceGuide = () => {
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[11px] text-[#00f2ff]/60 font-bold tracking-[0.4em] uppercase mb-4"
+            className="text-[11px] text-primary/60 font-bold tracking-[0.4em] uppercase mb-4"
           >
             Legal Standards
           </motion.p>
@@ -49,7 +49,7 @@ const ComplianceGuide = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-black text-white tracking-tight"
           >
-            Compliant <span className="text-[#00f2ff]">everywhere.</span>
+            Compliant <span className="text-primary">everywhere.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}

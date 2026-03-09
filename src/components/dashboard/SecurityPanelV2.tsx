@@ -60,15 +60,15 @@ const SecurityPanelV2: React.FC = () => {
 
     const severityStyles = {
         critical: { color: '#ef4444', bg: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.3)', dot: '#ef4444' },
-        warning: { color: '#ffca28', bg: 'rgba(255,202,40,0.1)', border: 'rgba(255,202,40,0.3)', dot: '#ffca28' },
-        info: { color: '#00f2ff', bg: 'rgba(0,242,255,0.05)', border: 'rgba(0,242,255,0.2)', dot: '#00f2ff' },
+        warning: { color: 'var(--secondary)', bg: 'rgba(255,202,40,0.1)', border: 'rgba(255,202,40,0.3)', dot: 'var(--secondary)' },
+        info: { color: 'var(--primary)', bg: 'rgba(0,242,255,0.05)', border: 'rgba(0,242,255,0.2)', dot: 'var(--primary)' },
     };
 
     const stats = [
         { label: 'Voids Purged', value: trackersBlocked, unit: '', color: '#ef4444', icon: <ShieldAlert className="w-5 h-5" /> },
-        { label: 'Soul Identity', value: identityScore, unit: '%', color: '#00f2ff', icon: <Lock className="w-5 h-5" /> },
-        { label: 'Scan Depth', value: scanRate, unit: '/s', color: '#ffca28', icon: <Search className="w-5 h-5" /> },
-        { label: 'HTTPS_VOW', value: httpsActive ? 'SACRED' : 'VOID', unit: '', color: httpsActive ? '#00f2ff' : '#ef4444', icon: <Zap className="w-5 h-5" /> },
+        { label: 'Soul Identity', value: identityScore, unit: '%', color: 'var(--primary)', icon: <Lock className="w-5 h-5" /> },
+        { label: 'Scan Depth', value: scanRate, unit: '/s', color: 'var(--secondary)', icon: <Search className="w-5 h-5" /> },
+        { label: 'HTTPS_VOW', value: httpsActive ? 'SACRED' : 'VOID', unit: '', color: httpsActive ? 'var(--primary)' : '#ef4444', icon: <Zap className="w-5 h-5" /> },
     ];
 
     return (

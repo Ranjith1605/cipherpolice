@@ -53,8 +53,8 @@ const ApiKeyGate = ({ onUnlock }: { onUnlock: (key: string) => void }) => {
         className="w-full"
       >
         {/* Icon */}
-        <div className="w-14 h-14 rounded-2xl bg-[#00f2ff]/[0.05] border border-[#00f2ff]/20 flex items-center justify-center mx-auto mb-6">
-          <Key className="w-6 h-6 text-[#00f2ff]" />
+        <div className="w-14 h-14 rounded-2xl bg-primary/[0.05] border border-primary/20 flex items-center justify-center mx-auto mb-6">
+          <Key className="w-6 h-6 text-primary" />
         </div>
 
         <h3 className="text-base font-bold text-white mb-2">API Key Required</h3>
@@ -70,7 +70,7 @@ const ApiKeyGate = ({ onUnlock }: { onUnlock: (key: string) => void }) => {
               value={key}
               onChange={e => { setKey(e.target.value); setError(''); }}
               placeholder="AIza..."
-              className="w-full px-4 py-3 pr-10 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs font-mono placeholder-white/20 outline-none focus:border-[#00f2ff]/40 transition-colors"
+              className="w-full px-4 py-3 pr-10 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs font-mono placeholder-white/20 outline-none focus:border-primary/40 transition-colors"
             />
             <button
               type="button"
@@ -91,7 +91,7 @@ const ApiKeyGate = ({ onUnlock }: { onUnlock: (key: string) => void }) => {
           <button
             type="submit"
             disabled={!key.trim() || isValidating}
-            className="w-full py-3 rounded-xl bg-[#00f2ff] text-[#050a14] font-bold text-xs tracking-wide hover:bg-[#00f2ff]/90 transition-all disabled:opacity-40 flex items-center justify-center gap-2"
+            className="w-full py-3 rounded-xl bg-primary text-[#050a14] font-bold text-xs tracking-wide hover:bg-primary/90 transition-all disabled:opacity-40 flex items-center justify-center gap-2"
           >
             {isValidating ? (
               <><RefreshCcw className="w-3.5 h-3.5 animate-spin" /> Verifying...</>
@@ -105,7 +105,7 @@ const ApiKeyGate = ({ onUnlock }: { onUnlock: (key: string) => void }) => {
           href="https://aistudio.google.com/app/apikey"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 block text-[10px] text-[#00f2ff]/40 hover:text-[#00f2ff]/70 transition-colors underline underline-offset-2"
+          className="mt-5 block text-[10px] text-primary/40 hover:text-primary/70 transition-colors underline underline-offset-2"
         >
           Get a free Gemini API key →
         </a>
@@ -201,13 +201,13 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
       >
         {/* Header */}
         <div className="flex items-center gap-4 px-6 py-4 border-b border-white/[0.06]">
-          <div className="w-8 h-8 rounded-xl bg-[#00f2ff]/[0.06] border border-[#00f2ff]/15 flex items-center justify-center">
-            <Shield className="w-4 h-4 text-[#00f2ff]" />
+          <div className="w-8 h-8 rounded-xl bg-primary/[0.06] border border-primary/15 flex items-center justify-center">
+            <Shield className="w-4 h-4 text-primary" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="text-xs font-bold text-white">AI Security Assistant</div>
             <div className="flex items-center gap-1.5 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00f2ff] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               <span className="text-[9px] font-mono text-white/25 uppercase tracking-widest">
                 {apiKey ? 'Gemini · Connected' : 'Awaiting API Key'}
               </span>
@@ -241,7 +241,7 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
                     <button
                       key={chip.label}
                       onClick={() => handleSend(chip.prompt)}
-                      className="w-full text-left px-4 py-2.5 rounded-xl text-[11px] text-white/40 border border-white/[0.05] bg-white/[0.015] hover:border-[#00f2ff]/20 hover:text-white/70 hover:bg-[#00f2ff]/[0.03] transition-all duration-200"
+                      className="w-full text-left px-4 py-2.5 rounded-xl text-[11px] text-white/40 border border-white/[0.05] bg-white/[0.015] hover:border-primary/20 hover:text-white/70 hover:bg-primary/[0.03] transition-all duration-200"
                     >
                       {chip.label}
                     </button>
@@ -257,7 +257,7 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-xs leading-relaxed ${msg.role === 'user'
-                    ? 'bg-[#00f2ff]/[0.08] text-white/80 border border-[#00f2ff]/10'
+                    ? 'bg-primary/[0.08] text-white/80 border border-primary/10'
                     : 'bg-white/[0.03] text-white/70 border border-white/[0.06]'}`}
                   >
                     {msg.content}
@@ -269,7 +269,7 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
                 <div className="flex justify-start">
                   <div className="flex gap-1.5 px-4 py-3 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
                     {[0, 0.2, 0.4].map(d => (
-                      <div key={d} className="w-1 h-1 rounded-full bg-[#00f2ff]/40" style={{ animation: 'pulse 1.4s infinite', animationDelay: `${d}s` }} />
+                      <div key={d} className="w-1 h-1 rounded-full bg-primary/40" style={{ animation: 'pulse 1.4s infinite', animationDelay: `${d}s` }} />
                     ))}
                   </div>
                 </div>
@@ -287,18 +287,18 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
                   onChange={e => setInputValue(e.target.value)}
                   placeholder="Ask anything..."
                   disabled={isLoading}
-                  className="w-full pl-4 pr-12 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs placeholder-white/20 outline-none focus:border-[#00f2ff]/30 transition-colors"
+                  className="w-full pl-4 pr-12 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs placeholder-white/20 outline-none focus:border-primary/30 transition-colors"
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !inputValue.trim()}
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg flex items-center justify-center text-white/30 hover:text-[#00f2ff] hover:bg-[#00f2ff]/10 transition-all disabled:opacity-30"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg flex items-center justify-center text-white/30 hover:text-primary hover:bg-primary/10 transition-all disabled:opacity-30"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </button>
               </form>
               <p className="mt-2 text-center text-[9px] text-white/15 font-mono tracking-widest uppercase">
-                AES-256 · Local key · No data stored
+                Local key · No data stored
               </p>
             </div>
           </>

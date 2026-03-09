@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 
 const principles = [
     {
-        icon: <ShieldCheck className="w-5 h-5 text-[#00f2ff]" />,
+        icon: <ShieldCheck className="w-5 h-5 text-primary" />,
         title: 'Local Processing',
         desc: 'All analysis happens on your device. Zero data is sent to any server, ever.'
     },
     {
-        icon: <EyeOff className="w-5 h-5 text-[#ffca28]" />,
+        icon: <EyeOff className="w-5 h-5 text-secondary" />,
         title: 'Data Minimization',
         desc: 'We collect only what is needed. No keystrokes. No screen recording. No messages.'
     },
@@ -19,7 +19,7 @@ const principles = [
         desc: 'Toggle any feature instantly. Wipe all local history with a single action.'
     },
     {
-        icon: <Scale className="w-5 h-5 text-[#00f2ff]" />,
+        icon: <Scale className="w-5 h-5 text-primary" />,
         title: 'Compliance by Design',
         desc: 'GDPR and CCPA principles are enforced at the architecture level, not just policy.'
     },
@@ -35,7 +35,7 @@ const DataEthics: React.FC = () => {
                         initial={{ opacity: 0, y: 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-[11px] text-[#00f2ff]/60 font-bold tracking-[0.4em] uppercase mb-4"
+                        className="text-[11px] text-primary/60 font-bold tracking-[0.4em] uppercase mb-4"
                     >
                         Our Ethics
                     </motion.p>
@@ -46,7 +46,7 @@ const DataEthics: React.FC = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-white tracking-tight"
                     >
-                        Trust requires <span className="text-[#00f2ff]">proof.</span>
+                        Trust requires <span className="text-primary">proof.</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -87,7 +87,7 @@ const DataEthics: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="mt-6 p-8 rounded-2xl border border-[#00f2ff]/15 bg-[#00f2ff]/[0.03] text-center"
+                    className="mt-6 p-8 rounded-2xl border border-primary/15 bg-primary/[0.03] text-center"
                 >
                     <p className="text-white/60 text-sm leading-relaxed max-w-lg mx-auto">
                         Like any trust-based relationship, CipherPolice works because you choose to rely on it — and we work every day to deserve that reliance. Our code is auditable. Our logic is open.

@@ -7,14 +7,14 @@ const team = [
         id: "ID-FRONT-66",
         role: "Frontend Engineer",
         desc: "Builds the dashboard UI and browser extension interface.",
-        icon: <Shield className="w-5 h-5 text-[#00f2ff]" />,
+        icon: <Shield className="w-5 h-5 text-primary" />,
     },
     {
         name: "Cognitive Engine Lead",
         id: "ID-NEURAL-42",
         role: "ML Engineer",
         desc: "Develops the behavioral detection model and real-time threat signals.",
-        icon: <Brain className="w-5 h-5 text-[#ffca28]" />,
+        icon: <Brain className="w-5 h-5 text-secondary" />,
     },
     {
         name: "Ethics Command",
@@ -35,7 +35,7 @@ const Team = () => {
                         initial={{ opacity: 0, y: 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-[11px] text-[#00f2ff]/60 font-bold tracking-[0.4em] uppercase mb-4"
+                        className="text-[11px] text-primary/60 font-bold tracking-[0.4em] uppercase mb-4"
                     >
                         The Team
                     </motion.p>
@@ -46,7 +46,7 @@ const Team = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-white tracking-tight"
                     >
-                        People who <span className="text-[#00f2ff]">built this.</span>
+                        People who <span className="text-primary">built this.</span>
                     </motion.h2>
                 </div>
 
@@ -67,7 +67,7 @@ const Team = () => {
                                 </div>
                                 <span className="text-[9px] font-mono text-white/20 tracking-widest uppercase">{member.id}</span>
                             </div>
-                            <div className="text-sm font-bold text-[#00f2ff] mb-1 tracking-wide">{member.role}</div>
+                            <div className="text-sm font-bold text-primary mb-1 tracking-wide">{member.role}</div>
                             <div className="text-base font-black text-white mb-3">{member.name}</div>
                             <p className="text-white/40 text-sm leading-relaxed">{member.desc}</p>
                         </motion.div>

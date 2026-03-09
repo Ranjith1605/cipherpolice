@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const features = [
     {
-        icon: <Eye className="w-6 h-6 text-[#00f2ff]" />,
+        icon: <Eye className="w-6 h-6 text-primary" />,
         title: 'Privacy Enforcement',
         desc: 'Automatically blocks trackers, third-party cookies, and browser fingerprinting scripts before they ever run.'
     },
     {
-        icon: <Shield className="w-6 h-6 text-[#ffca28]" />,
+        icon: <Shield className="w-6 h-6 text-secondary" />,
         title: 'Threat Detection',
         desc: 'An AI model running locally identifies dark patterns, consent violations, and manipulation attempts in real time.'
     },
@@ -29,7 +29,7 @@ export const Features = () => {
                         initial={{ opacity: 0, y: 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-[11px] text-[#00f2ff]/60 font-bold tracking-[0.4em] uppercase mb-4"
+                        className="text-[11px] text-primary/60 font-bold tracking-[0.4em] uppercase mb-4"
                     >
                         How It Works
                     </motion.p>
@@ -40,7 +40,7 @@ export const Features = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-white tracking-tight"
                     >
-                        Built around <span className="text-[#00f2ff]">your rights.</span>
+                        Built around <span className="text-primary">your rights.</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}

@@ -24,7 +24,7 @@ export const Navbar = () => {
                 <div className="flex items-center justify-between h-12">
                     {/* Logo */}
                     <a href="#home" className="flex items-center gap-3 group">
-                        <div className="relative p-1.5 rounded-xl bg-white/[0.03] border border-white/10 transition-all duration-300 group-hover:border-[#00f2ff]/30">
+                        <div className="relative p-1.5 rounded-xl bg-white/[0.03] border border-white/10 transition-all duration-300 group-hover:border-primary/30">
                             <img
                                 src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
                                 alt="CipherPolice Logo"
@@ -33,7 +33,7 @@ export const Navbar = () => {
                         </div>
                         <div className="flex flex-col">
                             <span className="text-base font-black tracking-tight leading-none">
-                                <span className="text-white">Cipher</span><span className="text-[#00f2ff]">Police</span>
+                                <span className="text-white">Cipher</span><span className="text-primary">Police</span>
                             </span>
                             <span className="text-[8px] text-white/30 tracking-[0.3em] uppercase mt-0.5">Browser Security</span>
                         </div>
@@ -54,9 +54,9 @@ export const Navbar = () => {
 
                     {/* Status dot + mobile toggle */}
                     <div className="flex items-center gap-4">
-                        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#00f2ff]/20 bg-[#00f2ff]/5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#00f2ff] animate-pulse" />
-                            <span className="text-[9px] font-bold text-[#00f2ff]/70 tracking-[0.2em] uppercase">Protected</span>
+                        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                            <span className="text-[9px] font-bold text-primary/70 tracking-[0.2em] uppercase">Protected</span>
                         </div>
                         <button
                             onClick={() => setIsOpen(!isOpen)}

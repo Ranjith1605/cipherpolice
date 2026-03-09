@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import { Shield } from 'lucide-react';
 
 export const Hero = () => {
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Ambient radial glow */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#00f2ff]/5 blur-[120px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
             </div>
 
             <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
@@ -18,7 +17,7 @@ export const Hero = () => {
                     className="flex justify-center mb-10"
                 >
                     <div className="relative">
-                        <div className="absolute inset-0 bg-[#00f2ff]/10 blur-[60px] rounded-full" />
+                        <div className="absolute inset-0 bg-primary/10 blur-[60px] rounded-full" />
                         <div className="relative p-5 rounded-2xl bg-white/[0.02] border border-white/8">
                             <img
                                 src="/ChatGPT Image Nov 19, 2025 at 12_33_15 AM.png"
@@ -27,9 +26,9 @@ export const Hero = () => {
                             />
                         </div>
                         {/* Active indicator */}
-                        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-full bg-[#050a14] border border-[#00f2ff]/30">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#00f2ff] animate-pulse" />
-                            <span className="text-[9px] font-bold text-[#00f2ff] tracking-[0.3em] uppercase">Active</span>
+                        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-full bg-[#050a14] border border-primary/30">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                            <span className="text-[9px] font-bold text-primary tracking-[0.3em] uppercase">Active</span>
                         </div>
                     </div>
                 </motion.div>
@@ -42,7 +41,7 @@ export const Hero = () => {
                     className="text-5xl md:text-7xl font-black tracking-tight mb-5 leading-[1.05]"
                 >
                     Your data<br />
-                    <span className="text-[#00f2ff]">stays yours.</span>
+                    <span className="text-primary">stays yours.</span>
                 </motion.h1>
 
                 {/* Subheadline */}
@@ -64,7 +63,7 @@ export const Hero = () => {
                 >
                     <a
                         href="#features"
-                        className="px-8 py-3.5 rounded-xl bg-[#00f2ff] text-[#050a14] font-bold text-sm tracking-wide hover:bg-[#00f2ff]/90 transition-all duration-300 shadow-[0_0_30px_rgba(0,242,255,0.25)]"
+                        className="px-8 py-3.5 rounded-xl bg-primary text-[#050a14] font-bold text-sm tracking-wide hover:bg-primary/90 transition-all duration-300 shadow-[0_0_30px_rgba(0,242,255,0.25)]"
                     >
                         See How It Works
                     </a>
@@ -74,25 +73,6 @@ export const Hero = () => {
                     >
                         Get in Touch
                     </a>
-                </motion.div>
-
-                {/* Trust stats */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.1 }}
-                    className="mt-16 pt-10 border-t border-white/5 grid grid-cols-3 gap-8 max-w-md mx-auto"
-                >
-                    {[
-                        { value: '100%', label: 'Local Processing' },
-                        { value: '0', label: 'Data Sold' },
-                        { value: 'AES-256', label: 'Encryption' },
-                    ].map((stat) => (
-                        <div key={stat.label} className="text-center">
-                            <div className="text-xl font-black text-white mb-1">{stat.value}</div>
-                            <div className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-medium">{stat.label}</div>
-                        </div>
-                    ))}
                 </motion.div>
             </div>
 

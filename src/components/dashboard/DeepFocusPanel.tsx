@@ -26,14 +26,14 @@ const ShieldRing: React.FC<ShieldRingProps> = ({ level, active }) => {
                 <fm.circle
                     cx="60" cy="60" r={radius}
                     fill="none"
-                    stroke={active ? '#00f2ff' : '#1e293b'}
+                    stroke={active ? 'var(--primary)' : '#1e293b'}
                     strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray={circumference}
                     animate={{ strokeDashoffset: strokeDashoffset }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     style={{
-                        filter: active ? `drop-shadow(0 0 12px #00f2ff)` : 'none',
+                        filter: active ? `drop-shadow(0 0 12px var(--primary))` : 'none',
                     }}
                 />
                 {/* Inner glow ring */}
@@ -59,7 +59,7 @@ const ShieldRing: React.FC<ShieldRingProps> = ({ level, active }) => {
                 </fm.div>
                 <span
                     className="text-2xl font-black font-mono tracking-tighter"
-                    style={{ color: active ? '#00f2ff' : '#475569' }}
+                    style={{ color: active ? 'var(--primary)' : '#475569' }}
                 >
                     {level}%
                 </span>

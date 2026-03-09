@@ -30,7 +30,7 @@ export const Contact = () => {
                         initial={{ opacity: 0, y: 8 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-[11px] text-[#00f2ff]/60 font-bold tracking-[0.4em] uppercase mb-4"
+                        className="text-[11px] text-primary/60 font-bold tracking-[0.4em] uppercase mb-4"
                     >
                         Contact
                     </motion.p>
@@ -41,7 +41,7 @@ export const Contact = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-white tracking-tight"
                     >
-                        Get in <span className="text-[#00f2ff]">touch.</span>
+                        Get in <span className="text-primary">touch.</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -61,9 +61,9 @@ export const Contact = () => {
                             key="success"
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="p-10 rounded-2xl bg-[#00f2ff]/[0.04] border border-[#00f2ff]/20 text-center"
+                            className="p-10 rounded-2xl bg-primary/[0.04] border border-primary/20 text-center"
                         >
-                            <CheckCircle2 className="w-10 h-10 text-[#00f2ff] mx-auto mb-4" />
+                            <CheckCircle2 className="w-10 h-10 text-primary mx-auto mb-4" />
                             <p className="text-white font-bold text-lg mb-1">Message sent.</p>
                             <p className="text-white/40 text-sm">We'll get back to you shortly.</p>
                             <button
@@ -88,7 +88,7 @@ export const Contact = () => {
                                 onChange={handleChange}
                                 placeholder="Your name"
                                 required
-                                className="w-full px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-white/20 outline-none focus:border-[#00f2ff]/40 transition-colors"
+                                className="w-full px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-white/20 outline-none focus:border-primary/40 transition-colors"
                             />
                             <input
                                 type="email"
@@ -97,7 +97,7 @@ export const Contact = () => {
                                 onChange={handleChange}
                                 placeholder="your@email.com"
                                 required
-                                className="w-full px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-white/20 outline-none focus:border-[#00f2ff]/40 transition-colors"
+                                className="w-full px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-white/20 outline-none focus:border-primary/40 transition-colors"
                             />
                             <textarea
                                 name="message"
@@ -106,12 +106,12 @@ export const Contact = () => {
                                 placeholder="Your message"
                                 rows={5}
                                 required
-                                className="w-full px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-white/20 outline-none focus:border-[#00f2ff]/40 transition-colors resize-none"
+                                className="w-full px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder-white/20 outline-none focus:border-primary/40 transition-colors resize-none"
                             />
                             <button
                                 type="submit"
                                 disabled={isSending}
-                                className="w-full py-4 rounded-xl bg-[#00f2ff] text-[#050a14] font-bold text-sm tracking-wide hover:bg-[#00f2ff]/90 transition-all disabled:opacity-50 flex items-center justify-center gap-3"
+                                className="w-full py-4 rounded-xl bg-primary text-[#050a14] font-bold text-sm tracking-wide hover:bg-primary/90 transition-all disabled:opacity-50 flex items-center justify-center gap-3"
                             >
                                 {isSending ? (
                                     <><RefreshCcw className="w-4 h-4 animate-spin" /> Sending...</>
@@ -119,8 +119,8 @@ export const Contact = () => {
                                     <><Send className="w-4 h-4" /> Send Message</>
                                 )}
                             </button>
-                            <p className="text-center text-[10px] text-white/20 pt-2">
-                                Encrypted in transit · AES-256 · No data stored
+                            <p className="text-center text-[10px] text-white/20 pt-2 font-mono tracking-widest uppercase">
+                                Encrypted in transit · No data stored
                             </p>
                         </motion.form>
                     )}

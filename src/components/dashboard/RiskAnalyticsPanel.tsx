@@ -26,9 +26,9 @@ const weeklyData: WeeklyTrend[] = [
 
 const RiskAnalyticsPanel: React.FC = () => {
     const [metrics, setMetrics] = useState<MetricBar[]>([
-        { label: 'Attention Depth', value: 67, color: '#00f2ff', glow: 'rgba(0,242,255,0.4)' },
-        { label: 'Decision Clarity', value: 82, color: '#ffca28', glow: 'rgba(255,202,40,0.4)' },
-        { label: 'Soul Friction', value: 41, color: '#ffca28', glow: 'rgba(255,202,40,0.4)' },
+        { label: 'Attention Depth', value: 67, color: 'var(--primary)', glow: 'rgba(0,242,255,0.4)' },
+        { label: 'Decision Clarity', value: 82, color: 'var(--secondary)', glow: 'rgba(255,202,40,0.4)' },
+        { label: 'Soul Friction', value: 41, color: 'var(--secondary)', glow: 'rgba(255,202,40,0.4)' },
         { label: 'Context Pressure', value: 58, color: '#ef4444', glow: 'rgba(239,68,68,0.4)' },
     ]);
 
@@ -49,8 +49,8 @@ const RiskAnalyticsPanel: React.FC = () => {
     }, []);
 
     const getEfficiencyColor = (val: number) => {
-        if (val >= 80) return '#00f2ff';
-        if (val >= 60) return '#ffca28';
+        if (val >= 80) return 'var(--primary)';
+        if (val >= 60) return 'var(--secondary)';
         return '#ef4444';
     };
 

@@ -8,7 +8,7 @@ export const Footer = () => (
                     className="h-7 w-auto opacity-60"
                 />
                 <span className="text-base font-black tracking-tight">
-                    <span className="text-white">Cipher</span><span className="text-[#00f2ff]">Police</span>
+                    <span className="text-white">Cipher</span><span className="text-primary">Police</span>
                 </span>
             </div>
 
@@ -17,7 +17,7 @@ export const Footer = () => (
             </p>
 
             <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00f2ff] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-[10px] text-white/20 tracking-[0.2em] uppercase">
                     © 2026 CipherPolice
                 </span>

@@ -31,10 +31,10 @@ const BrowserMonitorSection: React.FC = () => {
     const [scanProgress, setScanProgress] = useState(0);
     const [activeLine, setActiveLine] = useState(0);
     const [metrics, setMetrics] = useState<BrowserMetric[]>([
-        { label: 'Security Score', value: 84, unit: '%', icon: '✨', color: '#00f2ff' },
-        { label: 'Request Integrity', value: 97.2, unit: '%', icon: '🛡️', color: '#ffca28' },
+        { label: 'Security Score', value: 84, unit: '%', icon: '✨', color: 'var(--primary)' },
+        { label: 'Request Integrity', value: 97.2, unit: '%', icon: '🛡️', color: 'var(--secondary)' },
         { label: 'Threats Blocked', value: 2, unit: 'active', icon: '⚠️', color: '#f59e0b' },
-        { label: 'Shield Stability', value: 100, unit: '%', icon: '🔗', color: '#00f2ff' },
+        { label: 'Shield Stability', value: 100, unit: '%', icon: '🔗', color: 'var(--primary)' },
     ]);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -124,7 +124,7 @@ const BrowserMonitorSection: React.FC = () => {
             ctx.lineTo(Math.cos(angle) * r, Math.sin(angle) * r);
             ctx.strokeStyle = 'rgba(0,242,255,0.8)';
             ctx.lineWidth = 1.5;
-            ctx.shadowColor = '#00f2ff';
+            ctx.shadowColor = 'var(--primary)';
             ctx.shadowBlur = 10;
             ctx.stroke();
             ctx.restore();
@@ -144,7 +144,7 @@ const BrowserMonitorSection: React.FC = () => {
                 ctx.beginPath();
                 ctx.arc(bx, by, 3, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(0,242,255,${alpha})`;
-                ctx.shadowColor = '#00f2ff';
+                ctx.shadowColor = 'var(--primary)';
                 ctx.shadowBlur = alpha > 0.5 ? 12 : 4;
                 ctx.fill();
             });
@@ -170,7 +170,7 @@ const BrowserMonitorSection: React.FC = () => {
         return () => clearInterval(interval);
     }, []);
 
-    const hColor = healthScore >= 75 ? '#00f2ff' : healthScore >= 50 ? '#ffca28' : '#ef4444';
+    const hColor = healthScore >= 75 ? 'var(--primary)' : healthScore >= 50 ? 'var(--secondary)' : '#ef4444';
 
     return (
         <section id="browser-monitor" className="py-32 relative overflow-hidden bg-transparent">
@@ -248,7 +248,7 @@ const BrowserMonitorSection: React.FC = () => {
                                     className="h-full rounded-full relative"
                                     animate={{ width: `${scanProgress}%` }}
                                     style={{
-                                        background: 'linear-gradient(90deg, #00f2ff, #ffca28)',
+                                        background: 'linear-gradient(90deg, var(--primary), var(--secondary))',
                                         boxShadow: '0 0 15px rgba(0,242,255,0.6)',
                                     }}
                                 >

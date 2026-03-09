@@ -22,10 +22,10 @@ const DefenseGridPanel: React.FC = () => {
     }, []);
 
     const defenseLines = [
-        { label: 'Sacred Sanitization', status: 'Optimal', health: 100, color: '#00f2ff' },
-        { label: 'Neural Fingerprint', status: 'Encrypted', health: 98, color: '#ffca28' },
-        { label: 'Spirit Isolation', status: 'Active', health: 100, color: '#00f2ff' },
-        { label: 'Void Filter', status: 'Scanning', health: 94, color: '#ffca28' },
+        { label: 'Sacred Sanitization', status: 'Optimal', health: 100, color: 'var(--primary)' },
+        { label: 'Neural Fingerprint', status: 'Encrypted', health: 98, color: 'var(--secondary)' },
+        { label: 'Spirit Isolation', status: 'Active', health: 100, color: 'var(--primary)' },
+        { label: 'Void Filter', status: 'Scanning', health: 94, color: 'var(--secondary)' },
     ];
 
     return (

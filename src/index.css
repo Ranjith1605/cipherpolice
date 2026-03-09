@@ -8,20 +8,64 @@
 @tailwind utilities;
 
 /* ── Fonts ─────────────────────────────────── */
-:root {
-  font-family: 'Space Grotesk', -apple-system, sans-serif;
+@layer base {
+  :root {
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
 
-  --quantum-blue: #00f2ff;
-  --guardian-gold: #ffca28;
-  --obsidian: #050a14;
-  --surface: rgba(255, 255, 255, 0.025);
-  --border: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.12);
+    /* Theme 1: Cyber Blue (Default) */
+    --primary: #00f2ff;
+    --secondary: #ffca28;
+    --bg-glow: rgba(0, 242, 255, 0.1);
+
+    --border: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(255, 255, 255, 0.12);
+    --obsidian: #050a14;
+    --surface: rgba(255, 255, 255, 0.025);
+  }
+
+  /* Theme 2: Neon Night */
+  .theme-neon {
+    --primary: #bc13fe;
+    --secondary: #ff00ff;
+    --bg-glow: rgba(188, 19, 254, 0.1);
+  }
+
+  /* Theme 3: Matrix Green */
+  .theme-matrix {
+    --primary: #00ff00;
+    --secondary: #004400;
+    --bg-glow: rgba(0, 255, 0, 0.1);
+  }
+
+  /* Theme 4: Solar Flare */
+  .theme-solar {
+    --primary: #ff8c00;
+    --secondary: #ffca28;
+    --bg-glow: rgba(255, 140, 0, 0.1);
+  }
+
+  /* Theme 5: Void Red */
+  .theme-void {
+    --primary: #ff003c;
+    --secondary: #4a0000;
+    --bg-glow: rgba(255, 0, 60, 0.1);
+  }
 }
 
 body {
-  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: var(--font-heading) !important;
 }
 
 code,
