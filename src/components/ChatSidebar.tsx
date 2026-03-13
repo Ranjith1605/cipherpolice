@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { sendMessage, Message, initializeChatHistory } from '../services/geminiService';
 import { Shield, Send, RefreshCcw, X, MessageSquare, Key, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { playTechClick } from '../utils/sounds';
 
 interface ChatSidebarProps {
   isOpen: boolean;
@@ -138,13 +139,15 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
   const handleSend = async (text: string) => {
     if (!text.trim() || isLoading) return;
 
+    playTechClick();
+
     const userMsg: Message = { role: 'user', content: text, timestamp: new Date() };
     setMessages(prev => [...prev, userMsg]);
     setInputValue('');
     setIsLoading(true);
     setIsTyping(true);
 
-    const response = await sendMessage(text);
+    const response = await sendMessage(text, apiKey);
     setIsTyping(false);
 
     const assistantMsg: Message = {
@@ -172,7 +175,10 @@ export const ChatSidebar = ({ isOpen, onToggle }: ChatSidebarProps) => {
     <>
       {/* Toggle button */}
       <button
-        onClick={onToggle}
+        onClick={() => {
+          playTechClick();
+          onToggle();
+        }}
         className={`fixed ${isOpen ? 'right-[26rem]' : 'right-6'} bottom-6 z-50 w-12 h-12 rounded-2xl transition-all duration-500 flex items-center justify-center border`}
         style={{
           background: 'rgba(5, 10, 20, 0.9)',

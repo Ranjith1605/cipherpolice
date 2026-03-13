@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Palette, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { playTechClick } from '../utils/sounds';
 
 const themes = [
     { id: 'default', name: 'Cyber Blue', class: '', color: 'var(--primary)' },
@@ -17,13 +18,15 @@ export const ThemeSwitcher = () => {
     useEffect(() => {
         const savedTheme = localStorage.getItem('cipher_theme');
         if (savedTheme) {
-            applyTheme(savedTheme);
+            applyTheme(savedTheme, false);
         }
     }, []);
 
-    const applyTheme = (themeId: string) => {
+    const applyTheme = (themeId: string, playSound = true) => {
         const theme = themes.find(t => t.id === themeId);
         if (!theme) return;
+
+        if (playSound) playTechClick();
 
         // Remove all previous theme classes
         document.documentElement.classList.remove('theme-neon', 'theme-matrix', 'theme-solar', 'theme-void');
@@ -34,6 +37,11 @@ export const ThemeSwitcher = () => {
 
         setActiveTheme(themeId);
         localStorage.setItem('cipher_theme', themeId);
+    };
+
+    const handleToggle = () => {
+        playTechClick();
+        setIsOpen(!isOpen);
     };
 
     return (
@@ -74,7 +82,7 @@ export const ThemeSwitcher = () => {
             </AnimatePresence>
 
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleToggle}
                 className="w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-300 hover:scale-105"
                 style={{
                     background: 'rgba(5, 10, 20, 0.9)',

@@ -11,20 +11,24 @@ import { Contact } from './components/Contact';
 import { useState } from 'react';
 import { HyperspaceBackground } from './components/HyperspaceBackground';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
+import { CognitiveFirewallDashboard } from './components/dashboard/CognitiveFirewallDashboard';
+import { CyberCursor } from './components/CyberCursor';
 
 export default function App() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isFirewallActive, setIsFirewallActive] = useState(false);
 
   useEffect(() => {
     document.title = 'CipherPolice – Browser Security & Privacy Shield';
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050a14] font-sans text-white relative overflow-x-hidden selection:bg-primary selection:text-black">
+    <div className="min-h-screen bg-[#050a14] font-sans text-white relative overflow-x-hidden selection:bg-primary selection:text-black cursor-none">
       {/* Dynamic Background */}
       <HyperspaceBackground />
+      <CyberCursor />
 
-      <Navbar />
+      <Navbar onOpenFirewall={() => setIsFirewallActive(true)} />
       <main className="relative z-10">
         <Hero />
         <Features />
@@ -36,6 +40,7 @@ export default function App() {
       <Footer />
       <ChatSidebar isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
       <ThemeSwitcher />
+      <CognitiveFirewallDashboard isOpen={isFirewallActive} onClose={() => setIsFirewallActive(false)} />
     </div>
   );
 }

@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
+import { BrainCircuit } from 'lucide-react';
+import { playTechClick } from '../utils/sounds';
 
-export const Navbar = () => {
+interface NavbarProps {
+    onOpenFirewall?: () => void;
+}
+
+export const Navbar = ({ onOpenFirewall }: NavbarProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -45,6 +51,7 @@ export const Navbar = () => {
                             <a
                                 key={item.name}
                                 href={item.href}
+                                onClick={() => playTechClick()}
                                 className="px-4 py-2 text-[11px] font-semibold text-white/40 hover:text-white transition-colors duration-300 uppercase tracking-[0.15em]"
                             >
                                 {item.name}
@@ -54,10 +61,19 @@ export const Navbar = () => {
 
                     {/* Status dot + mobile toggle */}
                     <div className="flex items-center gap-4">
-                        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                            <span className="text-[9px] font-bold text-primary/70 tracking-[0.2em] uppercase">Protected</span>
-                        </div>
+                        {/* Cognitive Firewall Subchain Trigger */}
+                        <button
+                            onClick={() => {
+                                playTechClick();
+                                onOpenFirewall?.();
+                            }}
+                            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 hover:bg-primary/20 transition-all group"
+                            title="Open Cognitive Firewall Subchain"
+                        >
+                            <BrainCircuit className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform" />
+                            <span className="text-[9px] font-bold text-primary/70 group-hover:text-primary tracking-[0.2em] uppercase transition-colors">Firewall</span>
+                        </button>
+
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="md:hidden p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-all"
@@ -86,6 +102,18 @@ export const Navbar = () => {
                             {item.name}
                         </a>
                     ))}
+                    {/* Mobile Firewall Trigger */}
+                    <button
+                        onClick={() => {
+                            playTechClick();
+                            setIsOpen(false);
+                            onOpenFirewall?.();
+                        }}
+                        className="w-full text-left px-4 py-3 rounded-xl text-primary/70 hover:text-primary hover:bg-primary/10 transition-all text-[11px] font-black uppercase tracking-[0.2em] flex items-center gap-2"
+                    >
+                        <BrainCircuit className="w-3.5 h-3.5" />
+                        Enter Subchain
+                    </button>
                 </div>
             </div>
         </nav>
